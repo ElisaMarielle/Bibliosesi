@@ -1,0 +1,147 @@
+* {
+    box-sizing: border-box;
+}
+
+.livre {
+    color: rgb(146, 210, 50);
+}
+
+.emprestado {
+    color: rgb(187, 33, 33);
+}
+
+#descricao {
+    width: 800px;
+    display: flex;
+    align-items: center;
+    gap: 600px;
+}
+#letra {
+    width: 600px;
+}
+a:link{
+    color: rgb(144, 125, 125);
+}
+a:hover, a:visited, a:active{
+    color: rgb(142, 34, 34);
+    text-decoration: none;
+}
+#mail {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}
+#email {
+    border: none;
+    outline: none;
+    width: 120px;
+}
+#pl{
+    text-decoration: none;
+}
+#inp {
+    width: fit-content;
+    border: 1px solid black;
+    padding: 2px;
+    border-radius: 2px;
+    display: flex;
+    flex-direction: row;
+}
+body{
+    background-color: #fff;
+}
+.d1{
+    text-align: center;
+    margin-top: 200px;
+    width: 100%;
+    height: 100%;
+}
+.c{
+    text-align: center;
+}
+span{
+    text-decoration: underline;
+}
+#f{
+    font-size: 30px;
+}
+#not{
+    font-size: 22px;
+}
+#img{
+    display: block;
+    margin: auto;
+}
+
+.container-noticias {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    height: 250px;
+}
+.noticias{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 10px;
+    width: 45%;
+    height: 200px;
+    min-height: 200px;
+}
+
+.noticias div {
+    margin-right: 55px;
+}
+
+.noticias:nth-child(3) {
+    text-align: right;
+    border: none;
+}
+
+.noticias:nth-child(3) div {
+   margin-right: 0;
+   margin-left: 55px;
+}
+
+.noticias hr {
+    align-self: center;
+    margin-top: 25px;
+    width: 80%;
+    color: #c6c6c6;
+}
+
+.separator {
+    height: 100%;
+    border-left: 2px solid #c6c6c6;
+}
+
+.inicial{
+    background-color: #bb4141;
+    margin: 40px;
+    padding: 35px;
+    text-align: center;
+}
+.button{
+    background-color: #c6c6c6;
+    border-radius: 10px;
+    border: 1px solid gray;
+    width: 60px;
+    text-align: center;
+    margin: auto;
+    padding: 5px;
+
+}
+
+.ordena{
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    justify-content: center;
+    text-align: center;
+}
+#logo{
+    display: initial;
+}

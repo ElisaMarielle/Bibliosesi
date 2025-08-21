@@ -1,197 +1,201 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Formulario</title>
+    <title>Bibliosesi</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="cadastro.htm">
+    <link rel="icon" href="logo.png">
 </head>
-<body bgcolor = "#ffffff">
-    <center><h1>Cadastro Bibliosesi</h1>
-    <hr>
+
+<body>
+    <br>
+    <div class="inicial" id="home">
+        <div class="ordena">
+            <img id="logo" src="logo.png" alt="Bibliosesi logo" width="130px" height="130px">
+            <!-- <img id="img" src="joao.png" width="1460" height="100"> -->
+            <h1>Bem-vindo(a) á sua Biblioteca Virtual!</h1>
+        </div>
+        
+    </div>
     
-    <form action = "" method = "">
-    <p>
-        <label for = "nome">Nome Completo</label>
-        <input type = "text" id = "nome" placeholder = "Insira seu nome" required/>
-    </p>
-        <style>
-            #mail {
-                display: flex;
-                flex-direction: row;
-                align-items: center;
-                justify-content: center;
-                gap: 5px;
-            }
-            #email {
-                border: none;
-                outline: none;
-                width: 120px;
-            }
-            #inp {
-                width: fit-content;
-                border: 1px solid black;
-                padding: 2px;
-                border-radius: 2px;
-                display: flex;
-                flex-direction: row;
-            }
-        </style>
-    <div id="mail">
-        <label for = "email">E-mail Educacional</label>
-        <div id="inp">
-            <input id = "email" type = "text" placeholder = "xxxxxxxxx"/> 
-            <span>@portalsesisp.org.br</span>
-        </div>
-    </div> 
-    <p>
-        <label for = "senha">Senha</label>
-        <input id = "senha" type = "password" placeholder="Informe senha" required/>
-    </p>
-    <p>
-        <label for = "rm">RM</label>
-        <input id = "rm" type = "text" placeholder="Informe seu RM" required/>
-        <hr>
-    </p>
-</center>
-<br>
-<html>
-    <head>
-        <title>Bibliosesi</title>
-    </head>
-    <style>
-        .livre {
-            color: greenyellow;
-        }
 
-        .emprestado {
-            color: red;
-        }
-
-        #descricao {
-            width: 800px;
-            display: flex;
-            align-items: center;
-            gap: 600px;
-        }
-        #letra {
-            width: 600px;
-        }
-    </style>
-    <body bgcolor = "#ffffff">
-        <center><img src = "joao.png" width = "1460" height = "100" ></center>
-
-        <font size = "5" color = "#0d0c0d">
-        <!--------------------------------------->
-        <center><p><h4><ins>Principais Notícias da Semana</ins></h4></p></center>
-        <p><b>Selibi</b></p>
-        <p>Com mais de 25 mil votos o escritor e ilustrador Andre Neves foi escolhido com um grande homenageado da SELIBI 2025 - Semana do livro e da biblioteca da rede SESI SP. A votação contou com a participação de mais de 57 mil pessoas, entre bibliotecários, estudantes e professores.</p>
-        <a href="https://www.instagram.com/oscargbr1/reel/DHrU1s8OHBE/"><p>Clique aqui e confira a matéria completa.</p></a><hr>
-        <p><b>Dia Mundial do Livro: veja títulos cobrados nos vestibulares 2026</b></p>
-        <p>Nesta quarta-feira (23) celebra-se o Dia Mundial do Livro e dos Direitos Autorais, iniciativa da Organização das Nações Unidas para a Educação, a Ciência e a Cultura (Unesco) para promover a leitura, o livro e a proteção dos direitos autorais
-        </p>
-        <p>Clique aqui e confira a matéria completa.</p><hr>
-        <p><b>Papa Francisco tem duas autobiografias publicadas; conheça</b></p>
-        <p>O papa Francisco, primeiro pontífice latino-americano da história, lançou dois livros autobiográficos antes de sua morte: “Vida: minha história através da história” e “Esperança: a autobiografia”.</p>
-        <p>Clique aqui e confira a matéria completa.</p><hr>
-        <p><b>40 anos de democracia: veja 10 obras que retratam período da ditadura</b></p>
-        <p>Redemocratização do Brasil teve início em 15 de março de 1985, com a posse de José Sarney na Presidência da República
-        </p>
-        <p>Clique aqui e confira a matéria completa.</p><hr>
-        <br>
-        <hr>
-        <!--------------------------------------->
-        <center><p><h3><ins>Perfil do usuário</ins></h3></p></center>
-        <h5><p>Nome completo:</p></h5>
-        <p>Gabriela Caroline Da Silva</p>
-        <h5>Série:</h5>
-        <p>2º A</p>
-        <h5>Rm:</h5>
-        <p>1234</p><hr>
-        <h4>❗<ins>Avisos</ins></h4>
-        <p>• O prazo para a devolução do livro “Crepúsculo” será encerrado daqui 13h43min do dia 18/04/2025.</p>
-        <p>• Sua posição na fila para o livro O “Pequeno Príncipe” foi atualizada. Você encontra-se agora em 2º lugar.</p>
-        <center><img src = ""></center>
-        </font><hr>
-        <!--------------------------------------->
-        <center><p><h1><ins>Empréstimos</ins></h1></p></center>
-        <h2>Crepúsculo</h2>
-        <h4>Descrição:</h4><p>Bella swan se muda para uma nova cidade e se apaixona por edward cullen, um misterioso colega de classe que é, na verdade, um vampiro, dando início a um romance intenso e perigoso entre mundos distintos.</p>
-        <h4>Período de empréstimo:</h4><p>18/03/2025 até 18/04/2025</p>
-        <textarea id="coment" placeholder="Digite seu comentário sobre o livro aqui."></textarea>
-        <hr>
-        <!--------------------------------------->
-        <center><p><h1><ins>Catálogo</ins></h1></p></center>
-        <h2>Moby Dick</h2>
-        <div id="descricao">
+    <!--------------------------------------->
+    <h1 class="c">Principais Notícias da Semana</h1>
+    <div class="container-noticias">
+        <div class="noticias">
             <div>
-                <h4>Descrição:</h4>
-                <p id="letra">moby dick narra a obsessão do capitão ahab em caçar a gigantesca baleia branca que lhe tirou a perna, mergulhando a tripulação do pequod em uma jornada sombria de vingança, destino e loucura.</p>
+                <p id="not"><b>Selibi</b></p>
+                <p>Com mais de 25 mil votos o escritor e ilustrador Andre Neves foi escolhido com um grande homenageado
+                    da
+                    SELIBI 2025 - Semana do livro e da biblioteca da rede SESI SP. A votação contou com a participação
+                    de
+                    mais
+                    de 57 mil pessoas, entre bibliotecários, estudantes e professores.</p>
+                <a href="https://www.instagram.com/oscargbr1/reel/DHrU1s8OHBE/" target="_blank">
+                    <p>Clique aqui e confira a matéria completa.</p>
+                </a>
             </div>
-            <img src="mobyd.jpg" width="200" height="240">
+            <hr>
         </div>
-        <p class="emprestado">Emprestado</p>
-        
-        <hr>
-        
-        <h2>Divina Comédia</h2>
-        <div id="descricao">
+
+        <span class="separator"></span>
+        <div class="noticias">
+            
             <div>
-                <h4>Descrição:</h4>
-                <p id="letra">na divina comédia, dante viaja pelos reinos do inferno, purgatório e paraíso, guiado por virgílio e beatriz, explorando a alma humana, a justiça divina e o caminho da redenção em uma jornada épica e espiritual.</p>
+                <p id="not"><b>Dia Mundial do Livro: veja títulos cobrados nos vestibulares 2026</b></p>
+                <p>Nesta quarta-feira (23) celebra-se o Dia Mundial do Livro e dos Direitos Autorais, iniciativa da Organização das
+        Nações Unidas para a Educação, a Ciência e a Cultura (Unesco) para promover a leitura, o livro e a proteção dos
+        direitos autorais</p>
+                <a href="https://www.cnnbrasil.com.br/educacao/dia-mundial-do-livro-veja-titulos-cobrados-nos-vestibulares-2025/" target="_blank">
+                    <p>Clique aqui e confira a matéria completa.</p>
+                </a>
             </div>
-            <img src = "divcom.jpg" width = "200" height = "240">
+            <hr>
         </div>
-        <p class="livre">Livre</p>
-
-        <hr>
-        
-        <h2>Anne of green gables</h2>
-        <div id="descricao">
+    </div>
+    
+    <div class="container-noticias">
+        <div class="noticias">
             <div>
-                <h4>Descrição:</h4>
-                <p id="letra">anne of green gables conta a história de anne shirley, uma órfã sonhadora e cheia de imaginação que é acidentalmente enviada para viver com dois irmãos em uma fazenda em avonlea, transformando a vida de todos ao seu redor com sua personalidade vibrante e coração generoso.</p>
+                <p id="not"><b>Papa Francisco tem duas autobiografias publicadas; conheça</b></p>
+    <p>O papa Francisco, primeiro pontífice latino-americano da história, lançou dois livros autobiográficos antes de
+        sua morte: “Vida: minha história através da história” e “Esperança: a autobiografia”.</p>
+    <a href="https://www.cnnbrasil.com.br/entretenimento/papa-francisco-tem-duas-autobiografias-publicadas-conheca/"
+        target="_blank">
+        <p>Clique aqui e confira a matéria completa.</p>
+    </a>
             </div>
-            <img src = "anneogg.jpg" width = "200" height = "240">
+            <hr>
         </div>
-        <p class="livre">Livre</p>
-
-        <hr>
-
-        <h2>Harry Potter</h2>
-        <div id="descricao">
+        
+        <span class="separator"></span>
+        
+        <div class="noticias">
             <div>
-                <h4>Descrição:</h4>
-                <p id="letra">Harry Potter e a Pedra Filosofal, de J.K. Rowling, segue Harry, um órfão que descobre ser bruxo e entra para Hogwarts. Com amigos, ele desvenda o mistério da Pedra Filosofal, enfrentando perigos para impedir que caia nas mãos do mal.</p>
+                <p id="not"><b>40 anos de democracia: veja 10 obras que retratam período da ditadura</b></p>
+                <p>Redemocratização do Brasil teve início em 15 de março de 1985, com a posse de José Sarney na Presidência da
+                    República</p>
+                <a href="https://www.cnnbrasil.com.br/entretenimento/40-anos-de-democracia-veja-10-obras-que-retratam-periodo-da-ditadura/" target="_blank">
+                    <p>Clique aqui e confira a matéria completa.</p>
+                </a>
             </div>
-            <img src = "hp.jpg" width = "200" height = "240">
+            <hr>
         </div>
-        <p class="emprestado">Emprestado</p>
+    </div><br><br><br><br>
+    <hr>
 
-        <hr>
-        
-        <h2>Orgulho e preconceito</h2>
-        <div id="descricao">
-            <div>
-                <h4>Descrição:</h4>
-                <p id="letra">Orgulho e Preconceito, de Jane Austen, é um romance sobre Elizabeth Bennet e Sr. Darcy, que superam orgulho, preconceitos e diferenças sociais para encontrar amor na Inglaterra do século XIX. Uma crítica sutil à sociedade com diálogos afiados.</p>
-            </div>
-            <img src = "o&p.webp" width = "200" height = "240">
+    <!--------------------------------------->
+    <h1 class="c">Perfil do usuário</h1>
+    <h3>
+        <p>Nome completo:</p>
+    </h3>
+    <p>Gabriela Caroline Da Silva</p>
+    <h3>Série:</h3>
+    <p>2º A</p>
+    <h3>Rm:</h3>
+    <p>1234</p>
+    <hr>
+    <h4 id="f">❗<span>Avisos</span></h4>
+    <p>• O prazo para a devolução do livro “Crepúsculo” será encerrado daqui 13h43min do dia 18/04/2025.</p>
+    <p>• Sua posição na fila para o livro O “Pequeno Príncipe” foi atualizada. Você encontra-se agora em 2º lugar.</p>
+    <hr>
+    <!--------------------------------------->
+    <h1 class="c">Empréstimos</h1>
+    <h2>Crepúsculo</h2>
+    <h4>Descrição:</h4>
+    <p>Bella swan se muda para uma nova cidade e se apaixona por edward cullen, um misterioso colega de classe que é, na
+        verdade, um vampiro, dando início a um romance intenso e perigoso entre mundos distintos.</p>
+    <h4>Período de empréstimo:</h4>
+    <p>18/03/2025 até 18/04/2025</p>
+    <textarea id="coment" placeholder="Digite seu comentário sobre o livro aqui."></textarea>
+    <hr>
+    <!--------------------------------------->
+    <h1 class="c">Catálogo</h1>
+    <h2>Moby Dick</h2>
+    <div id="descricao">
+        <div>
+            <h4>Descrição:</h4>
+            <p id="letra">moby dick narra a obsessão do capitão ahab em caçar a gigantesca baleia branca que lhe tirou a
+                perna, mergulhando a tripulação do pequod em uma jornada sombria de vingança, destino e loucura.</p>
         </div>
-        <p class="livre">Livre</p>
-        
-        <hr>
+        <img src="mobyd.jpg" width="200" height="240">
+    </div>
+    <p class="emprestado">Emprestado</p>
 
-        <h2>Jogos vorazes</h2>
-        <div id="descricao">
-            </div>
-                <h4>Descrição:</h4>
-                <p id="letra">Jogos Vorazes, de Suzanne Collins, segue Katniss Everdeen, que enfrenta os mortais Jogos Vorazes da Capital. Com coragem, ela sobrevive e se torna símbolo de resistência contra a opressão, em um mundo de desigualdade e sacrifício.</p>
-            </div>
-            <img src = "jgvrz.jpg" width = "100" height = "240">
+    <hr>
+
+    <h2>Divina Comédia</h2>
+    <div id="descricao">
+        <div>
+            <h4>Descrição:</h4>
+            <p id="letra">na divina comédia, dante viaja pelos reinos do inferno, purgatório e paraíso, guiado por
+                virgílio e beatriz, explorando a alma humana, a justiça divina e o caminho da redenção em uma jornada
+                épica e espiritual.</p>
         </div>
-        <p class="emprestado">Emprestado</p>
-        
-        <hr>
-    </footer>
-    </body>
+        <img src="divcom.jpg" width="200" height="240">
+    </div>
+    <p class="livre">Livre</p>
+
+    <hr>
+
+    <h2>Anne of green gables</h2>
+    <div id="descricao">
+        <div>
+            <h4>Descrição:</h4>
+            <p id="letra">anne of green gables conta a história de anne shirley, uma órfã sonhadora e cheia de
+                imaginação que é acidentalmente enviada para viver com dois irmãos em uma fazenda em avonlea,
+                transformando a vida de todos ao seu redor com sua personalidade vibrante e coração generoso.</p>
+        </div>
+        <img src="anneogg.jpg" width="200" height="240">
+    </div>
+    <p class="livre">Livre</p>
+
+    <hr>
+
+    <h2>Harry Potter</h2>
+    <div id="descricao">
+        <div>
+            <h4>Descrição:</h4>
+            <p id="letra">Harry Potter e a Pedra Filosofal, de J.K. Rowling, segue Harry, um órfão que descobre ser
+                bruxo e entra para Hogwarts. Com amigos, ele desvenda o mistério da Pedra Filosofal, enfrentando perigos
+                para impedir que caia nas mãos do mal.</p>
+        </div>
+        <img src="hp.jpg" width="200" height="240">
+    </div>
+    <p class="emprestado">Emprestado</p>
+
+    <hr>
+
+    <h2>Orgulho e preconceito</h2>
+    <div id="descricao">
+        <div>
+            <h4>Descrição:</h4>
+            <p id="letra">Orgulho e Preconceito, de Jane Austen, é um romance sobre Elizabeth Bennet e Sr. Darcy, que
+                superam orgulho, preconceitos e diferenças sociais para encontrar amor na Inglaterra do século XIX. Uma
+                crítica sutil à sociedade com diálogos afiados.</p>
+        </div>
+        <img src="o&p.webp" width="200" height="240">
+    </div>
+    <p class="livre">Livre</p>
+
+
+    <hr>
+    <h2>Jogos vorazes</h2>
+    <div id="descricao">
+        <div>
+            <h4>Descrição:</h4>
+            <p id="letra">Jogos Vorazes, de Suzanne Collins, segue Katniss Everdeen, que enfrenta os mortais Jogos
+                Vorazes da Capital. Com coragem, ela sobrevive e se torna símbolo de resistência contra a opressão, em
+                um mundo de desigualdade e sacrifício.</p>
+        </div>
+        <img src="jgvrz.jpg" width="200" height="240">
+    </div>
+    <p class="emprestado">Emprestado</p>
+
+    <hr>
+</body>
+
 </html>
