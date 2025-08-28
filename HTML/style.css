@@ -125,15 +125,32 @@ span{
     text-align: center;
 }
 .button{
-    background-color: #c6c6c6;
+    background-color: #e4e4e4;
     border-radius: 10px;
-    border: 1px solid gray;
+    border: 1px solid rgb(137, 137, 137);
     width: 60px;
     text-align: center;
     margin: auto;
     padding: 5px;
 
 }
+.botoes{
+    display: inline;
+}
+.botao-voltar, .botao-sair{
+    background-color: #e4e4e4;
+    border-radius: 10px;
+    border: 1px solid rgb(137, 137, 137);
+    width: 60px;
+    text-align: center;
+    margin: 10px;
+    padding: 5px;
+}
+.button a, .button a:hover{
+    color: black;
+    text-decoration: none;
+}
+
 
 .ordena{
     display: flex;
@@ -142,6 +159,48 @@ span{
     justify-content: center;
     text-align: center;
 }
+.ordena h1{
+    margin-top: 40px;
+}
 #logo{
     display: initial;
+}
+
+nav ul{
+    list-style: none;
+    font-size: 20px;
+}
+
+.navegador{
+    display: flex;
+    flex-direction: column;
+}
+
+.navegador-links li{
+    display: inline;
+    margin: 10px;
+}
+
+/* perfil do usuario */
+.header-perfilusu{
+    background-color: #bb4141;
+    padding: 20px;
+}
+.container-pdu{
+    display: flex;
+    flex-direction: row;
+}
+
+.perfil-do-usuario{
+    width: 50%;
+    background-color: #c6c6c6;
+    text-align: left;
+    padding: 5px 30px;
+}
+
+.avisos-perfil{
+    width: 50%;
+    background-color: #e4e4e4;
+    padding: 5px 30px;
+    text-align: left;
 }
