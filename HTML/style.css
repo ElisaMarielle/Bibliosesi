@@ -1,4 +1,6 @@
 * {
+    padding: 0;
+    margin: 0;
     box-sizing: border-box;
 }
 
@@ -11,6 +13,13 @@
 }
 
 #descricao {
+    width: 800px;
+    display: flex;
+    align-items: center;
+    gap: 600px;
+}
+#descricao2 {
+    height: 200px;
     width: 800px;
     display: flex;
     align-items: center;
@@ -120,9 +129,18 @@ span{
 
 .inicial{
     background-color: #bb4141;
-    margin: 40px;
-    padding: 35px;
+    margin: 0 0 30px 0;
+    padding: 12.3px;
     text-align: center;
+}
+.inicial .ordena h1{
+    font-family: 'Borel';
+    font-weight: 200;
+    font-size: 25;
+    color: #000000;
+}
+p{
+    font-family: 'inter';
 }
 .button{
     background-color: #e4e4e4;
@@ -136,28 +154,50 @@ span{
 }
 .botoes{
     display: inline;
+    padding: 20px;
+    margin-top: 30px;
 }
-.botao-voltar, .botao-sair{
+.botoes .botao-voltar, .botoes .botao-sair{
     background-color: #e4e4e4;
-    border-radius: 10px;
+    border-radius: 20px;
     border: 1px solid rgb(137, 137, 137);
     width: 60px;
     text-align: center;
     margin: 10px;
-    padding: 5px;
+    padding: 6px 10px;
+    color: #000000;
+    text-decoration: none;
 }
 .button a, .button a:hover{
     color: black;
     text-decoration: none;
 }
-
+.ordena nav ul li a{
+    text-decoration: none;
+    color: #ffeded;
+    font-family: 'sora';
+}
+.ordena nav ul li a:hover{
+    text-decoration: underline;
+}
+.ordena nav{
+    text-align: left;
+}
+.ordena nav ul i{
+    color: #ffeded;
+}
+.avisos-perfil h4{
+    font-family: 'inter';
+}
 
 .ordena{
     display: flex;
     flex-direction: row;
-    align-content: center;
-    justify-content: center;
+    justify-content: space-between;
     text-align: center;
+    flex-wrap: wrap;
+    align-content: center;
+    align-items: center;
 }
 .ordena h1{
     margin-top: 40px;
@@ -175,16 +215,35 @@ nav ul{
     display: flex;
     flex-direction: column;
 }
-
+.navegador-links{
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: inherit;
+    align-items: center;
+}
 .navegador-links li{
     display: inline;
     margin: 10px;
 }
+.navegador-links li a{
+    font-size: 14px;
+}
+.navegador-links i{
 
-/* perfil do usuario */
+}
+
+/* perfil do usuario-------------------------------------------------------*/
 .header-perfilusu{
     background-color: #bb4141;
-    padding: 20px;
+    padding: 10px;
+    left: 200px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: center;
+    align-items: center;
+    gap: 30px;
 }
 .container-pdu{
     display: flex;
@@ -192,15 +251,94 @@ nav ul{
 }
 
 .perfil-do-usuario{
-    width: 50%;
-    background-color: #c6c6c6;
+    width: 60%;
     text-align: left;
     padding: 5px 30px;
+    margin-top: 25px;
+}
+.perfil-do-usuario p{
+    margin: 12px 0;
 }
 
 .avisos-perfil{
-    width: 50%;
-    background-color: #e4e4e4;
+    width: 40%;
+    max-height: 565px;
+    min-height: 565px;
     padding: 5px 30px;
     text-align: left;
+    border-left: 2px solid #c2c2c2;
+    gap: 20px;
+}
+.avisos-perfil p{
+    margin: 25px 0;
+}
+.avisos-perfil h4{
+    margin-top: 20px;
+}
+.header-perfilusu h1{
+    font-family: 'dm serif text';
+    font-weight: 200;
+}
+
+/*Emprestimos--------------------------*/
+
+.header-emp{
+    background-color: #bb4141;
+    padding: 10px;
+    left: 200px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: center;
+    align-items: center;
+    gap: 30px;
+}
+.emp{
+    margin: 20px 15px;
+}
+.emp h2{
+    font-family: 'inter';
+    font-size: 30px;
+}
+.emp h4{
+    font-family: 'sora';
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+.emp p{
+    font-family: 'sora';
+    margin-bottom: 10px;
+}
+textarea{
+    width: 600px;
+    height: 100px;
+    border-radius: 8px;
+}
+textarea::placeholder{
+    margin-left: 30px;
+}
+
+/*catalogo-------------------------------------------------*/
+.header-cat{
+    background-color: #bb4141;
+    padding: 10px;
+    left: 200px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: center;
+    align-items: center;
+    gap: 30px;
+}
+.cat{
+    margin: 20px 15px 35px 15px;
+}
+.cat h2{
+    font-family: 'inter';
+    font-size: 30px;
+}
+.cat h4{
+    font-family: 'sora';
+    font-size: 20px;
+    margin-bottom: 10px;
 }
