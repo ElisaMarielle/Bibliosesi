@@ -1,0 +1,311 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    background: #fff;
+    width: 100vw;
+    height: 100vh;
+}
+
+/*---------------- PÁGINA DE CADASTRO -------------------*/
+/* PÁGINAÇÃO --------------*/
+main{
+    display: flex;
+    justify-content: center;
+    padding: 100px 20px 0;
+}
+main .container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #f4f2f1;
+    gap: 50px;
+    padding: 10px;
+    border-radius: 7px;
+}
+main .container h1{
+    font-family: sora;
+    color: #902222;
+    text-align: center;
+}
+.cadastro{
+    display: flex;
+    flex-direction: column;
+}
+
+/* FORM -------------------*/
+form{
+    display: flex;
+    flex-direction: column;
+    font-family: lato;
+}
+form input{
+    margin-bottom: 20px;
+    border: none;
+    padding: 3px;
+    border-radius: 4px;
+}
+form input:focus-within{
+    outline: 2px solid #902222;
+}
+input#email::placeholder{
+    padding-left: 40px;
+    transition: opacity 400ms;
+}
+input#email:focus-within::placeholder{
+    opacity: 0;
+}
+form label{
+    margin-bottom: 5px;
+    font-size: 14px;
+}
+form input#email{
+    margin-bottom: 0;
+}
+form .mail .inp{
+    background-color: #fff;
+    border-radius: 4px;
+}
+.cadastro .botao{
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+    margin-bottom: 15px;
+}
+.cadastro a{
+    color: inherit;
+    text-decoration: none;
+}
+.cadastro button{
+    width: 100px;
+    padding: 5px;
+    border-radius: 6px;
+    border: 1px solid gray;
+    font-family: lato;
+}
+.cadastro p{
+    text-align: center;
+    font-family: sora;
+    font-size: 14px;
+    color: #777777;
+}
+.mail .inp #pl{
+    font-size: 14px;
+}
+.mail{
+    margin-bottom: 20px;
+}
+form .mail label{
+    margin-bottom: 5px;
+}
+
+
+/*---------------- PÁGINA INICIAL -------------------*/
+/* HEADER --------------*/
+header{
+    background-color: #bb4141;
+    padding: 5px;
+    position: fixed;
+    top: 0;
+    z-index: 5;
+    width: 100%;
+    border-bottom: 1px solid #333;
+}
+header .ordena{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+.ordena h1{
+    font-size: 18px;
+    font-family: borel;
+    font-weight: 300;
+    margin-top: 15px;
+}
+.ordena img{
+    width: 50px;
+    height: 50px;
+}
+.ordena i{
+    font-size: 25px;
+}
+
+/* NAVEGAÇÃO --------------*/
+.navegar nav ul{
+    list-style: none;
+}
+.navegar nav ul i{
+    font-size: 20px;
+}
+.navegar nav li{
+    font-size: 16px;
+}
+.navegar nav ul li a{
+    color: #fff;
+    text-decoration: none;
+    font-family: lexend;
+    position: relative;
+}
+nav ul li a::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px;
+  left: 0;
+  bottom: -2px;
+  background-color: #ffffff; /* corzinha do underline */
+  transition: width 0.3s ease;
+}
+
+nav ul li a:hover::after {
+  width: 100%;
+}
+.navegar .nav-links{
+    display: flex;
+    gap: 5px;
+    align-items: center;
+    margin-bottom: 20px;
+    border-top: 1px solid #fff;
+    /* border-bottom: 1px solid #fff; */
+    padding: 40px 10px;
+}
+.nav-links:nth-child(3){
+    border-bottom: 1px solid #fff;
+    padding-bottom: 50px;
+    margin-bottom: 12rem;
+}
+.navegar nav .bt-sair{
+    display: flex;
+    justify-content: flex-end;
+}
+.bt-sair button{
+    margin-right: 20px;
+    border: none;
+    background-color: transparent;
+}
+.bt-sair button a{
+    color:#fff;
+    font-family: lato;
+    font-size: 14px;
+}
+.navegar nav {
+  position: fixed;       /* Fixa o menu na tela */
+  top: 0;
+  right: 0;              /* Cola na direita */
+  height: 100%;
+  width: 45vw;          /* Largura do menu */
+  background-color: #bb4141;
+  color: white;
+  transform: translateX(100%); /* Esconde fora da tela */
+  transition: transform 0.3s ease-in-out;
+  z-index: 3;          /* Fica por cima do conteúdo */
+  padding-top: 3.8rem;     /* espaço pro header */
+  border-left: 1px solid #333;
+}
+.navegar nav.active {
+  transform: translateX(0);
+}
+
+
+/* NOTÍCIAS --------------*/
+section#not h2{
+    margin: 80px 20px 30px;
+    font-size: 20px;
+    text-align: center;
+    font-family: sora;
+    text-decoration: 3px #0000003f underline;
+}
+.cont-noticias{
+    margin: 20px 40px;
+}
+.noticia{
+    margin-bottom: 40px;
+    border-bottom: 2px solid #9f5151;
+    padding-bottom: 40px;
+}
+.noticia:last-child{
+    border: none;
+}
+.noticia #titulo-materia{
+    text-align: center;
+    font-weight: 600;
+    margin-bottom: 15px;
+    font-family: lexend;
+    font-size: 16px;
+    color: #b31d1d;
+    /* text-decoration: 2px #00000034 underline; */
+}
+.noticia p{
+    font-family: lato;
+    font-size: 13px;
+    margin-bottom: 10px;
+}
+.noticia a{
+    font-family: lato;
+    font-size: 13px;
+    color: #999999;
+}
+.noticia a:visited{
+    color: #5d5d5d;
+}
+.cont-img{
+    width: 100%;
+    height: 70px;
+    display: flex;
+    align-self: center;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.2);
+    margin-bottom: 10px;
+}
+.cont-img #imagem-not{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+/* .container-noticias {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    height: 250px;
+}
+.noticias{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 10px;
+    width: 45%;
+    height: 200px;
+    min-height: 200px;
+}
+
+.noticias div {
+    margin-right: 55px;
+}
+
+.noticias:nth-child(3) {
+    text-align: right;
+    border: none;
+}
+
+.noticias:nth-child(3) div {
+   margin-right: 0;
+   margin-left: 55px;
+}
+
+.noticias hr {
+    align-self: center;
+    margin-top: 25px;
+    width: 80%;
+    color: #c6c6c6;
+}
+
+.separator {
+    height: 100%;
+    border-left: 2px solid #c6c6c6;
+} */
