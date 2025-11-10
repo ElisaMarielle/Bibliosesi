@@ -11,7 +11,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Lexend:wght@100..900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Text:ital@0;1&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Sora:wght@100..800&display=swap" rel="stylesheet">
 </head>
-<body>
+<body style="background: #f4f2f1;">
     <main>
         <div class="container">
             <h1>Cadastro Bibliosesi</h1>
@@ -19,24 +19,24 @@
                 <form action="" method="">
                     <!--Nome do aluno----------------------->
                     <label for="nome">Nome completo:</label>
-                    <input type="text" id="nome" placeholder="Digite seu nome.">
+                    <input type="text" id="nome" placeholder="Digite seu nome." required/>
                     
                     <!--Email do aluno----------------------->
                     <div class="mail">
                         <label for="email">E-mail Educacional:</label>
                         <div class="inp">
-                            <input type="email" id="email" placeholder="xxxxxxxxxxx">
+                            <input type="email" id="email" placeholder="xxxxxxxxxxx" required/>
                             <span id="pl">@portalsesisp.org.br</span>
                         </div>
                     </div>
 
                     <!--Senha----------------------->
                     <label for="senha">Senha:</label>
-                    <input id="senha" type="password" placeholder="Digite sua senha.">
+                    <input id="senha" type="password" placeholder="Digite sua senha." required/>
 
                     <!--RM----------------------->
                     <label for="rm">RM:</label>
-                    <input id="rm" type="text" placeholder="Registro do aluno.">
+                    <input id="rm" type="text" placeholder="Registro do aluno." required/>
                 </form>
 
                 <div class="botao">
