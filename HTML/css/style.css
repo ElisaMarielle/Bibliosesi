@@ -11,13 +11,14 @@ body{
 
 /*---------------- PÁGINA DE CADASTRO -------------------*/
 /* PÁGINAÇÃO --------------*/
-main{
+main#logcad{
     display: flex;
     justify-content: center;
     width: 100vw;
     height: 100vh;
+    align-items: center;
 }
-main .container{
+main#logcad .container{
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -27,8 +28,9 @@ main .container{
     padding: 10px;
     border-radius: 7px;
     margin: 50px 0;
+    position: fixed;
 }
-main .container h1{
+main#logcad .container h1{
     font-family: sora;
     color: #902222;
     text-align: center;
@@ -97,6 +99,7 @@ form .mail .inp{
 }
 .mail .inp #pl{
     font-size: 14px;
+    padding-right: 20px;
 }
 .mail{
     margin-bottom: 20px;
