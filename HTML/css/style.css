@@ -7,105 +7,16 @@ body{
     background: #fff;
     width: 100vw;
     height: 100vh;
+    overflow-y: hidden;
+    overflow-x: hidden;
 }
+:root{
+    --c-claro: #7c7c7c;
+    --c-medio: #5d5d5d;
+    --c-escuro: #333;
 
-/*---------------- PÁGINA DE CADASTRO -------------------*/
-/* PÁGINAÇÃO --------------*/
-main#logcad{
-    display: flex;
-    justify-content: center;
-    width: 100vw;
-    height: 100vh;
-    align-items: center;
-}
-main#logcad .container{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background-color: #fff;
-    gap: 50px;
-    padding: 10px;
-    border-radius: 7px;
-    margin: 50px 0;
-    position: fixed;
-}
-main#logcad .container h1{
-    font-family: sora;
-    color: #902222;
-    text-align: center;
-}
-.cadastro{
-    display: flex;
-    flex-direction: column;
-}
-
-/* FORM -------------------*/
-form{
-    display: flex;
-    flex-direction: column;
-    font-family: lato;
-}
-form input{
-    margin-bottom: 20px;
-    border: none;
-    padding: 3px;
-    border-radius: 4px;
-    background-color: #f4f2f1;
-}
-form input:focus-within{
-    outline: 2px solid #902222;
-}
-input#email::placeholder{
-    padding-left: 40px;
-    transition: opacity 400ms;
-}
-input#email:focus-within::placeholder{
-    opacity: 0;
-}
-form label{
-    margin-bottom: 5px;
-    font-size: 14px;
-}
-form input#email{
-    margin-bottom: 0;
-}
-form .mail .inp{
-    background-color: #f4f2f1;
-    border-radius: 4px;
-}
-.cadastro .botao{
-    display: flex;
-    justify-content: center;
-    margin-top: 30px;
-    margin-bottom: 15px;
-}
-.cadastro a{
-    color: inherit;
-    text-decoration: none;
-}
-.cadastro button{
-    width: 100px;
-    padding: 5px;
-    border-radius: 6px;
-    border: 1px solid gray;
-    font-family: lato;
-}
-.cadastro p{
-    text-align: center;
-    font-family: sora;
-    font-size: 14px;
-    color: #777777;
-}
-.mail .inp #pl{
-    font-size: 14px;
-    padding-right: 20px;
-}
-.mail{
-    margin-bottom: 20px;
-}
-form .mail label{
-    margin-bottom: 5px;
+    --v-claro: #bb4141;
+    --v-medio: #b31d1d;  
 }
 
 
@@ -163,7 +74,7 @@ nav ul li a::after {
   height: 2px;
   left: 0;
   bottom: -2px;
-  background-color: #ffffff; /* corzinha do underline */
+  background-color: #ffffff;
   transition: width 0.3s ease;
 }
 
@@ -199,17 +110,17 @@ nav ul li a:hover::after {
     font-size: 14px;
 }
 .navegar nav {
-  position: fixed;       /* Fixa o menu na tela */
+  position: fixed;
   top: 0;
-  right: 0;              /* Cola na direita */
+  right: 0;
   height: 100%;
-  width: 45vw;          /* Largura do menu */
+  width: 45vw;
   background-color: #bb4141;
   color: white;
-  transform: translateX(100%); /* Esconde fora da tela */
+  transform: translateX(100%);
   transition: transform 0.3s ease-in-out;
-  z-index: 3;          /* Fica por cima do conteúdo */
-  padding-top: 3.8rem;     /* espaço pro header */
+  z-index: 3;
+  padding-top: 3.8rem;
   border-left: 1px solid #333;
 }
 .navegar nav.active {
@@ -315,3 +226,115 @@ section#not h2{
     height: 100%;
     border-left: 2px solid #c6c6c6;
 } */
+
+
+/*---------------- PÁGINA USUÁRIO -------------------*/
+/* INFO --------------*/
+.aluno-info{
+    padding: 10px 20px 10px;
+    margin-top: 4.5rem;
+    border-bottom: 2px solid #7c7c7c;
+}
+.aluno-info h3{
+    font-family: sora;
+    margin-bottom: 2px;
+    font-weight: 500;
+}
+.aluno-info p{
+    color: #7c7c7c;
+    font-family: lato;
+    margin-bottom: 20px;
+    font-size: 14px;
+}
+/* AVISOS --------------*/
+.aluno-avisos{
+    padding: 40px 20px 0;
+}
+.aluno-avisos .la{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin-bottom: 15px;
+}
+.la h2{
+    font-family: sora;
+    font-weight: 500;
+}
+.aluno-avisos .avisos{
+    padding: 0 20px;
+}
+.avisos li{
+    font-family: lato;
+    font-size: 14px;
+    color: #7c7c7c;
+
+    margin-bottom: 30px;
+}
+
+
+/*---------------- PÁGINA EMPRÉSTIMO -------------------*/
+/* INFO --------------*/
+.emp-info{
+    padding: 10px 20px 10px;
+    margin-top: 4.5rem;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+}
+.emp-info .livro-info{
+    width: 60%;
+}
+.livro-info h3, h2{
+    font-family: sora;
+    font-weight: 500;
+    margin-bottom: 6px;
+}
+.livro-info p{
+    font-family: lato;
+    font-size: 14px;
+    color: #7c7c7c;
+}
+.emp-info .livro-img{
+    width: 40%;
+    text-align: center;
+}
+
+/* COMENTÁRIO --------------*/
+.emp-coment{
+    padding: 10px 20px 10px;
+    text-align: center;
+}
+.emp-coment p{
+    font-family: lato;
+    font-size: 15px;
+    font-weight: 600;
+    margin-bottom: 6px;
+}
+.emp-coment textarea{
+    width: 350px;
+    height: 8rem;
+    resize: none;
+
+    border: 1px solid var(--c-medio); border-radius: 10px;
+    padding: 6px;
+    text-indent: 10px;
+    font-family: lato;
+
+    box-shadow: -6px 6px 1px #000000c0;
+}
+.emp-coment textarea:focus-within{
+    outline: none;
+}
+/* BOTÃO --------------*/
+.emp-coment button{
+    padding: 6px 30px;
+    font-family: lexend;
+    border: 1px solid var(--c-escuro); border-radius: 10px;
+    background: transparent;
+    margin-top: 10px;
+
+    transition: background 200ms;
+}
+.emp-coment button:hover{
+    background: #e3e3e3;
+}

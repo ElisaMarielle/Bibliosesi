@@ -1,0 +1,104 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/*---------------- PÁGINA DE CADASTRO -------------------*/
+/* PÁGINAÇÃO --------------*/
+main#logcad{
+    display: flex;
+    justify-content: center;
+    width: 100vw;
+    height: 100vh;
+    align-items: center;
+}
+main#logcad .container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+    gap: 50px;
+    padding: 10px;
+    border-radius: 7px;
+    margin: 50px 0;
+    position: fixed;
+}
+main#logcad .container h1{
+    font-family: sora;
+    color: #902222;
+    text-align: center;
+}
+.cadastro{
+    display: flex;
+    flex-direction: column;
+}
+
+/* FORM -------------------*/
+form{
+    display: flex;
+    flex-direction: column;
+    font-family: lato;
+}
+form input{
+    margin-bottom: 20px;
+    border: none;
+    padding: 3px;
+    border-radius: 4px;
+    background-color: #f4f2f1;
+}
+form input:focus-within{
+    outline: 2px solid #902222;
+}
+input#email::placeholder{
+    padding-left: 40px;
+    transition: opacity 400ms;
+}
+input#email:focus-within::placeholder{
+    opacity: 0;
+}
+form label{
+    margin-bottom: 5px;
+    font-size: 14px;
+}
+form input#email{
+    margin-bottom: 0;
+}
+form .mail .inp{
+    background-color: #f4f2f1;
+    border-radius: 4px;
+}
+.cadastro .botao{
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+    margin-bottom: 15px;
+}
+.cadastro a{
+    color: inherit;
+    text-decoration: none;
+}
+.cadastro button{
+    width: 100px;
+    padding: 5px;
+    border-radius: 6px;
+    border: 1px solid gray;
+    font-family: lato;
+}
+.cadastro p{
+    text-align: center;
+    font-family: sora;
+    font-size: 14px;
+    color: #777777;
+}
+.mail .inp #pl{
+    font-size: 14px;
+    padding-right: 20px;
+}
+.mail{
+    margin-bottom: 20px;
+}
+form .mail label{
+    margin-bottom: 5px;
+}
