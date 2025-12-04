@@ -7,7 +7,6 @@ body{
     background: #fff;
     width: 100vw;
     height: 100vh;
-    overflow-y: hidden;
     overflow-x: hidden;
 }
 :root{
@@ -93,11 +92,13 @@ nav ul li a:hover::after {
 .nav-links:nth-child(3){
     border-bottom: 1px solid #fff;
     padding-bottom: 50px;
-    margin-bottom: 12rem;
+    /* margin-bottom: 12rem; */
 }
 .navegar nav .bt-sair{
     display: flex;
     justify-content: flex-end;
+    margin: auto;
+    padding: 20px;
 }
 .bt-sair button{
     margin-right: 20px;
@@ -122,6 +123,11 @@ nav ul li a:hover::after {
   z-index: 3;
   padding-top: 3.8rem;
   border-left: 1px solid #333;
+
+  display: flex;
+  flex-direction: column;   /* ESSENCIAL */
+  justify-content: space-between; /* Aqui a mágica acontece */
+  padding-bottom: 20px;
 }
 .navegar nav.active {
   transform: translateX(0);
