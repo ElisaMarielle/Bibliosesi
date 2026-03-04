@@ -116,12 +116,13 @@ nav ul li a:hover::after {
 .catalogo{
     margin-top: 4.2rem;
     font-family: lato;
-    padding: 20px 10px;
+    padding: 20px;
 }
 .catalogo-livros{
     display: flex;
     flex-direction: column;
     gap: 20px;
+    margin-top: 2rem;
 }
 
 
@@ -134,7 +135,7 @@ nav ul li a:hover::after {
     overflow-y: auto;
     gap: 10px;
     border-radius: 20px;
-    border: 1px solid #333;
+    border: 4px dashed #854040;
 }
 .genres-filter p{
     white-space: nowrap;
@@ -148,10 +149,32 @@ nav ul li a:hover::after {
 .livros{
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    gap: 8px;
 }
 .livros-detalhes{
     width: 250px;
 }
+.livros-detalhes h2{
+    color: #000000;
+    font-family: sora;
+}
+.livros-detalhes .sinopse{
+    color: #666666;
+    font-size: 14px;
+}
+/*----------------------*/
+.status{
+    font-weight: 700;
+    margin-top: 20px;
+}
+.livre{
+    color: #91c691;
+}
+.emprestado{
+    color: #c13f3f;
+}
+/*----------------------*/
 .livros-imagem{
     width: 110px;
     height: 180px;
@@ -160,4 +183,5 @@ nav ul li a:hover::after {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    border-radius: 8px;
 }
