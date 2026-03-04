@@ -1,0 +1,163 @@
+/* HEADER --------------*/
+header{
+    background-color: #bb4141;
+    padding: 5px;
+    position: fixed;
+    top: 0;
+    z-index: 5;
+    width: 100%;
+    border-bottom: 1px solid #333;
+}
+header .ordena{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+.ordena h1{
+    font-size: 18px;
+    font-family: borel;
+    font-weight: 300;
+    margin-top: 15px;
+}
+.ordena img{
+    width: 50px;
+    height: 50px;
+}
+.ordena i{
+    font-size: 25px;
+}
+
+/* NAVEGAÇÃO --------------*/
+.navegar nav ul{
+    list-style: none;
+}
+.navegar nav ul i{
+    font-size: 20px;
+}
+.navegar nav li{
+    font-size: 16px;
+}
+.navegar nav ul li a{
+    color: #ffffff;
+    text-decoration: none;
+    font-family: lexend;
+    position: relative;
+}
+nav ul li a::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px;
+  left: 0;
+  bottom: -2px;
+  background-color: #ffffff;
+  transition: width 0.3s ease;
+}
+
+nav ul li a:hover::after {
+  width: 100%;
+}
+.navegar .nav-links{
+    display: flex;
+    gap: 5px;
+    align-items: center;
+    margin-bottom: 20px;
+    border-top: 1px solid #fff;
+    /* border-bottom: 1px solid #fff; */
+    padding: 40px 10px;
+}
+.nav-links:nth-child(3){
+    border-bottom: 1px solid #fff;
+    padding-bottom: 50px;
+    /* margin-bottom: 12rem; */
+}
+.navegar nav .bt-sair{
+    display: flex;
+    justify-content: flex-end;
+    margin: auto;
+    padding: 20px;
+}
+.bt-sair button{
+    margin-right: 20px;
+    border: none;
+    background-color: transparent;
+}
+.bt-sair button a{
+    color:#fff;
+    font-family: lato;
+    font-size: 14px;
+}
+.navegar nav {
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: 45vw;
+  background-color: #bb4141;
+  color: white;
+  transform: translateX(100%);
+  transition: transform 0.3s ease-in-out;
+  z-index: 3;
+  padding-top: 3.8rem;
+  border-left: 1px solid #333;
+
+  display: flex;
+  flex-direction: column;   /* ESSENCIAL */
+  justify-content: space-between; /* Aqui a mágica acontece */
+  padding-bottom: 20px;
+}
+.navegar nav.active {
+  transform: translateX(0);
+}
+
+
+/* CATÁLOGO --------------*/
+.catalogo{
+    margin-top: 4.2rem;
+    font-family: lato;
+    padding: 20px 10px;
+}
+.catalogo-livros{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+
+/* FILTRO DE GÊNEROS --------------*/
+.genres-filter{
+    background-color: #ac6262;
+    padding: 6px 10px;
+    margin: 10px;
+    display: flex;
+    overflow-y: auto;
+    gap: 10px;
+    border-radius: 20px;
+    border: 1px solid #333;
+}
+.genres-filter p{
+    white-space: nowrap;
+    background-color: #f4f2f1;
+    border-radius: 20px;
+    padding: 4px 10px;
+}
+
+
+/* LIVROS --------------*/
+.livros{
+    display: flex;
+    justify-content: space-between;
+}
+.livros-detalhes{
+    width: 250px;
+}
+.livros-imagem{
+    width: 110px;
+    height: 180px;
+}
+.livros-imagem img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}

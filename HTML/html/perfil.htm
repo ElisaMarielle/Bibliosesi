@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Empréstimo</title>
-    <link rel="stylesheet" href="./css/style.css">
+    <title>Perfil</title>
+    <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Borel&family=DM+Serif+Text:ital@0;1&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Sora:wght@100..800&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Lexend:wght@100..900&display=swap" rel="stylesheet">
-    <link rel="icon" href="img/logo.png">
+    <link rel="icon" href="../img/logo.png">
 </head>
 <body>
     <header>
@@ -22,10 +22,10 @@
         <nav>
             <ul>
                 <div class="nav-links">
-                    <i class="fa-solid fa-circle-user"></i><li><a href="perfil.htm">Perfil do Usuáro</li></a>
+                    <i class="fa-solid fa-house"></i><li><a href="inicial.htm">Início</li></a>
                 </div>
                 <div class="nav-links">
-                    <i class="fa-solid fa-house"></i><li><a href="inicial.htm">Início</li></a>
+                    <i class="fa-solid fa-folder-open"></i><li><a href="emprestimos.htm">Empréstimos</li></a>
                 </div>
                 <div class="nav-links">
                     <i class="fa-solid fa-book"></i><li><a href="catalogo.htm">Catálogo</li></a>
@@ -38,24 +38,31 @@
     </div>
 
     <main>
-        <div class="emp-info">
-            <div class="livro-info">
-                <h2>Crepúsculo</h2>
-                <h3 style="margin-left: 10px;">Descrição</h3>
-                <p style="margin-left: 10px;">Bella swan se muda para uma nova cidade e se apaixona por edward cullen, um misterioso colega de classe que é, na verdade, um vampiro, dando início a um romance intenso e perigoso entre mundos distintos.</p>
-            </div>
+        <div class="aluno-info">
+            <h3>Nome do aluno:</h3>
+            <p>Gabriela Caroline da Silva</p>
 
-            <div class="livro-img">
-                <img src="./img/crep.jpg" width="50%" height="50%" style="border-radius: 2px; box-shadow: 0px 0px 3px #000;">
-            </div>
+            <h3>Série:</h3>
+            <p>2°A</p>
+
+            <h3>RM:</h3>
+            <p>1234</p>
         </div>
+        <div class="aluno-avisos">
+            <div class="la">
+                <i class="fa-solid fa-circle-exclamation"></i><h2>Avisos</h2>
+            </div>
 
-        <div class="emp-coment">
-            <p>Período do Empréstimo: <span style="color: #7c7c7c;">18/03/2025 até 18/04/2025</span></p>
-            <textarea minlength="10" maxlength="400"></textarea>
-            <button>Enviar</button>
+            <div class="avisos">
+                <ul>
+                    <li>O prazo para a devolução do livro “Crepúsculo” será encerrado daqui 13h43min do dia 18/04/2025.</li>
+                    <li>Sua posição na fila para o livro O “Pequeno Príncipe” foi atualizada. Você encontra-se agora em 2º lugar.</li>
+                </ul>
+            </div>
+            
         </div>
     </main>
+
 </body>
 <script src="script.js"></script>
 </html>
