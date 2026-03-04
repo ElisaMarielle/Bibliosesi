@@ -309,6 +309,9 @@ section#not h2{
 .emp-coment{
     padding: 10px 20px 10px;
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 .emp-coment p{
     font-family: lato;
@@ -343,4 +346,38 @@ section#not h2{
 }
 .emp-coment button:hover{
     background: #e3e3e3;
+}
+
+.modal{
+    display: none;
+    position: fixed;
+    background: rgba(0,0,0,0.5);
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.modal-content{
+    background: #fff;
+    width: 300px;
+    padding: 20px;
+    margin: 100px auto;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
+    align-items: center;
+}
+.modal-buttons{
+    display: flex;
+    justify-content: space-between;
+}
+.modal-buttons button{
+    padding: 6px 30px;
+    font-family: lexend;
+    border: 1px solid var(--c-escuro); border-radius: 10px;
+    background: transparent;
+    margin-top: 10px;
 }

@@ -4,6 +4,26 @@
     box-sizing: border-box;
 }
 
-@media (min-widht: 769px) {
-    
+
+
+@media (min-width: 769px) {
+    /* =======CADASTRO======= */
+    .cadastro{
+        width: 400px;
+    }
+    main#logcad .container{
+        width: 500px;
+    }
+
+
+    /* =======PÁGINA PRINCIPAL======= */
+    .noticia #titulo-materia{
+        font-size: 23px;
+    }
+    .noticia p, .noticia a{
+        font-size: 15px;
+    }
+    .cont-img{
+        height: 180px;
+    }
 }
