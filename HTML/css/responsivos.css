@@ -26,4 +26,35 @@
     .cont-img{
         height: 180px;
     }
+    .navegar nav{
+        width: 35vw;
+    }
+
+    /* =======PÁGINA PRINCIPAL======= */
+    main.perfil{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr;
+        margin-top: 3.5rem;
+        height: 100vh;
+    }
+    .aluno-info{
+        margin-top: 0;
+        padding: 30px 20px 0;
+        border-right: 2px solid #7c7c7c;
+        border-bottom: none;
+    }
+    .aluno-avisos {
+        padding: 30px 20px 0;
+    }
+
+    .livro-info h2{
+        font-size: 28px;
+    }
+    .livro-info h3{
+        font-size: 24px;
+    }
+    .livro-info p{
+        font-size: 16px;
+    }
 }

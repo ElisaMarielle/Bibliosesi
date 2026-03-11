@@ -1,6 +1,6 @@
 /* HEADER --------------*/
 header{
-    background-color: #bb4141;
+    background-color: #7c2e2e;
     padding: 5px;
     position: fixed;
     top: 0;
@@ -16,9 +16,9 @@ header .ordena{
 }
 .ordena h1{
     font-size: 18px;
-    font-family: borel;
-    font-weight: 300;
-    margin-top: 15px;
+    font-family: lexend;
+    font-weight: 500;
+    color: #fff;
 }
 .ordena img{
     width: 50px;
@@ -26,6 +26,7 @@ header .ordena{
 }
 .ordena i{
     font-size: 25px;
+    color: #fff;
 }
 
 /* NAVEGAÇÃO --------------*/
@@ -62,7 +63,6 @@ nav ul li a:hover::after {
     display: flex;
     gap: 5px;
     align-items: center;
-    margin-bottom: 20px;
     border-top: 1px solid #fff;
     /* border-bottom: 1px solid #fff; */
     padding: 40px 10px;
@@ -93,8 +93,8 @@ nav ul li a:hover::after {
   top: 0;
   right: 0;
   height: 100%;
-  width: 45vw;
-  background-color: #bb4141;
+  width: 35vw;
+  background-color: #7c2e2e;
   color: white;
   transform: translateX(100%);
   transition: transform 0.3s ease-in-out;
