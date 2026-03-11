@@ -93,7 +93,7 @@ nav ul li a:hover::after {
   top: 0;
   right: 0;
   height: 100%;
-  width: 35vw;
+  width: 45vw;
   background-color: #7c2e2e;
   color: white;
   transform: translateX(100%);

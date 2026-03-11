@@ -369,6 +369,7 @@ section#not h2{
     gap: 10px;
     text-align: center;
     align-items: center;
+    font-family: lexend;
 }
 .modal-buttons{
     display: flex;

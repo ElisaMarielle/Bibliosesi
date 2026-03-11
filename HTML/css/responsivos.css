@@ -24,10 +24,10 @@
         font-size: 15px;
     }
     .cont-img{
-        height: 180px;
+        height: 140px;
     }
     .navegar nav{
-        width: 35vw;
+        width: 35vw !important;
     }
 
     /* =======PÁGINA PRINCIPAL======= */
