@@ -34,10 +34,6 @@ Utilizado para o desenvolvimento do protótipo do site na versão desktop.
 2. Copie o link do repositório no GitHub   
 3. Abra o terminal   
 4. Execute o comando abaixo:
-bash
-git clone https://github.com/seu-usuario/bibliosesi.git
+`git clone https://github.com/seu-usuario/bibliosesi.git`
 
-![Site Bibliosesi]([link](https://tamis28.github.io/Bibliosesi/HTML/html/index.htm))
-
-# Abra no VS Code
-code .
+[Site Bibliosesi](https://tamis28.github.io/Bibliosesi/HTML/html/index.htm)
