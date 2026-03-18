@@ -33,7 +33,7 @@ Utilizado para o desenvolvimento do protótipo do site na versão desktop.
 1. Tenha o Git instalado em sua máquina  
 2. Copie o link do repositório no GitHub   
 3. Abra o terminal   
-4. Execute o comando abaixo:
-`git clone https://github.com/seu-usuario/bibliosesi.git`
+4. Execute o comando:
+`git clone https://github.com/tamis28/Bibliosesi.git`
 
 [Site Bibliosesi](https://tamis28.github.io/Bibliosesi/HTML/html/index.htm)
