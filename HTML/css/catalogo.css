@@ -1,3 +1,14 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    background: #f5eeee;
+    width: 100vw;
+    overflow-x: hidden;
+}
+
 /* HEADER --------------*/
 header{
     background-color: #7c2e2e;
@@ -125,17 +136,41 @@ nav ul li a:hover::after {
     margin-top: 2rem;
 }
 
+.div-search{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+.div-search button{
+    background: none;
+    border: none;
+    margin-bottom: 8px;
+    position: absolute;
+    left: 40px;
+}
+.div-search svg{
+    color: #682424;
+}
+.catalogo form input{
+    padding: 8px 10px 8px 35px;
+    border: none;
+    outline: 2px solid #682424;
+    border-radius: 20px;
+    margin-bottom: 10px;
+    min-width: 300px;
+}
+
 
 /* FILTRO DE GÊNEROS --------------*/
 .genres-filter{
-    background-color: #ac6262;
+    background-color: #7c2e2e;
     padding: 6px 10px;
     margin: 10px;
     display: flex;
     overflow-y: auto;
     gap: 10px;
     border-radius: 20px;
-    border: 3px dashed #854040;
 }
 .genres-filter p{
     white-space: nowrap;

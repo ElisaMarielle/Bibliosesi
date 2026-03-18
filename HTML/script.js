@@ -3,12 +3,12 @@ const nav = document.querySelector('.navegar nav');
 
 menuBtn.addEventListener('click', () => {
   nav.classList.toggle('active');
-  if(nav.classList.contains('active')){
+  if (nav.classList.contains('active')) {
     document.querySelector('main').style.filter = "grayscale(100%) blur(3px)";
-  }else{
+  } else {
     document.querySelector('main').style.filter = "grayscale(0) blur(0)";
   }
-  
+
 });
 
 function salvarLocal() {
@@ -51,7 +51,7 @@ function filtrarLivros() {
   }
 }
 
-function listarCatalogo() {
+/*function listarCatalogo() {
   fetch("https://viacep.com.br/ws/01001000/json/")
   .then(data => {
     return data.json();
@@ -63,4 +63,18 @@ function listarCatalogo() {
   });
 }
 
-listarCatalogo();
+listarCatalogo();*/
+
+//-----------------SEARCH INPUT
+function buscarLivros() {
+  let livros = document.getElementsByClassName("livro");
+  let pesquisa = document.getElementById('searcbook');
+
+  for (let i = 0; i < livros.length; i++) {
+    if (livros[i].innerHTML != pesquisa) {
+      livros[i].parentNode.style.display = "none";
+    }else{
+      livros[i].parentNode.style.display = "block";
+    }
+  }
+}

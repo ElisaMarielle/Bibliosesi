@@ -1,11 +1,3 @@
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-
-
 @media (min-width: 769px) {
     /* =======CADASTRO======= */
     .cadastro{
@@ -48,6 +40,12 @@
         padding: 30px 20px 0;
     }
 
+    
+
+    /* =======EMPRÉSTIMOS======= */
+    .emp-coment textarea{
+        width: 450px;
+    }
     .livro-info h2{
         font-size: 28px;
     }
@@ -56,5 +54,16 @@
     }
     .livro-info p{
         font-size: 16px;
+    }
+
+    /* =======CATÁLOGO======= */
+    .catalogo form .div-search input{
+        min-width: 600px;
+    }
+    .catalogo form .div-search button{
+        left: 75px;
+    }
+    .catalogo-livros .livro{
+        justify-content: space-around;
     }
 }
