@@ -27,7 +27,13 @@ Ferramenta usada para a criação do protótipo do site na versão mobile.
 Utilizado para o desenvolvimento do protótipo do site na versão desktop.
 
 ---
+## Protótipos
+Os protótipos do projeto foram desenvolvidos para demonstrar a interface e a experiência do usuário nas versões mobile e desktop.
 
+- Protótipo Mobile (Figma): [Acessar protótipo](https://www.figma.com/design/DyrZWvRTO79EneV3hGVPGv/Bibliosesi?node-id=0-1&p=f)
+- Protótipo Desktop (Canva): [Acessar protótipo](https://joaotandello.my.canva.site/bibliosesi)
+
+---
 ## Como baixar o projeto
 
 1. Tenha o Git instalado em sua máquina  
