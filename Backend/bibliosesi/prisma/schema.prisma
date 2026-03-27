@@ -1,0 +1,75 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+}
+
+model Usuarios {
+  id            Int           @id @default(autoincrement())
+  nome          String
+  email         String        @unique
+  rm            Int           @unique
+  senha         String
+  serie_escolar String
+  emprestimos   Emprestimos[]
+  fila          Fila[]
+  feedbacks     Feedbacks[]
+}
+
+model Livros {
+  id          Int           @id @default(autoincrement())
+  titulo      String
+  autor       String
+  genero      String
+  publicacao  DateTime
+  quantidade  Int
+  emprestimos Emprestimos[]
+  fila        Fila[]
+  feedbacks   Feedbacks[]
+}
+
+model Emprestimos {
+  id              Int      @id @default(autoincrement())
+  data_emprestimo DateTime
+  data_devolucao  DateTime
+  usuario         Usuarios @relation(fields: [usuarioId], references: [id])
+  usuarioId       Int
+  livro           Livros   @relation(fields: [livroId], references: [id])
+  livroId         Int
+}
+
+model Fila {
+  id        Int         @id @default(autoincrement())
+  posicao   PosicaoFila @default(LISTA_ESPERA)
+  usuario   Usuarios    @relation(fields: [usuarioId], references: [id])
+  usuarioId Int
+  livro     Livros      @relation(fields: [livroId], references: [id])
+  livroId   Int
+}
+
+model Feedbacks {
+  id         Int      @id @default(autoincrement())
+  comentario String
+  data       DateTime
+  usuario    Usuarios @relation(fields: [usuarioId], references: [id])
+  usuarioId  Int
+  livro      Livros   @relation(fields: [livroId], references: [id])
+  livroId    Int
+}
+
+model Noticias {
+  id        Int      @id @default(autoincrement())
+  titulo    String
+  autor     String
+  conteudo  String
+  categoria String
+  data      DateTime
+}
+
+enum PosicaoFila {
+  PROXIMO
+  LISTA_ESPERA
+  CANCELADO
+}
