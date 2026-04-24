@@ -150,19 +150,39 @@
     }
 
     /* =======CATÁLOGO======= */
+    .catalogo-livros{
+        display: grid !important;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: auto;
+        gap: 30px !important;
+    }
     .catalogo-livros .livro{
-        justify-content: space-around;
+        padding-bottom: 20px;
+        border-bottom: 1px solid #7c7c7c;
     }
-
-    .not-pc{
-        display: block;
-    }
-    section#not{
+    .catalogo-livros hr{
         display: none;
     }
 }
+    
+
 
 @media (min-width: 1140px){
+    .cont-noticias .noticias{
+        display: grid;
+        grid-template-columns: 1fr auto 1fr;
+        grid-template-rows: auto;
+        gap: 0 40px;
+    }
+    .not-divisor{
+        width: 1px;
+        background-color: #cacaca;
+    }
+    .noticias .noticia .cont-img{
+        height: 200px;
+    }
+
+
     .container-wrapper{
         display: flex;
         flex-direction: row !important;
@@ -179,7 +199,7 @@
         display: grid !important;
         grid-template-columns: repeat(2, 1fr);
         grid-template-rows: auto;
-        gap: 20px;
+        gap: 30px !important;
     }
     .catalogo-livros .livro{
         padding-bottom: 20px;
@@ -190,5 +210,45 @@
     }
     .catalogo-livros hr{
         display: none;
+    }
+
+
+    .emp-info{
+        padding: 10px 6rem;
+    }
+    .emp-info .livro-info h2{
+        font-size: 40px;
+    }
+    .emp-info .livro-info h3{
+        font-size: 34px;
+    }
+    .emp-info .livro-info p{
+        font-size: 20px;
+    }
+    .emp-info .livro-img{
+        width: 30%;
+    }
+    .emp-coment p{
+        font-size: 20px;
+    }
+    .emp-coment textarea{
+        font-size: 16px;
+    }
+    .emp-coment textarea::placeholder{
+        font-size: 16px;
+    }
+
+
+    .aluno-info h3{
+        font-size: 25px;
+    }
+    .aluno-info p{
+        font-size: 18px;
+    }
+    .aluno-avisos .la h2{
+        font-size: 25px;
+    }
+    .aluno-avisos .avisos ul li{
+        font-size: 20px;
     }
 }

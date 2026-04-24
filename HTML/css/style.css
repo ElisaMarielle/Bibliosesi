@@ -48,11 +48,15 @@ header .ordena{
 .ordena i{
     font-size: 25px;
     color: #fff;
+    cursor: pointer;
 }
 
 /* NAVEGAÇÃO --------------*/
 .navegar nav ul{
     list-style: none;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr 1fr 5fr;
 }
 .navegar nav ul i{
     font-size: 20px;
@@ -122,11 +126,6 @@ nav ul li a:hover::after {
   z-index: 3;
   padding-top: 3.8rem;
   border-left: 1px solid #333;
-
-  display: flex;
-  flex-direction: column;   /* ESSENCIAL */
-  justify-content: space-between; /* Aqui a mágica acontece */
-  padding-bottom: 20px;
 }
 .navegar nav.active {
   transform: translateX(0);
@@ -148,9 +147,6 @@ section#not h2{
     margin-bottom: 30px;
     border-bottom: 2px solid #9f5151;
     padding-bottom: 30px;
-}
-.noticia:last-child{
-    border: none;
 }
 .noticia #titulo-materia{
     text-align: center;
@@ -188,49 +184,6 @@ section#not h2{
     object-fit: cover;
     object-position: center;
 }
-
-/* .container-noticias {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    height: 250px;
-}
-.noticias{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    margin: 10px;
-    width: 45%;
-    height: 200px;
-    min-height: 200px;
-}
-
-.noticias div {
-    margin-right: 55px;
-}
-
-.noticias:nth-child(3) {
-    text-align: right;
-    border: none;
-}
-
-.noticias:nth-child(3) div {
-   margin-right: 0;
-   margin-left: 55px;
-}
-
-.noticias hr {
-    align-self: center;
-    margin-top: 25px;
-    width: 80%;
-    color: #c6c6c6;
-}
-
-.separator {
-    height: 100%;
-    border-left: 2px solid #c6c6c6;
-} */
 
 
 /*---------------- PÁGINA USUÁRIO -------------------*/
