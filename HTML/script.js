@@ -39,17 +39,7 @@ function limparCampos() {
 }
 
 //-----------------FILTRAR LIVROS NO CATÁLOGO
-function filtrarLivros() {
-  let livros = document.getElementsByClassName("categoria");
 
-  for (let i = 0; i < livros.length; i++) {
-    if (livros[i].innerHTML != "Suspense") {
-      livros[i].parentNode.style.display = "none";
-    } else {
-
-    }
-  }
-}
 
 /*function listarCatalogo() {
   fetch("https://viacep.com.br/ws/01001000/json/")
@@ -78,3 +68,7 @@ function buscarLivros() {
     }
   }
 }
+
+
+
+

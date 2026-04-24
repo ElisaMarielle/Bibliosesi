@@ -44,6 +44,9 @@ header .ordena{
 /* NAVEGAÇÃO --------------*/
 .navegar nav ul{
     list-style: none;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr 1fr 5fr;
 }
 .navegar nav ul i{
     font-size: 20px;
@@ -113,11 +116,6 @@ nav ul li a:hover::after {
   z-index: 3;
   padding-top: 3.8rem;
   border-left: 1px solid #333;
-
-  display: flex;
-  flex-direction: column;   /* ESSENCIAL */
-  justify-content: space-between; /* Aqui a mágica acontece */
-  padding-bottom: 20px;
 }
 .navegar nav.active {
   transform: translateX(0);
