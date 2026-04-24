@@ -1,3 +1,9 @@
+@media (max-width: 400px){
+    .not-pc{
+        display: none;
+    }
+}
+
 @media (min-width: 769px) {
     /* =======CADASTRO======= */
     .cadastro{
@@ -20,6 +26,12 @@
     }
     .navegar nav{
         width: 35vw !important;
+    }
+    .bt-sair{
+        padding: 80px 20px 20px;
+    }
+    .bt-sair button{
+        margin-top: 60%;
     }
 
     /* =======PÁGINA PRINCIPAL======= */
@@ -65,5 +77,118 @@
     }
     .catalogo-livros .livro{
         justify-content: space-around;
+    }
+
+    .not-pc{
+        display: none;
+    }
+}
+
+
+
+@media (min-width: 976px){
+    /* =======CADASTRO======= */
+    .cadastro{
+        width: 400px;
+    }
+    main#logcad .container{
+        width: 500px;
+    }
+
+
+    /* =======PÁGINA PRINCIPAL======= */
+    .noticia #titulo-materia{
+        font-size: 23px;
+    }
+    .noticia p, .noticia a{
+        font-size: 15px;
+    }
+    .cont-img{
+        height: 140px;
+    }
+    .navegar nav{
+        width: 30vw !important;
+    }
+    .bt-sair{
+        padding: 80px 20px 20px;
+    }
+
+    /* =======PÁGINA PRINCIPAL======= */
+    main.perfil{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr;
+        margin-top: 3.5rem;
+        height: 100vh;
+    }
+    .aluno-info{
+        margin-top: 0;
+        padding: 30px 20px 0;
+        border-right: 2px solid #7c7c7c;
+        border-bottom: none;
+    }
+    .aluno-avisos {
+        padding: 30px 20px 0;
+    }
+    .bt-sair button{
+        margin-top: 60%;
+    }
+    
+
+    /* =======EMPRÉSTIMOS======= */
+    .emp-coment textarea{
+        width: 450px;
+    }
+    .livro-info h2{
+        font-size: 28px;
+    }
+    .livro-info h3{
+        font-size: 24px;
+    }
+    .livro-info p{
+        font-size: 16px;
+    }
+
+    /* =======CATÁLOGO======= */
+    .catalogo-livros .livro{
+        justify-content: space-around;
+    }
+
+    .not-pc{
+        display: block;
+    }
+    section#not{
+        display: none;
+    }
+}
+
+@media (min-width: 1140px){
+    .container-wrapper{
+        display: flex;
+        flex-direction: row !important;
+        gap: 20px;
+        align-items: center;
+        justify-content: space-evenly;
+    }
+    .container-wrapper form{
+        margin-top: 12px;
+    }
+
+
+    .catalogo-livros{
+        display: grid !important;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: auto;
+        gap: 20px;
+    }
+    .catalogo-livros .livro{
+        padding-bottom: 20px;
+        border-bottom: 1px solid #7c7c7c;
+    }
+    .catalogo-livros .livro .livro-detalhes p{
+        font-size: 18px;
+    }
+    .catalogo-livros hr{
+        display: none;
     }
 }
