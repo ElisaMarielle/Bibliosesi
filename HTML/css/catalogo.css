@@ -9,7 +9,7 @@ body{
     overflow-x: hidden;
 }
 
-/* HEADER --------------*/
+/* -------------HEADER --------------*/
 header{
     background-color: #7c2e2e;
     padding: 5px;
@@ -39,6 +39,7 @@ header .ordena{
     font-size: 25px;
     color: #fff;
 }
+
 
 /* NAVEGAÇÃO --------------*/
 .navegar nav ul{
@@ -122,8 +123,8 @@ nav ul li a:hover::after {
   transform: translateX(0);
 }
 
-
-/* CATÁLOGO --------------*/
+/* -------------CATÁLOGO --------------*/
+/* ORGANIZAÇÃO --------------*/
 .catalogo{
     margin-top: 4.2rem;
     font-family: lato;
@@ -136,47 +137,78 @@ nav ul li a:hover::after {
     margin-top: 2rem;
 }
 
+
+/* BARRA DE PESQUISA --------------*/
 .div-search{
     display: flex;
     justify-content: center;
     align-items: center;
-    position: relative;
 }
-.div-search button{
-    background: none;
-    border: none;
-    margin-bottom: 8px;
-    position: absolute;
-    left: 40px;
-}
-.div-search svg{
-    color: #682424;
-}
-.catalogo form input{
-    padding: 8px 10px 8px 35px;
+.input-wrapper{
+    padding: 8px;
     border: none;
     outline: 2px solid #682424;
     border-radius: 20px;
     margin-bottom: 10px;
     min-width: 300px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.input-wrapper svg{
+    color: #682424;
+}
+.input-wrapper input{
+    border: none;
+    outline: none;
+    background: none;
+    font-family: lato;
+    font-weight: 600;
+}
+.input-wrapper input::-webkit-search-cancel-button{
+    display: none;
 }
 
 
 /* FILTRO DE GÊNEROS --------------*/
+.container-wrapper{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+}
 .genres-filter{
     background-color: #7c2e2e;
     padding: 6px 10px;
     margin: 10px;
     display: flex;
-    overflow-y: auto;
+    width: fit-content;
     gap: 10px;
     border-radius: 20px;
+    display: flex;
+    align-items: center;
 }
-.genres-filter p{
-    white-space: nowrap;
-    background-color: #f4f2f1;
-    border-radius: 20px;
-    padding: 4px 10px;
+.genres-filter i{
+    color: #fff;
+    font-size: 20px;
+}
+.genres-filter select{
+    border: none; border-radius: 20px;
+    outline: none;
+    background: none;
+    color: #fff;
+    padding: 4px 0;
+    font-family: lexend;
+    font-size: 16px;
+}
+select option{
+    color: #000;
+    outline: none;
+    border: none;
+}
+select option:hover{
+    background-color: #7c2e2e !important;
 }
 
 

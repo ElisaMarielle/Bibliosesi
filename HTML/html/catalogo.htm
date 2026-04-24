@@ -29,12 +29,12 @@
         <nav>
             <ul>
                 <div class="nav-links">
-                    <i class="fa-solid fa-circle-user"></i>
-                    <li><a href="perfil.htm">Perfil do Usuáro</li></a>
-                </div>
-                <div class="nav-links">
                     <i class="fa-solid fa-house"></i>
                     <li><a href="inicial.htm">Início</li></a>
+                </div>
+                <div class="nav-links">
+                    <i class="fa-solid fa-circle-user"></i>
+                    <li><a href="perfil.htm">Perfil do Usuáro</li></a>
                 </div>
                 <div class="nav-links">
                     <i class="fa-solid fa-book"></i>
@@ -49,32 +49,38 @@
 
     <main>
         <div class="catalogo">
-            <form action="">
-                <div class="div-search">
-                    <button type="submit">
-                        <?xml version="1.0" encoding="UTF-8"?>
-                        <svg xmlns="http://www.w3.org/2000/svg" id="Outline" viewBox="0 0 24 24" width="18" height="18"
-                            fill="currentColor">
-                            <path
-                                d="M23.707,22.293l-5.969-5.969a10.016,10.016,0,1,0-1.414,1.414l5.969,5.969a1,1,0,0,0,1.414-1.414ZM10,18a8,8,0,1,1,8-8A8.009,8.009,0,0,1,10,18Z" />
-                        </svg>
-                    </button>
-                    <input type="search" id="searchbook" placeholder="Pesquise o título, autor, ano, etc...">
+            <div class="container-wrapper">
+                <form action="">
+                    <div class="div-search">
+                        <div class="input-wrapper">
+                            <?xml version="1.0" encoding="UTF-8"?>
+                            <svg xmlns="http://www.w3.org/2000/svg" id="Outline" viewBox="0 0 24 24" width="18" height="18"
+                                fill="currentColor">
+                                <path
+                                    d="M23.707,22.293l-5.969-5.969a10.016,10.016,0,1,0-1.414,1.414l5.969,5.969a1,1,0,0,0,1.414-1.414ZM10,18a8,8,0,1,1,8-8A8.009,8.009,0,0,1,10,18Z" />
+                            </svg>
+                            <input type="search" id="searchbook" placeholder="Pesquise o título, autor, ano, etc...">
+                        </div>
+                    </div>
+                </form>
+                <div class="genres-filter">
+                    <i class="fa-solid fa-filter"></i>
+                    <select id="filter" class="filter">
+                        <option value="op1">Ação</option>
+                        <option value="op2">Aventura</option>
+                        <option value="op3">Crônicas</option>
+                        <option value="op4">Fantasia</option>
+                        <option value="op5">Ficção</option>
+                        <option value="op6">Ficção científica</option>
+                        <option value="op7">Poesia</option>
+                        <option value="op8">Romance</option>
+                        <option value="op9">Suspense</option>
+                        <option value="op10">Terror</option>
+                        <option value="op11" selected>Nenhum</option>
+                    </select>
                 </div>
-
-            </form>
-
-            <div class="genres-filter">
-                <p>Romance</p>
-                <p>Ficção científica</p>
-                <p>Terror</p>
-                <p>Fantasia</p>
-                <p>Aventura</p>
-                <p>Supense</p>
-                <p>Ação</p>
-                <p>Poesia</p>
-                <p>Crônicas</p>
             </div>
+            
 
             <div class="catalogo-livros">
                 <!----------------------------------------->
