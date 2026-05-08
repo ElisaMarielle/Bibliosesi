@@ -19,7 +19,9 @@ function salvarLocal() {
 
 //modalCli > modalComent
 function abrirModal() {
-  modalComent.style.display = "block";
+  modalComent.style.display = "flex";
+  modalComent.style.justifyContent = "center";
+  modalComent.style.alignItems = "center";
   limparCampos();
 }
 
