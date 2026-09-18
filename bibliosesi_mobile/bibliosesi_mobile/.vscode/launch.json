@@ -1,0 +1,280 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "$R5MXSJM",
+            "cwd": "$Recycle.Bin\\S-1-5-21-2089816993-2917360440-980693401-1007\\$R5MXSJM",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "flutter",
+            "cwd": "Users\\Mariana\\flutter",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "aula08",
+            "cwd": "Users\\Mariana\\Desktop\\aula08",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "aula08 (profile mode)",
+            "cwd": "Users\\Mariana\\Desktop\\aula08",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "aula08 (release mode)",
+            "cwd": "Users\\Mariana\\Desktop\\aula08",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        },
+        {
+            "name": "aula08atividade2",
+            "cwd": "Users\\Mariana\\Desktop\\aula08atividade2",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "aula08atividade2 (profile mode)",
+            "cwd": "Users\\Mariana\\Desktop\\aula08atividade2",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "aula08atividade2 (release mode)",
+            "cwd": "Users\\Mariana\\Desktop\\aula08atividade2",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        },
+        {
+            "name": "bibliosesi_mobile",
+            "cwd": "Users\\Mariana\\Desktop\\bibliosesi_mobile",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "bibliosesi_mobile (profile mode)",
+            "cwd": "Users\\Mariana\\Desktop\\bibliosesi_mobile",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "bibliosesi_mobile (release mode)",
+            "cwd": "Users\\Mariana\\Desktop\\bibliosesi_mobile",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        },
+        {
+            "name": "bitola",
+            "cwd": "Users\\Mariana\\Desktop\\bitola",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "bitola (profile mode)",
+            "cwd": "Users\\Mariana\\Desktop\\bitola",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "bitola (release mode)",
+            "cwd": "Users\\Mariana\\Desktop\\bitola",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        },
+        {
+            "name": "composto",
+            "cwd": "Users\\Mariana\\Desktop\\composto",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "composto (profile mode)",
+            "cwd": "Users\\Mariana\\Desktop\\composto",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "composto (release mode)",
+            "cwd": "Users\\Mariana\\Desktop\\composto",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        },
+        {
+            "name": "flutter-estilo-mokup-json-2026",
+            "cwd": "Users\\Mariana\\Desktop\\flutter-estilo-mokup-json-2026",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "flutter-estilo-mokup-json-2026 (profile mode)",
+            "cwd": "Users\\Mariana\\Desktop\\flutter-estilo-mokup-json-2026",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "flutter-estilo-mokup-json-2026 (release mode)",
+            "cwd": "Users\\Mariana\\Desktop\\flutter-estilo-mokup-json-2026",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        },
+        {
+            "name": "flutter-splash-shared-2026",
+            "cwd": "Users\\Mariana\\Desktop\\flutter-splash-shared-2026",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "flutter-splash-shared-2026 (profile mode)",
+            "cwd": "Users\\Mariana\\Desktop\\flutter-splash-shared-2026",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "flutter-splash-shared-2026 (release mode)",
+            "cwd": "Users\\Mariana\\Desktop\\flutter-splash-shared-2026",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        },
+        {
+            "name": "flutter_agrotech_api_jwt_lista_detalhes_2026",
+            "cwd": "Users\\Mariana\\Desktop\\flutter_agrotech_api_jwt_lista_detalhes_2026",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "flutter_agrotech_api_jwt_lista_detalhes_2026 (profile mode)",
+            "cwd": "Users\\Mariana\\Desktop\\flutter_agrotech_api_jwt_lista_detalhes_2026",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "flutter_agrotech_api_jwt_lista_detalhes_2026 (release mode)",
+            "cwd": "Users\\Mariana\\Desktop\\flutter_agrotech_api_jwt_lista_detalhes_2026",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        },
+        {
+            "name": "flutter_anotacoes",
+            "cwd": "Users\\Mariana\\Desktop\\flutter_anotacoes",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "flutter_anotacoes (profile mode)",
+            "cwd": "Users\\Mariana\\Desktop\\flutter_anotacoes",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "flutter_anotacoes (release mode)",
+            "cwd": "Users\\Mariana\\Desktop\\flutter_anotacoes",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        },
+        {
+            "name": "flutter_produtos_2026",
+            "cwd": "Users\\Mariana\\Desktop\\flutter_produtos_2026",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "flutter_produtos_2026 (profile mode)",
+            "cwd": "Users\\Mariana\\Desktop\\flutter_produtos_2026",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "flutter_produtos_2026 (release mode)",
+            "cwd": "Users\\Mariana\\Desktop\\flutter_produtos_2026",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        },
+        {
+            "name": "flutter_quiz",
+            "cwd": "Users\\Mariana\\Desktop\\flutter_quiz",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "flutter_quiz (profile mode)",
+            "cwd": "Users\\Mariana\\Desktop\\flutter_quiz",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "flutter_quiz (release mode)",
+            "cwd": "Users\\Mariana\\Desktop\\flutter_quiz",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        },
+        {
+            "name": "imc",
+            "cwd": "Users\\Mariana\\Desktop\\imc",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "imc (profile mode)",
+            "cwd": "Users\\Mariana\\Desktop\\imc",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "imc (release mode)",
+            "cwd": "Users\\Mariana\\Desktop\\imc",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        },
+        {
+            "name": "juros",
+            "cwd": "Users\\Mariana\\Desktop\\juros",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "juros (profile mode)",
+            "cwd": "Users\\Mariana\\Desktop\\juros",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "juros (release mode)",
+            "cwd": "Users\\Mariana\\Desktop\\juros",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        }
+    ]
+}
