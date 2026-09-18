@@ -14,6 +14,7 @@ body{
     --white: #FFF;
     --unvisited: #999;
     --visited: #5D5D5D;
+    --dm-sans: dm sans;
 }
 /*=========================================================*/
 
@@ -43,12 +44,12 @@ section#not h2{
     color: #b31d1d;
 }
 .noticia p{
-    font-family: lato;
+    font-family: var(--dm-sans);
     font-size: 13px;
     margin-bottom: 10px;
 }
 .noticia a{
-    font-family: lato;
+    font-family: var(--dm-sans);
     font-size: 13px;
     color: var(--unvisited);
 }

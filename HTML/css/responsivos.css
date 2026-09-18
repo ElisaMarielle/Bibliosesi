@@ -1,5 +1,5 @@
-/* @media (min-width: 769px) {
-    =======CADASTRO=======
+@media (min-width: 769px) {
+    /* =======CADASTRO======= */
     .cadastro{
         width: 400px;
     }
@@ -8,7 +8,7 @@
     }
 
 
-    =======PÁGINA PRINCIPAL=======
+    /* =======PÁGINA PRINCIPAL======= */
     .noticia #titulo-materia{
         font-size: 23px;
     }
@@ -29,7 +29,7 @@
     }
     
 
-    =======CATÁLOGO=======
+    /* =======CATÁLOGO======= */
     .catalogo form .div-search input{
         min-width: 600px;
     }
@@ -44,7 +44,7 @@
 
 
 @media (min-width: 976px){
-    =======CADASTRO=======
+    /* =======CADASTRO======= */
     .cadastro{
         width: 400px;
     }
@@ -53,7 +53,7 @@
     }
 
 
-    =======PÁGINA PRINCIPAL=======
+    /* =======PÁGINA PRINCIPAL======= */
     .noticia #titulo-materia{
         font-size: 23px;
     }
@@ -74,7 +74,7 @@
     }
     
 
-    =======CATÁLOGO=======
+    /* =======CATÁLOGO======= */
     .catalogo-livros{
         display: grid !important;
         grid-template-columns: repeat(2, 1fr);
@@ -162,4 +162,4 @@
     .emp-coment textarea::placeholder{
         font-size: 16px;
     }
-} */
+}

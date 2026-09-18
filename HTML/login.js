@@ -1,4 +1,4 @@
-const url = 'http://localhost:3000/usuarios/'
+const url = 'https://bibliosesi.vercel.app/usuarios/'
 
 
 //=====================================================================//
@@ -64,7 +64,7 @@ function login() {
     const email = document.querySelector("#email").value;
     const senha = document.querySelector("#senha").value;
 
-    fetch("http://localhost:3000/auth/login", {
+    fetch("https://bibliosesi.vercel.app/auth/login", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"

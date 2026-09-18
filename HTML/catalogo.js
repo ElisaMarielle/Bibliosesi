@@ -20,13 +20,9 @@ if (dados.funcao === "ADM") {
     btCadastrar.style.display = "flex";
 }
 
+//----------------------------------------------------------//
 
-
-
-
-
-
-const url = "http://localhost:3000/livros/";
+const url = "https://bibliosesi.vercel.app/livros/";
 
 document.querySelector('#formLivro').addEventListener('submit', function(e){
     e.preventDefault();

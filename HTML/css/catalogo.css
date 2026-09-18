@@ -8,13 +8,21 @@ body{
     width: 100vw;
     overflow-x: hidden;
 }
-
+:root{
+    --primary: #7C2E2E;
+    --accent: #333;
+    --white: #FFF;
+    --unvisited: #999;
+    --visited: #5D5D5D;
+    --dm-sans: dm sans;
+    --inter: inter;
+}
 
 /* -------------CATÁLOGO --------------*/
 /* ORGANIZAÇÃO --------------*/
 .catalogo{
     margin-top: 4.2rem;
-    font-family: lato;
+    font-family: var(--dm-sans);
     padding: 20px;
 }
 .catalogo-livros{
@@ -49,7 +57,7 @@ body{
     border: none;
     outline: none;
     background: none;
-    font-family: lato;
+    font-family: var(--inter);
     font-weight: 600;
 }
 .input-wrapper input::-webkit-search-cancel-button{
@@ -147,7 +155,7 @@ select option:hover{
     gap: 10px;
     border: none; border-radius: 20px;
     color: #fff;
-    font-family: inter;
+    font-family: var(--inter);
     font-weight: 600;
 }
 
@@ -178,10 +186,10 @@ select option:hover{
     padding: 6px;
     border: none; border-radius: 6px;
     outline: 2px solid #682424;
-    font-family: inter;
+    font-family: var(--dm-sans);
 }
 .formLivro input::placeholder{
-    font-family: inter;
+    font-family: var(--dm-sans);
 }
 .form-buttons{
     display: flex;
@@ -193,7 +201,7 @@ select option:hover{
     border: none;
     background: #f5eeee;
     font-weight: 600;
-    font-family: inter;
+    font-family: var(--inter);
 }
 .form-buttons button:hover{
     background: #e0dcdc;
