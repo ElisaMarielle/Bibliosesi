@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,12 +9,13 @@
     <link rel="stylesheet" href="../css/catalogo.css">
     <link rel="stylesheet" href="../css/header.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css">
-
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Lexend:wght@100..900&family=Sora:wght@100..800&display=swap" rel="stylesheet">
-    
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans\:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Inter\:ital,wght@0,14..32,100..900;1,14..32,100..900&family=Lexend\:wght@100..900&family=Sora\:wght@100..800&display=swap"
+        rel="stylesheet">
     <link rel="icon" href="../img/logo.png">
 </head>
-<body onload="autorizaCadastro()">
+
+<body onload="autorizaCadastro">
     <header>
         <div class="ordena">
             <img src="../img/logo.png" alt="bibliosesi logo">
@@ -25,33 +27,38 @@
         <nav>
             <ul>
                 <div class="nav-links">
-                    <i class="fa-solid fa-house"></i><li><a href="inicial.htm">Início</li></a>
+                    <i class="fa-solid fa-house"></i>
+                    <li><a href="inicial.htm">Início</a></li>
                 </div>
                 <div class="nav-links">
-                    <i class="fa-solid fa-circle-user"></i><li><a href="perfil.htm">Perfil do Usuáro</li></a>
+                    <i class="fa-solid fa-circle-user"></i>
+                    <li><a href="perfil.htm">Perfil do Usuário</a></li>
                 </div>
                 <div class="nav-links">
-                    <i class="fa-solid fa-folder-open"></i><li><a href="emprestimos.htm">Empréstimos</li></a>
+                    <i class="fa-solid fa-folder-open"></i>
+                    <li><a href="emprestimos.htm">Empréstimos</a></li>
                 </div>
                 <div class="nav-links">
-                    <i class="fa-solid fa-book"></i><li><a href="catalogo.htm">Catálogo</li></a>
+                    <i class="fa-solid fa-book"></i>
+                    <li><a href="catalogo.htm">Catálogo</a></li>
                 </div>
                 <div class="bt-sair">
-                    <button onclick="logoff()">Sair <i class="fa-solid fa-right-to-bracket"></i></button>
+                    <button onclick="logoff()">
+                        Sair
+                        <i class="fa-solid fa-right-to-bracket"></i>
+                    </button>
                 </div>
             </ul>
         </nav>
     </div>
-
     <main>
         <div class="catalogo">
             <div class="container-wrapper">
                 <form action="">
                     <div class="div-search">
                         <div class="input-wrapper">
-                            <?xml version="1.0" encoding="UTF-8"?>
-                            <svg xmlns="http://www.w3.org/2000/svg" id="Outline" viewBox="0 0 24 24" width="18" height="18"
-                                fill="currentColor">
+                            <svg xmlns="[http://www.w3.org/2000/svg](http://www.w3.org/2000/svg)" id="Outline"
+                                viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
                                 <path
                                     d="M23.707,22.293l-5.969-5.969a10.016,10.016,0,1,0-1.414,1.414l5.969,5.969a1,1,0,0,0,1.414-1.414ZM10,18a8,8,0,1,1,8-8A8.009,8.009,0,0,1,10,18Z" />
                             </svg>
@@ -75,148 +82,72 @@
                         <option value="op11">Terror</option>
                     </select>
                 </div>
-                <button type="button" onclick="cadastrar()" id="btCadastra">+ Adicionar livro</button>
+                <button type="button" onclick="cadastrar()" id="btCadastra">
+                    + Adicionar livro
+                </button>
             </div>
-            
-
-
+            <!-- LIVROS DO CATÁLOGO -->
             <div class="catalogo-livros">
-                <!----------------------------------------->
-                <div class="livro" id="modelo">
-                    <div class="livros-detalhes">
-                        <h2>Moby Dick</h2>
-                        <p class="sinopse">Moby Dick narra a obsessão do capitão ahab em caçar a gigantesca baleia
-                            branca que lhe tirou a perna, mergulhando a tripulação do pequod em uma jornada sombria de
-                            vingança, destino e loucura.</p>
-                        <p class="status emprestado">Emprestado</p>
-                    </div>
-                    <div class="livros-imagem">
-                        <img src="../img/mobyd.jpg" alt="Capa Moby Dick">
-                    </div>
-                    <p class="categoria" hidden>Suspense</p>
-                </div>
-                <hr>
-                <!----------------------------------------->
-                <div class="livro">
-                    <div class="livros-detalhes">
-                        <h2>Divina Comédia</h2>
-                        <p class="sinopse">Em divina comédia, dante viaja pelos reinos do inferno, purgatório e paraíso,
-                            guiado por virgílio e beatriz, explorando a alma humana, a justiça divina e o caminho da
-                            redenção em uma jornada épica e espiritual.</p>
-                        <p class="status livre">Livre</p>
-                    </div>
-                    <div class="livros-imagem">
-                        <img src="../img/divcom.jpg" alt="Capa Divina Comédia">
-                    </div>
-                    <p class="categoria" hidden>Ação</p>
-                </div>
-                <hr>
-                <!----------------------------------------->
-                <div class="livro">
-                    <div class="livros-detalhes">
-                        <h2>Anne of green gables</h2>
-                        <p class="sinopse">Anne of Green Gables conta a história de Anne Shirley, uma órfã sonhadora e
-                            cheia de imaginação que é acidentalmente enviada para viver com dois irmãos em uma fazenda
-                            em avonlea, transformando a vida de todos ao seu redor com sua personalidade vibrante e
-                            coração generoso.</p>
-                        <p class="status livre">Livre</p>
-                    </div>
-                    <div class="livros-imagem">
-                        <img src="../img/anneogg.jpg" alt="Capa Anne Of Green Gables">
-                    </div>
-                </div>
-                <p class="categoria" hidden>Suspense</p>
-                <hr>
-                <!----------------------------------------->
-                <div class="livro">
-                    <div class="livros-detalhes">
-                        <h2>Harry Potter e a Pedra Filosofal</h2>
-                        <p class="sinopse">Harry Potter e a Pedra Filosofal, de J.K. Rowling, segue Harry, um órfão que
-                            descobre ser bruxo e entra para Hogwarts. Com amigos, ele desvenda o mistério da Pedra
-                            Filosofal, enfrentando perigos para impedir que caia nas mãos do mal.</p>
-                        <p class="status emprestado">Emprestado</p>
-                    </div>
-                    <div class="livros-imagem">
-                        <img src="../img/hp.jpg" alt="Capa Harry Potter">
-                    </div>
-
-                    <p class="categoria" hidden>Terror</p>
-                </div>
-                <hr>
-                <!----------------------------------------->
-                <div class="livro">
-                    <div class="livros-detalhes">
-                        <h2>Orgulho e preconceito</h2>
-                        <p class="sinopse">Orgulho e Preconceito, de Jane Austen, é um romance sobre Elizabeth Bennet e
-                            Sr. Darcy, que superam orgulho, preconceitos e diferenças sociais para encontrar amor na
-                            Inglaterra do século XIX. Uma crítica sutil à sociedade com diálogos afiados.</p>
-                        <p class="status livre">Livre</p>
-                    </div>
-                    <div class="livros-imagem">
-                        <img src="../img/o&p.webp" alt="Capa Orgulho e preconceito">
-                    </div>
-
-                    <p class="categoria" hidden>Romance</p>
-                </div>
-                <hr>
-                <!----------------------------------------->
-                <div class="livro">
-                    <div class="livros-detalhes">
-                        <h2>Jogos vorazes</h2>
-                        <p class="sinopse">Jogos Vorazes, de Suzanne Collins, segue Katniss Everdeen, que enfrenta os
-                            mortais Jogos Vorazes da Capital. Com coragem, ela sobrevive e se torna símbolo de
-                            resistência contra a opressão, em um mundo de desigualdade e sacrifício</p>
-                        <p class="status livre">Livre</p>
-                    </div>
-                    <div class="livros-imagem">
-                        <img src="../img/jgvrz.jpg" alt="Capa Jogos Vorazes">
-                    </div>
-
-                    <p class="categoria" hidden>Ficção</p>
-                </div>
-                <hr>
-                <!----------------------------------------->
+                <!--
+                    Os livros não ficam mais escritos aqui.
+                    O JavaScript vai buscar os livros
+                    diretamente no backend.
+                -->
             </div>
-
-            <!----------------------------------------->
+            <!-- MODAL DE DETALHES -->
             <div class="livroDetalhes">
                 <div class="modal-livros">
-                    <img src="" alt="" id="capa">
-                    <h2 id="titulo"></h2>
-                    <p id="descricao"></p>
-                    <p id="autor"></p>
+                    <img src="" alt="Capa do livro" id="capa">
+                    <h2 id="tituloDetalhes"></h2>
+                    <p id="descricaoDetalhes"></p>
+                    <p id="autorDetalhes"></p>
                     <p id="data_lancamento"></p>
                     <div class="generos">
-                        <p id="genero"></p>
+                        <p id="generoDetalhes"></p>
                     </div>
-                    <span id="status"></span>
+                    <span id="statusDetalhes"></span>
+
                     <div class="acoes">
-                        <button id="bt-fav"><i class="fa-solid fa-heart"></i></button>
-                        <button id="bt-emp">Emprestar</button>
+                        <button id="bt-fav">
+                            <i class="fa-solid fa-heart"></i>
+                        </button>
+
+                        <button id="bt-emp">
+                            Emprestar
+                        </button>
+
+                        <button id="bt-excluir" style="display: none;">
+                            <i class="fa-solid fa-trash"></i>
+                            Excluir livro
+                        </button>
                     </div>
                 </div>
             </div>
-            
-
+            <!-- MODAL DE CADASTRO -->
             <div class="modal-cadastro">
                 <form action="" id="formLivro" class="formLivro">
                     <h2>Cadastre um livro!</h2>
-                    <input type="text" id="titulo" placeholder="Título">
-                    <input type="text" id="descricao" placeholder="Sinopse">
-                    <input type="text" id="autor" placeholder="Autor">
-                    <input type="text" id="publicacao" placeholder="Data de publicação">
-                    <input type="text" id="genero" placeholder="Gêneros (separados por vírgula)">
-                    <input type="text" id="editora" placeholder="Editora do livro">
-                    <input type="url" id="imagem" placeholder="Foto da capa">
+                    <input type="text" id="tituloCadastro" placeholder="Título" required>
+                    <input type="text" id="descricaoCadastro" placeholder="Sinopse" required>
+                    <input type="text" id="autorCadastro" placeholder="Autor" required>
+                    <input type="text" id="publicacaoCadastro" placeholder="Data de publicação" required>
+                    <input type="text" id="generoCadastro" placeholder="Gêneros (separados por vírgula)" required>
+                    <input type="text" id="editoraCadastro" placeholder="Editora do livro" required>
+                    <input type="url" id="imagemCadastro" placeholder="Foto da capa" required>
                     <div class="form-buttons">
-                        <button type="button">Cadastrar</button>
-                        <button onclick="cancelar()">Cancelar</button>
+                        <button type="submit">
+                            Cadastrar
+                        </button>
+                        <button type="button" onclick="cancelar()">
+                            Cancelar
+                        </button>
                     </div>
                 </form>
             </div>
         </div>
     </main>
+    <script src="../script.js"></script>
+    <script src="../catalogo.js"></script>
 </body>
-<script src="../script.js"></script>
-<script src="../catalogo.js"></script>
+
 </html>
