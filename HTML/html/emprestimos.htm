@@ -1,23 +1,20 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Empréstimo</title>
+    <title>Empréstimos</title>
     <link rel="stylesheet" href="../css/emprestimo.css">
     <link rel="stylesheet" href="../css/responsivos.css">
     <link rel="stylesheet" href="../css/header.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css">
-    
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Lexend:wght@100..900&family=Sora:wght@100..800&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Inter:ital,wght@0,14..32,100..900;1,14..32,100..900&family=Lexend:wght@100..900&family=Sora:wght@100..800&display=swap" rel="stylesheet">
     <link rel="icon" href="../img/logo.png">
-
     <style>
-        body{
-            font-family: inter;
+        body {
+            font-family: Inter;
         }
-        main{
+        main {
             margin-top: 4rem;
         }
     </style>
@@ -30,20 +27,25 @@
             <i class="fa-solid fa-bars bt-menu"></i>
         </div>
     </header>
+
     <div class="navegar">
         <nav>
             <ul>
                 <div class="nav-links">
-                    <i class="fa-solid fa-house"></i><li><a href="inicial.htm">Início</li></a>
+                    <i class="fa-solid fa-house"></i>
+                    <li><a href="inicial.htm">Início</a></li>
                 </div>
                 <div class="nav-links">
-                    <i class="fa-solid fa-circle-user"></i><li><a href="perfil.htm">Perfil do Usuáro</li></a>
+                    <i class="fa-solid fa-circle-user"></i>
+                    <li><a href="perfil.htm">Perfil do Usuário</a></li>
                 </div>
                 <div class="nav-links">
-                    <i class="fa-solid fa-folder-open"></i><li><a href="emprestimos.htm">Empréstimos</li></a>
+                    <i class="fa-solid fa-folder-open"></i>
+                    <li><a href="emprestimos.htm">Empréstimos</a></li>
                 </div>
                 <div class="nav-links">
-                    <i class="fa-solid fa-book"></i><li><a href="catalogo.htm">Catálogo</li></a>
+                    <i class="fa-solid fa-book"></i>
+                    <li><a href="catalogo.htm">Catálogo</a></li>
                 </div>
                 <div class="bt-sair">
                     <button onclick="logoff()">Sair <i class="fa-solid fa-right-to-bracket"></i></button>
@@ -55,35 +57,43 @@
     <main>
         <div class="emprestimo-grid">
             <div class="emp-details" id="texto1">
-                <div class="det-text">Você ainda não emprestou nenhum livro.</div>
+                <div class="det-text">
+                    Você ainda não emprestou nenhum livro.
+                </div>
             </div>
+
             <div class="emp-lista">
                 <div class="emp-lista-grid">
-                    <div class="emp-livro" id="emp-livro">
+                    <div class="emp-livro" id="emp-livro" style="display: none;">
                         <div class="emp-livro-img" id="livro-img">
-                            <img src="https://m.media-amazon.com/images/I/61NHEYzP6kL._AC_UF1000,1000_QL80_.jpg" alt="">
+                            <img src="" alt="">
                         </div>
                         <div class="emp-livro-info" id="livro-info">
-                            <h5>O Pequeno Príncipe</h5>
-                            <p>Antoine de Saint-Exupéry</p>
+                            <h5></h5>
+                            <p></p>
                             <span>Em posse</span>
                         </div>
                     </div>
                 </div>
             </div>
+
             <div class="emp-detalhes" id="texto2">
-                <div class="det-text">Clique em um livro para ver detalhes</div>
+                <div class="det-text">
+                    Clique em um livro para ver detalhes
+                </div>
             </div>
-            <div class="det-infos" id="detalhes">
+
+            <div class="det-infos" id="detalhes" style="display: none;">
                 <div class="det-up">
                     <div class="det-img">
-                        <img src="https://m.media-amazon.com/images/I/61NHEYzP6kL._AC_UF1000,1000_QL80_.jpg" alt="">
+                        <img src="" alt="">
                     </div>
                     <div class="det-desc">
-                        <h3>O Pequeno Príncipe</h3>
-                        <p>O Pequeno Príncipe, escrito por Antoine de Saint-Exupéry, narra a história de um piloto cujo avião cai no deserto. Ele conhece um garoto misterioso vindo de um asteroide. O menino compartilha suas viagens por outros planetas, ensinando reflexões profundas sobre a essência da vida, a amizade e o amor.</p>
+                        <h3></h3>
+                        <p></p>
                     </div>
                 </div>
+
                 <div class="det-down">
                     <div class="det-left">
                         <h3>Avalie o livro</h3>
@@ -94,28 +104,32 @@
                             <i class="fa-solid fa-star"></i>
                             <i class="fa-regular fa-star fa-star-outl"></i>
                         </div>
-                        <span style="color: #888888; font-size: 13px;">Digite um comentário</span>
+
+                        <span style="color: #888888; font-size: 13px;">
+                            Digite um comentário
+                        </span>
+
                         <div class="area-coment">
                             <textarea name="comentario" id="comentario"></textarea>
                             <button onclick="comentario()">Enviar</button>
                         </div>
                     </div>
+
                     <div class="det-right">
-                        <div class="livro-tags">
-                            <p>Fábula</p>
-                            <p>Literatura Juvenil</p>
-                            <p>Novela</p>
-                        </div>
+                        <div class="livro-tags"></div>
                         <span>Em posse</span>
-                        <p style="color: #888888; font-size: 14px;">Faltam 2 dias para entregar o livro.</p>
-                        <button onclick="marcarEntregue()">Marcar como entregue <i class="fa-solid fa-check"></i></button>
+                        <p style="color: #888888; font-size: 14px;"></p>
+                        <button onclick="marcarEntregue()">
+                            Marcar como entregue
+                            <i class="fa-solid fa-check"></i>
+                        </button>
                     </div>
                 </div>
             </div>
         </div>
     </main>
-    
+
+    <script src="../script.js"></script>
+    <script src="../emp.js"></script>
 </body>
-<script src="../script.js"></script>
-<script src="../emp.js"></script>
 </html>
