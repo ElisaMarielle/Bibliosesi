@@ -13,7 +13,7 @@ header{
     padding: 5px;
     position: fixed;
     top: 0;
-    z-index: 5;
+    z-index: 99;
     width: 100%;
     border-bottom: 1px solid var(--accent);
 }
@@ -116,8 +116,29 @@ nav ul li a:hover::after {
   z-index: 3;
   padding-top: 3.8rem;
   border-left: 1px solid var(--accent);
+  z-index: 98;
 }
 .navegar nav.active {
   transform: translateX(0);
 }
 /*=========================================================*/
+
+.overlay {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.4);
+
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+
+    transition: opacity 0.3s ease;
+    
+    z-index: 97;
+}
+
+.overlay.ativo {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}

@@ -9,9 +9,9 @@
     <link rel="stylesheet" href="../css/catalogo.css">
     <link rel="stylesheet" href="../css/header.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css">
-    <link
-        href="https://fonts.googleapis.com/css2?family=DM+Sans\:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Inter\:ital,wght@0,14..32,100..900;1,14..32,100..900&family=Lexend\:wght@100..900&family=Sora\:wght@100..800&display=swap"
-        rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Lexend:wght@100..900&family=Sora:wght@100..800&display=swap');
+    </style>
     <link rel="icon" href="../img/logo.png">
 </head>
 
@@ -23,6 +23,7 @@
             <i class="fa-solid fa-bars bt-menu"></i>
         </div>
     </header>
+    <div class="overlay" id="overlay"></div>
     <div class="navegar">
         <nav>
             <ul>
@@ -86,22 +87,24 @@
                     + Adicionar livro
                 </button>
             </div>
+
             <!-- LIVROS DO CATÁLOGO -->
-            <div class="catalogo-livros">
-                <!--
-                    Os livros não ficam mais escritos aqui.
-                    O JavaScript vai buscar os livros
-                    diretamente no backend.
-                -->
-            </div>
+            <div class="catalogo-livros"></div>
             <!-- MODAL DE DETALHES -->
             <div class="livroDetalhes">
                 <div class="modal-livros">
-                    <img src="" alt="Capa do livro" id="capa">
-                    <h2 id="tituloDetalhes"></h2>
-                    <p id="descricaoDetalhes"></p>
-                    <p id="autorDetalhes"></p>
-                    <p id="data_lancamento"></p>
+                    <div class="header">
+                        <div class="image">
+                            <img src="" alt="Capa do livro" id="capa">
+                        </div>
+                        <div class="details">
+                            <h2 id="tituloDetalhes"></h2>
+                            <p id="descricaoDetalhes"></p>
+                            <p id="autorDetalhes" class="text"></p>
+                            <p id="data_lancamento" class="text"></p>
+                        </div>
+                    </div>
+                    
                     <div class="generos">
                         <p id="generoDetalhes"></p>
                     </div>
@@ -111,11 +114,9 @@
                         <button id="bt-fav">
                             <i class="fa-solid fa-heart"></i>
                         </button>
-
                         <button id="bt-emp">
                             Emprestar
                         </button>
-
                         <button id="bt-excluir" style="display: none;">
                             <i class="fa-solid fa-trash"></i>
                             Excluir livro
@@ -123,6 +124,7 @@
                     </div>
                 </div>
             </div>
+
             <!-- MODAL DE CADASTRO -->
             <div class="modal-cadastro">
                 <form action="" id="formLivro" class="formLivro">

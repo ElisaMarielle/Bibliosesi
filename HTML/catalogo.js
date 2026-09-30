@@ -137,36 +137,16 @@ function carregarLivros() {
     ABRIR DETALHES DO LIVRO
 */
 function abrirDetalhes(livro) {
-
-    const modalDetalhes =
-        document.querySelector(".livroDetalhes");
-
-    const capa =
-        document.querySelector("#capa");
-
-    const titulo =
-        document.querySelector("#tituloDetalhes");
-
-    const descricao =
-        document.querySelector("#descricaoDetalhes");
-
-    const autor =
-        document.querySelector("#autorDetalhes");
-
-    const data =
-        document.querySelector("#data_lancamento");
-
-    const genero =
-        document.querySelector("#generoDetalhes");
-
-    const status =
-        document.querySelector("#statusDetalhes");
-
-    const botaoEmprestar =
-        document.querySelector("#bt-emp");
-
-    const btExcluir =
-        document.querySelector("#bt-excluir");
+    const modalDetalhes = document.querySelector(".livroDetalhes");
+    const capa = document.querySelector("#capa");
+    const titulo = document.querySelector("#tituloDetalhes");
+    const descricao = document.querySelector("#descricaoDetalhes");
+    const autor = document.querySelector("#autorDetalhes");
+    const data = document.querySelector("#data_lancamento");
+    const genero = document.querySelector("#generoDetalhes");
+    const status = document.querySelector("#statusDetalhes");
+    const botaoEmprestar = document.querySelector("#bt-emp");
+    const btExcluir = document.querySelector("#bt-excluir");
 
     /*
         Guardamos o ID do livro no botão.
@@ -176,45 +156,37 @@ function abrirDetalhes(livro) {
 
     capa.src = livro.imagem;
     capa.alt = "Capa de " + livro.titulo;
-
     titulo.textContent = livro.titulo;
-
     descricao.textContent = livro.descricao;
-
     autor.textContent = "Autor: " + livro.autor;
-
     data.textContent = "Publicação: " + livro.publicacao;
-
-    genero.textContent = "Gênero: " + livro.genero;
+    
+    genero.innerHTML = "";
+    livro.genero.split(",").forEach(g => {
+        const bloco = document.createElement("span");
+        bloco.textContent = g.trim();
+        genero.appendChild(bloco);
+    });
 
     let emprestado = false;
 
     if (livro.emprestimos && livro.emprestimos.length > 0) {
-
         const agora = new Date();
-
         emprestado = livro.emprestimos.some(emprestimo => {
-
             const dataDevolucao =
                 new Date(emprestimo.data_devolucao);
-
             return dataDevolucao > agora;
         });
     }
 
     if (emprestado) {
-
         status.textContent = "Emprestado";
         status.className = "emprestado";
-
         botaoEmprestar.disabled = true;
         botaoEmprestar.textContent = "Indisponível";
-
     } else {
-
         status.textContent = "Livre";
         status.className = "livre";
-
         botaoEmprestar.disabled = false;
         botaoEmprestar.textContent = "Emprestar";
     }
@@ -238,76 +210,44 @@ document
     CADASTRAR LIVRO
 */
 form.addEventListener("submit", function (e) {
-
     e.preventDefault();
 
     const novoLivro = {
-
-        titulo:
-            document.querySelector("#tituloCadastro").value,
-
-        descricao:
-            document.querySelector("#descricaoCadastro").value,
-
-        autor:
-            document.querySelector("#autorCadastro").value,
-
-        publicacao:
-            document.querySelector("#publicacaoCadastro").value,
-
-        genero:
-            document.querySelector("#generoCadastro").value,
-
-        editora:
-            document.querySelector("#editoraCadastro").value,
-
-        imagem:
-            document.querySelector("#imagemCadastro").value
+        titulo: document.querySelector("#tituloCadastro").value,
+        descricao: document.querySelector("#descricaoCadastro").value,
+        autor: document.querySelector("#autorCadastro").value,
+        publicacao: document.querySelector("#publicacaoCadastro").value,
+        genero: document.querySelector("#generoCadastro").value,
+        editora: document.querySelector("#editoraCadastro").value,
+        imagem: document.querySelector("#imagemCadastro").value
     };
 
     fetch(url + "cadastrar", {
-
         method: "POST",
-
         headers: {
-
             "Content-Type": "application/json",
-
             "Authorization":
                 "Bearer " + localStorage.getItem("token")
         },
-
         body: JSON.stringify(novoLivro)
-
     })
-        .then(response => {
-
-            if (!response.ok) {
-                throw new Error("Erro na API");
-            }
-
-            return response.json();
-        })
-
-        .then(data => {
-
-            console.log(data);
-
-            alert("Livro cadastrado com sucesso.");
-
-            form.reset();
-
-            cancelar();
-
-            carregarLivros();
-        })
-
-        .catch(error => {
-
-            console.error(error);
-
-            alert("Erro ao cadastrar livro.");
-        });
+    .then(response => {
+        if (!response.ok) {
+            throw new Error("Erro na API");
+        }
+        return response.json();
+    })
+    .then(data => {
+        console.log(data);
+        alert("Livro cadastrado com sucesso.");
+        form.reset();
+        cancelar();
+        carregarLivros();
+    })
+    .catch(error => {
+        console.error(error);
+        alert("Erro ao cadastrar livro.");
+    });
 });
 
 /*
@@ -318,13 +258,9 @@ form.addEventListener("submit", function (e) {
 document
     .querySelector("#bt-emp")
     .addEventListener("click", async function () {
-
         const idLivro = Number(this.dataset.idLivro);
-
         if (!idLivro) {
-
             alert("Livro não selecionado.");
-
             return;
         }
 
