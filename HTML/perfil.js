@@ -1,3 +1,4 @@
+//======================= FOTO DE PERFIL ==========================//
 const modalFoto = document.querySelector('.mudar-foto')
 function mudarFoto(){
   modalFoto.style.display = "flex"
@@ -33,16 +34,14 @@ window.onload = function() {
         document.querySelector('#foto-perfil').src = fotoSalva;
     }
 };
+//==============================================================//
 
-const menuBtn = document.querySelector('.bt-menu');
-const nav = document.querySelector('.navegar nav');
 
-menuBtn.addEventListener('click', () => {
-  nav.classList.toggle('active');
-  if (nav.classList.contains('active')) {
-    document.querySelector('main').style.filter = "grayscale(100%) blur(3px)";
-  } else {
-    document.querySelector('main').style.filter = "grayscale(0) blur(0)";
-  }
 
-});
+//======================= INFORMAÇÕES DO USUÁRIO ==========================//
+
+const usuario = JSON.parse(localStorage.getItem("usuario"));
+
+document.getElementById("nome").textContent = usuario.nome;
+document.getElementById("rm").textContent = usuario.rm;
+document.getElementById("email").textContent = usuario.email;
