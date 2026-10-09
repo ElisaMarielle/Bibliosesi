@@ -1,63 +1,95 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Empréstimos</title>
+
     <link rel="stylesheet" href="../css/emprestimo.css">
     <link rel="stylesheet" href="../css/responsivos.css">
     <link rel="stylesheet" href="../css/header.css">
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css">
+
     <style>
         @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Lexend:wght@100..900&family=Sora:wght@100..800&display=swap');
     </style>
+
     <link rel="icon" href="../img/logo.png">
+
     <style>
         body {
             font-family: Inter;
         }
+
         main {
             margin-top: 4rem;
         }
     </style>
 </head>
+
 <body>
+
     <header>
         <div class="ordena">
             <img src="../img/logo.png" alt="bibliosesi logo">
+
             <h1>Biblioteca Virtual</h1>
+
             <i class="fa-solid fa-bars bt-menu"></i>
         </div>
     </header>
+
     <div class="overlay" id="overlay"></div>
+
     <div class="navegar">
         <nav>
             <ul>
+
                 <div class="nav-links">
                     <i class="fa-solid fa-house"></i>
-                    <li><a href="inicial.htm">Início</a></li>
+                    <li>
+                        <a href="inicial.htm">Início</a>
+                    </li>
                 </div>
+
                 <div class="nav-links">
                     <i class="fa-solid fa-circle-user"></i>
-                    <li><a href="perfil.htm">Perfil do Usuário</a></li>
+                    <li>
+                        <a href="perfil.htm">Perfil do Usuário</a>
+                    </li>
                 </div>
+
                 <div class="nav-links">
                     <i class="fa-solid fa-folder-open"></i>
-                    <li><a href="emprestimos.htm">Empréstimos</a></li>
+                    <li>
+                        <a href="emprestimos.htm">Empréstimos</a>
+                    </li>
                 </div>
+
                 <div class="nav-links">
                     <i class="fa-solid fa-book"></i>
-                    <li><a href="catalogo.htm">Catálogo</a></li>
+                    <li>
+                        <a href="catalogo.htm">Catálogo</a>
+                    </li>
                 </div>
+
                 <div class="bt-sair">
-                    <button onclick="logoff()">Sair <i class="fa-solid fa-right-to-bracket"></i></button>
+                    <button onclick="logoff()">
+                        Sair
+                        <i class="fa-solid fa-right-to-bracket"></i>
+                    </button>
                 </div>
+
             </ul>
         </nav>
     </div>
 
     <main>
+
         <div class="emprestimo-grid">
+
             <div class="emp-details" id="texto1">
                 <div class="det-text">
                     Você ainda não emprestou nenhum livro.
@@ -65,18 +97,25 @@
             </div>
 
             <div class="emp-lista">
+
                 <div class="emp-lista-grid">
+
                     <div class="emp-livro" id="emp-livro" style="display: none;">
+
                         <div class="emp-livro-img" id="livro-img">
                             <img src="" alt="">
                         </div>
+
                         <div class="emp-livro-info" id="livro-info">
                             <h5></h5>
                             <p></p>
                             <span>Em posse</span>
                         </div>
+
                     </div>
+
                 </div>
+
             </div>
 
             <div class="emp-detalhes" id="texto2">
@@ -86,52 +125,86 @@
             </div>
 
             <div class="det-infos" id="detalhes" style="display: none;">
+
                 <div class="det-up">
+
                     <div class="det-img">
                         <img src="" alt="">
                     </div>
+
                     <div class="det-desc">
                         <h3></h3>
                         <p></p>
                     </div>
+
                 </div>
 
                 <div class="det-down">
+
                     <div class="det-left">
+
                         <h3>Avalie o livro</h3>
+
                         <div class="stars">
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-regular fa-star fa-star-outl"></i>
+
+                            <i class="fa-regular fa-star" data-star="1"></i>
+                            <i class="fa-regular fa-star" data-star="2"></i>
+                            <i class="fa-regular fa-star" data-star="3"></i>
+                            <i class="fa-regular fa-star" data-star="4"></i>
+                            <i class="fa-regular fa-star" data-star="5"></i>
+
                         </div>
 
-                        <span style="color: #888888; font-size: 13px;">
+                        <span class="comentario-label">
                             Digite um comentário
                         </span>
 
                         <div class="area-coment">
+
                             <textarea name="comentario" id="comentario"></textarea>
-                            <button onclick="comentario()">Enviar</button>
+
+                            <button onclick="comentario()">
+                                Enviar
+                            </button>
+
                         </div>
+
                     </div>
 
                     <div class="det-right">
+
                         <div class="livro-tags"></div>
-                        <span>Em posse</span>
-                        <p style="color: #888888; font-size: 14px;"></p>
+
+                        <div class="livro-info-extra">
+
+                            <p class="livro-publicacao"></p>
+
+                            <p class="livro-editora"></p>
+
+                        </div>
+
+                        <span>
+                            Em posse
+                        </span>
+
                         <button onclick="marcarEntregue()">
                             Marcar como entregue
                             <i class="fa-solid fa-check"></i>
                         </button>
+
                     </div>
+
                 </div>
+
             </div>
+
         </div>
+
     </main>
 
     <script src="../script.js"></script>
     <script src="../emp.js"></script>
+
 </body>
+
 </html>
