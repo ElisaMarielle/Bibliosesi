@@ -29,10 +29,10 @@ if (usuario && usuario.funcao === "ADM") {
     btCadastrar.style.display = "none";
     btExcluir.style.display = "none";
 }
+//-----------------------------------------------------//
 
-/*
-    CARREGAR LIVROS
-*/
+
+//-------------------------CARREGAR LIVRO---------------------------//
 function carregarLivros() {
 
     fetch(url + "listar")
@@ -132,10 +132,10 @@ function carregarLivros() {
             alert("Erro ao carregar os livros.");
         });
 }
+//-----------------------------------------------------//
 
-/*
-    ABRIR DETALHES DO LIVRO
-*/
+
+//-------------------------DETALHES---------------------------//
 function abrirDetalhes(livro) {
     const modalDetalhes = document.querySelector(".livroDetalhes");
     const capa = document.querySelector("#capa");
@@ -193,10 +193,10 @@ function abrirDetalhes(livro) {
 
     modalDetalhes.style.display = "flex";
 }
+//-----------------------------------------------------//
 
-/*
-    FECHAR MODAL DE DETALHES
-*/
+
+//-------------------------FECHAR LIVRO---------------------------//
 document
     .querySelector(".livroDetalhes")
     .addEventListener("click", function (e) {
@@ -205,10 +205,10 @@ document
             e.currentTarget.style.display = "none";
         }
     });
+//-----------------------------------------------------//
 
-/*
-    CADASTRAR LIVRO
-*/
+
+//-------------------------CADASTRAR LIVRO---------------------------//
 form.addEventListener("submit", function (e) {
     e.preventDefault();
 
@@ -249,12 +249,10 @@ form.addEventListener("submit", function (e) {
         alert("Erro ao cadastrar livro.");
     });
 });
+//-----------------------------------------------------//
 
-/*
-    =====================================================
-    EMPRESTAR LIVRO
-    =====================================================
-*/
+
+//-------------------------EMPRESTAR LIVRO---------------------------//
 document
     .querySelector("#bt-emp")
     .addEventListener("click", async function () {
@@ -389,10 +387,10 @@ document
             this.textContent = "Emprestar";
         }
     });
+//-----------------------------------------------------//
 
-/*
-    EXCLUIR LIVRO
-*/
+
+//--------------------------EXCLUIR LIVRO---------------------------//
 document
     .querySelector("#bt-excluir")
     .addEventListener("click", function () {
@@ -466,22 +464,17 @@ document
                 );
             });
     });
+//-----------------------------------------------------//
 
-/*
-    PESQUISA
-*/
+
+//---------------------------PESQUISA--------------------------//
 document
     .querySelector("#searchbook")
     .addEventListener("input", function () {
 
-        const pesquisa =
-            this.value.toLowerCase();
-
-        const livros =
-            document.querySelectorAll(".livro");
-
+        const pesquisa = this.value.toLowerCase();
+        const livros = document.querySelectorAll(".livro");
         livros.forEach(livro => {
-
             const texto =
                 livro.textContent.toLowerCase();
 
@@ -496,7 +489,5 @@ document
         });
     });
 
-/*
-    INICIA O CATÁLOGO
-*/
+
 carregarLivros();
