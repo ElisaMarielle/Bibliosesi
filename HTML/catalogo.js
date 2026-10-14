@@ -1,4 +1,4 @@
-const dados = JSON.parse(localStorage.getItem("dados"));
+const usuario = JSON.parse(localStorage.getItem("usuario"));
 
 const url = "https://bibliosesi.vercel.app/livros/";
 
@@ -22,7 +22,7 @@ function cancelar() {
     Mostra os botões de administrador apenas
     para usuários com função ADM.
 */
-if (dados && dados.funcao === "ADM") {
+if (usuario && usuario.funcao === "ADM") {
     btCadastrar.style.display = "flex";
     btExcluir.style.display = "flex";
 } else {
