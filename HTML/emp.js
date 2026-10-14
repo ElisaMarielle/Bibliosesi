@@ -1,12 +1,12 @@
 const urlEmprestimos = "https://bibliosesi.vercel.app/emprestimos/";
 
 function pegarUsuario() {
-    const dados = localStorage.getItem("dados");
+    const usuario = localStorage.getItem("usuario");
 
-    if (!dados) return null;
+    if (!usuario) return null;
 
     try {
-        return JSON.parse(dados);
+        return JSON.parse(usuario);
     } catch (erro) {
         console.error("Erro ao ler dados do usuário:", erro);
         return null;

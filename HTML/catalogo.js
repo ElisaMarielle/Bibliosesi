@@ -265,14 +265,14 @@ document
         /*
             Verifica se existe usuário logado.
         */
-        if (!dados || !dados.id) {
+        if (!usuario || !usuario.id) {
 
             alert("Usuário não identificado. Faça login novamente.");
 
             return;
         }
 
-        const idUsuario = Number(dados.id);
+        const idUsuario = Number(usuario.id);
 
         if (!idUsuario) {
 
