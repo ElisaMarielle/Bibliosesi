@@ -295,25 +295,38 @@ select option:hover{
     padding: 6px 40px;
     transition: background-color 300ms;
 }
-.fa-heart{
-    color: #eb006e;
-    font-size: 20px;
-    display: block;
-    transition: transform 100ms;
-}
-#bt-fav{
+
+#bt-fav {
     display: flex;
     align-items: center;
+    justify-content: center;
+    min-width: 135px;
+    cursor: pointer;
 }
-#bt-fav:hover{
+
+#bt-fav .fa-heart {
+    color: #999999;
+    font-size: 20px;
+    display: block;
+    transition: color 200ms ease, transform 150ms ease;
+}
+
+#bt-fav.favoritado .fa-heart {
+    color: #eb006e;
+}
+
+#bt-fav:hover {
     background-color: #ffdfee;
-    border: 2px solid #ffc8e2;
+    border-color: #ffc8e2;
 }
-#bt-fav:hover > .fa-heart{
-    transform: scale(1.2);
+
+#bt-fav:hover .fa-heart {
+    transform: scale(1.15);
 }
+
 
 .acoes button:hover{
     background-color: var(--border);
     cursor: pointer;
 }
+
