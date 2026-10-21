@@ -3,6 +3,7 @@ const usuario = JSON.parse(localStorage.getItem("usuario") || "null");
 
 const url = "https://bibliosesi.vercel.app/livros/";
 const urlEmprestimos = "https://bibliosesi.vercel.app/emprestimos/";
+const urlFeedbacks = "https://bibliosesi.vercel.app/feedbacks/";
 
 const btCadastrar = document.querySelector("#btCadastra");
 const btExcluir = document.querySelector("#bt-excluir");
@@ -210,6 +211,85 @@ function abrirDetalhes(livro) {
     atualizarCoracao();
 
     modalDetalhes.style.display = "flex";
+    carregarFeedbacks(livro.id);
+}
+
+
+async function carregarFeedbacks(livroId) {
+    const listaFeedbacks = document.querySelector("#lista-feedbacks");
+    const contagem = document.querySelector("#contagem-feedbacks");
+    if (!listaFeedbacks || !contagem) return;
+
+    listaFeedbacks.innerHTML = '<p class="feedbacks-vazio">Carregando comentários...</p>';
+    contagem.textContent = "";
+
+    try {
+        const resposta = await fetch(`${urlFeedbacks}listar?livroId=${encodeURIComponent(livroId)}`);
+        const dados = await resposta.json();
+        if (!resposta.ok) throw new Error(dados.mensagem || "Não foi possível carregar os feedbacks.");
+        if (Number(livroSelecionado?.id) !== Number(livroId)) return;
+
+        listaFeedbacks.innerHTML = "";
+        contagem.textContent = `${dados.length} ${dados.length === 1 ? "comentário" : "comentários"}`;
+
+        if (!Array.isArray(dados) || dados.length === 0) {
+            listaFeedbacks.innerHTML = '<p class="feedbacks-vazio">Este livro ainda não recebeu comentários. Seja o primeiro a avaliar!</p>';
+            return;
+        }
+
+        dados.forEach(feedback => {
+            const card = document.createElement("article");
+            card.className = "feedback-card";
+
+            const avatar = document.createElement("img");
+            avatar.className = "feedback-avatar";
+            avatar.alt = "";
+            avatar.src = feedback.usuario?.fotoPerfil || "../img/profile_placeholder.png";
+            avatar.onerror = () => { avatar.onerror = null; avatar.src = "../img/profile_placeholder.png"; };
+
+            const conteudo = document.createElement("div");
+            conteudo.className = "feedback-conteudo";
+
+            const topo = document.createElement("div");
+            topo.className = "feedback-topo";
+
+            const autor = document.createElement("span");
+            autor.className = "feedback-autor";
+            autor.textContent = feedback.usuario?.nome || "Usuário";
+
+            const data = document.createElement("time");
+            data.className = "feedback-data";
+            if (feedback.data) {
+                const dataObj = new Date(feedback.data);
+                data.textContent = Number.isNaN(dataObj.getTime()) ? "" : dataObj.toLocaleDateString("pt-BR");
+                if (!Number.isNaN(dataObj.getTime())) data.dateTime = dataObj.toISOString();
+            }
+
+            topo.append(autor, data);
+            conteudo.appendChild(topo);
+
+            if (feedback.nota) {
+                const estrelas = document.createElement("div");
+                estrelas.className = "feedback-estrelas";
+                estrelas.setAttribute("aria-label", `Avaliação: ${feedback.nota} de 5 estrelas`);
+                estrelas.textContent = "★".repeat(Math.max(0, Math.min(5, Number(feedback.nota)))) +
+                    "☆".repeat(5 - Math.max(0, Math.min(5, Number(feedback.nota))));
+                conteudo.appendChild(estrelas);
+            }
+
+            const texto = document.createElement("p");
+            texto.className = "feedback-texto";
+            texto.textContent = feedback.comentario || "";
+            conteudo.appendChild(texto);
+
+            card.append(avatar, conteudo);
+            listaFeedbacks.appendChild(card);
+        });
+    } catch (erro) {
+        console.error("Erro ao carregar feedbacks:", erro);
+        listaFeedbacks.innerHTML = '<p class="feedbacks-vazio">Não foi possível carregar os comentários agora.</p>';
+        contagem.textContent = "";
+    }
 }
 
 function atualizarCoracao() {

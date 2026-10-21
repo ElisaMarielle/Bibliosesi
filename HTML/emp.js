@@ -1,4 +1,5 @@
 const urlEmprestimos = "https://bibliosesi.vercel.app/emprestimos/";
+const urlFeedbacks = "https://bibliosesi.vercel.app/feedbacks/";
 
 function pegarUsuario() {
     const usuario = localStorage.getItem("usuario");
@@ -427,21 +428,65 @@ async function marcarEntregue() {
     }
 }
 
-function comentario() {
+async function comentario() {
     const campo = document.querySelector("#comentario");
+    const usuario = pegarUsuario();
 
-    if (!campo) return;
-
-    const texto = campo.value.trim();
-
-    if (!texto) {
-        alert("Digite um comentário.");
+    if (!campo || !emprestimoSelecionado || !emprestimoSelecionado.livro) {
+        alert("Selecione um livro antes de enviar o feedback.");
         return;
     }
 
-    alert("Comentário enviado!");
+    const texto = campo.value.trim();
+    if (!texto) {
+        alert("Digite um comentário.");
+        campo.focus();
+        return;
+    }
 
-    campo.value = "";
+    if (!usuario || !usuario.id) {
+        alert("Não foi possível identificar sua conta. Faça login novamente.");
+        return;
+    }
+
+    const botao = document.querySelector(".area-coment button");
+    if (botao) {
+        botao.disabled = true;
+        botao.textContent = "Enviando...";
+    }
+
+    try {
+        const resposta = await fetch(`${urlFeedbacks}cadastrar`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": "Bearer " + (localStorage.getItem("token") || "")
+            },
+            body: JSON.stringify({
+                usuarioId: Number(usuario.id),
+                livroId: Number(emprestimoSelecionado.livro.id),
+                comentario: texto,
+                nota: avaliacaoSelecionada || null
+            })
+        });
+
+        const resultado = await resposta.json().catch(() => ({}));
+        if (!resposta.ok) {
+            throw new Error(resultado.mensagem || "Não foi possível salvar seu comentário.");
+        }
+
+        campo.value = "";
+        limparAvaliacao();
+        alert("Feedback salvo! Ele já pode ser visto no catálogo por outros usuários.");
+    } catch (erro) {
+        console.error("Erro ao enviar feedback:", erro);
+        alert(erro.message || "Erro ao enviar o feedback. Tente novamente.");
+    } finally {
+        if (botao) {
+            botao.disabled = false;
+            botao.textContent = "Enviar";
+        }
+    }
 }
 
 function comentar() {
