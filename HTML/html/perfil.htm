@@ -132,5 +132,16 @@
 </body>
 <script src="../perfil.js"></script>
 <script src="../script.js"></script>
+<script>
+    function verificarLogin() {
+        const token = localStorage.getItem("token");
 
+        if (!token) {
+            window.location.replace("/login");
+            return false;
+        }
+
+        return true;
+    }
+</script>
 </html>
