@@ -1,0 +1,144 @@
+:root{
+    --primary: #7C2E2E;
+    --accent: #333;
+    --white: #FFF;
+    --unvisited: #999;
+    --visited: #5D5D5D;
+}
+
+/*======================= HEADER =======================*/
+/*============== HEADER ==============*/
+header{
+    background-color: var(--primary);
+    padding: 5px;
+    position: fixed;
+    top: 0;
+    z-index: 99;
+    width: 100%;
+    border-bottom: 1px solid var(--accent);
+}
+header .ordena{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+.ordena h1{
+    font-size: 18px;
+    font-family: lexend;
+    font-weight: 500;
+    color: var(--white);
+}
+.ordena img{
+    width: 60px;
+    height: 60px;
+}
+.ordena i{
+    font-size: 25px;
+    color: var(--white);
+    cursor: pointer;
+}
+/*=========================================================*/
+
+
+/*============== NAVEGAÇÃO ==============*/
+.navegar nav ul{
+    list-style: none;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr 3fr;
+}
+.navegar nav ul i{
+    font-size: 20px;
+}
+.navegar nav li{
+    font-size: 16px;
+}
+.navegar nav ul li a{
+    color: var(--white);
+    text-decoration: none;
+    font-family: lexend;
+    position: relative;
+}
+nav ul li a::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px;
+  left: 0;
+  bottom: -2px;
+  background-color: var(--white);
+  transition: width 0.3s ease;
+}
+nav ul li a:hover::after {
+  width: 100%;
+}
+.navegar .nav-links{
+    display: flex;
+    gap: 5px;
+    align-items: center;
+    border-bottom: 2px solid var(--white);
+    padding: 40px 10px;
+}
+.nav-links:nth-child(3){
+    padding-bottom: 50px;
+}
+.navegar nav .bt-sair{
+    display: flex;
+    justify-content: flex-end;
+    margin: auto;
+    padding: 20px;
+}
+.bt-sair button{
+    margin-right: 20px;
+    border: none;
+    background-color: transparent;
+    color:var(--white);
+    font-family: lexend;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.bt-sair button:hover{
+    border-bottom: 1px solid var(--white);
+}
+.navegar nav {
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: 45vw;
+  background-color: var(--primary);
+  color: var(--white);
+  transform: translateX(100%);
+  transition: transform 0.3s ease-in-out;
+  z-index: 3;
+  padding-top: 3.8rem;
+  border-left: 1px solid var(--accent);
+  z-index: 98;
+}
+.navegar nav.active {
+  transform: translateX(0);
+}
+/*=========================================================*/
+
+.overlay {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.4);
+
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+
+    transition: opacity 0.3s ease;
+    
+    z-index: 97;
+}
+
+.overlay.ativo {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}

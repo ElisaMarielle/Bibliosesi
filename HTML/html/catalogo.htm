@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogo</title>
+    <link rel="stylesheet" href="../css/responsivos.css">
+    <link rel="stylesheet" href="../css/catalogo.css">
+    <link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Lexend:wght@100..900&family=Sora:wght@100..800&display=swap');
+    </style>
+    <link rel="icon" href="../img/logo.png">
+</head>
+
+<body>
+    <header>
+        <div class="ordena">
+            <img src="../img/logo.png" alt="bibliosesi logo">
+            <h1>Biblioteca Virtual</h1>
+            <i class="fa-solid fa-bars bt-menu"></i>
+        </div>
+    </header>
+    <div class="overlay" id="overlay"></div>
+    <div class="navegar">
+        <nav>
+            <ul>
+                <div class="nav-links">
+                    <i class="fa-solid fa-house"></i>
+                    <li><a href="inicial.htm">Início</a></li>
+                </div>
+                <div class="nav-links">
+                    <i class="fa-solid fa-circle-user"></i>
+                    <li><a href="perfil.htm">Perfil do Usuário</a></li>
+                </div>
+                <div class="nav-links">
+                    <i class="fa-solid fa-folder-open"></i>
+                    <li><a href="emprestimos.htm">Empréstimos</a></li>
+                </div>
+                <div class="nav-links">
+                    <i class="fa-solid fa-book"></i>
+                    <li><a href="catalogo.htm">Catálogo</a></li>
+                </div>
+                <div class="bt-sair">
+                    <button onclick="logoff()">
+                        Sair
+                        <i class="fa-solid fa-right-to-bracket"></i>
+                    </button>
+                </div>
+            </ul>
+        </nav>
+    </div>
+    <main>
+        <div class="catalogo">
+            <div class="container-wrapper">
+                <form action="">
+                    <div class="div-search">
+                        <div class="input-wrapper">
+                            <svg xmlns="[http://www.w3.org/2000/svg](http://www.w3.org/2000/svg)" id="Outline"
+                                viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+                                <path
+                                    d="M23.707,22.293l-5.969-5.969a10.016,10.016,0,1,0-1.414,1.414l5.969,5.969a1,1,0,0,0,1.414-1.414ZM10,18a8,8,0,1,1,8-8A8.009,8.009,0,0,1,10,18Z" />
+                            </svg>
+                            <input type="search" id="searchbook" placeholder="Pesquise o título, autor, ano, etc...">
+                        </div>
+                    </div>
+                </form>
+
+                <div class="genres-filter">
+                    <i class="fa-solid fa-filter"></i>
+
+                    <select id="filter" class="filter">
+                        <option value="todos" selected>Nenhum</option>
+                        <option value="favoritados">Favoritados</option>
+                        <option value="Ação">Ação</option>
+                        <option value="Aventura">Aventura</option>
+                        <option value="Crônicas">Crônicas</option>
+                        <option value="Fantasia">Fantasia</option>
+                        <option value="Ficção">Ficção</option>
+                        <option value="Ficção científica">Ficção científica</option>
+                        <option value="Poesia">Poesia</option>
+                        <option value="Romance">Romance</option>
+                        <option value="Suspense">Suspense</option>
+                        <option value="Terror">Terror</option>
+                    </select>
+                </div>
+
+                <button type="button" onclick="cadastrar()" id="btCadastra">
+                    + Adicionar livro
+                </button>
+            </div>
+
+            <!-- LIVROS DO CATÁLOGO -->
+            <div class="catalogo-livros"></div>
+            <!-- MODAL DE DETALHES -->
+            <div class="livroDetalhes">
+                <div class="modal-livros">
+                    <div class="header">
+                        <div class="image">
+                            <img src="" alt="Capa do livro" id="capa">
+                        </div>
+                        <div class="details">
+                            <h2 id="tituloDetalhes"></h2>
+                            <p id="descricaoDetalhes"></p>
+                            <p id="autorDetalhes" class="text"></p>
+                            <p id="data_lancamento" class="text"></p>
+                        </div>
+                    </div>
+
+                    <div class="generos">
+                        <p id="generoDetalhes"></p>
+                    </div>
+                    <span id="statusDetalhes"></span>
+
+                    <div class="acoes">
+                        <button id="bt-fav">
+                            <i class="fa-solid fa-heart"></i>
+                        </button>
+                        <button id="bt-emp">
+                            Emprestar
+                        </button>
+                        <button id="bt-excluir" style="display: none;">
+                            <i class="fa-solid fa-trash"></i>
+                            Excluir livro
+                        </button>
+                    </div>
+
+                    <section class="feedbacks-livro" aria-labelledby="titulo-feedbacks">
+                        <div class="feedbacks-cabecalho">
+                            <h3 id="titulo-feedbacks">Avaliações e comentários</h3>
+                            <span id="contagem-feedbacks">Carregando...</span>
+                        </div>
+                        <div id="lista-feedbacks" class="lista-feedbacks" aria-live="polite">
+                            <p class="feedbacks-vazio">Carregando comentários...</p>
+                        </div>
+                    </section>
+                </div>
+            </div>
+
+            <!-- MODAL DE CADASTRO -->
+            <div class="modal-cadastro">
+                <form action="" id="formLivro" class="formLivro">
+                    <h2>Cadastre um livro!</h2>
+                    <input type="text" id="tituloCadastro" placeholder="Título" required>
+                    <input type="text" id="descricaoCadastro" placeholder="Sinopse" required>
+                    <input type="text" id="autorCadastro" placeholder="Autor" required>
+                    <input type="text" id="publicacaoCadastro" placeholder="Data de publicação" required>
+                    <input type="text" id="generoCadastro" placeholder="Gêneros (separados por vírgula)" required>
+                    <input type="text" id="editoraCadastro" placeholder="Editora do livro" required>
+                    <input type="url" id="imagemCadastro" placeholder="Foto da capa" required>
+                    <div class="form-buttons">
+                        <button type="submit">
+                            Cadastrar
+                        </button>
+                        <button type="button" onclick="cancelar()">
+                            Cancelar
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+    <script src="../script.js"></script>
+    <script src="../catalogo.js"></script>
+</body>
+<script>
+    function verificarLogin() {
+        const token = localStorage.getItem("token");
+
+        if (!token) {
+            window.location.replace("login.htm");
+            return false;
+        }
+
+        return true;
+    }
+
+    if (!verificarLogin()) {
+        document.body.style.display = "none";
+    }
+</script>
+</html>

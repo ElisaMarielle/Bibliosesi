@@ -1,0 +1,143 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    background: #f5eeee;
+    width: 100vw;
+    overflow-x: hidden;
+    animation: entrarNaPagina 500ms ease-out forwards;
+}
+:root{
+    --primary: #902222;
+    --secondary: #F4F2F1;
+    --accent: #333;
+    --border: #E8E7E7;
+    --white: #FFF;
+}
+/*=========================================================*/
+
+
+/*======================= PÁGINA DE CADASTRO =======================*/
+/*============== PAGINAÇÃO ==============*/
+main#logcad{
+    display: flex;
+    justify-content: center;
+    width: 100vw;
+    height: 100vh;
+    align-items: center;
+}
+main#logcad .container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--white);
+    gap: 50px;
+    padding: 40px;
+    border-radius: 20px;
+    margin: 50px 0;
+    position: fixed;
+    width: calc(100vw - 40vw);
+    box-shadow: 0 0 10px #33333348;
+}
+main#logcad .container h1{
+    font-family: sora;
+    color: var(--primary);
+    text-align: center;
+    font-size: 36px;
+}
+.cadastro{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    gap: 20px;
+}
+.cadastro p{
+    font-family: sora;
+    color: var(--accent);
+}
+p a{
+    color: var(--primary);
+    text-decoration: none;
+    border-bottom: 1px solid var(--primary);
+    padding-bottom: 1px;
+}
+/*=========================================================*/
+
+
+/*============== FORM ==============*/
+form{
+    display: flex;
+    flex-direction: column;
+    font-family: inter;
+    width: 80%;
+}
+form label{
+    font-weight: 500;
+    margin-bottom: 5px;
+}
+form input, form select{
+    border: none; border-radius: 4px;
+    outline: 2px solid var(--border);
+    padding: 8px;
+    background-color: var(--secondary);
+    font-size: 14px;
+    transition: outline 300ms;
+}
+input::placeholder{
+    font-family: dm sans;
+}
+input:focus-within, select:focus-within{
+    outline: 2px solid var(--primary);
+}
+input:focus-within::placeholder{
+    transition: opacity 400ms;
+    opacity: 0;
+}
+input, select{
+    margin-bottom: 20px;
+}
+select option{
+    background: var(--secondary);
+}
+select option:focus{
+    background: #FFF;
+}
+select option:checked {
+  background: var(--primary);
+  color: var(--white);
+}
+.button{
+    display: flex;
+    justify-content: center;
+}
+.login{
+    border: 2px solid var(--border); border-radius: 20px;
+    background-color: var(--secondary);
+    font-size: 20px;
+    font-weight: 600;
+    font-family: dm sans;
+    padding: 6px 40px;
+    transition: background-color 300ms;
+}
+.login:hover{
+    background-color: var(--border);
+    cursor: pointer;
+}
+/*=========================================================*/
+
+
+
+@keyframes entrarNaPagina {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

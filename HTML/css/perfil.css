@@ -1,0 +1,252 @@
+@import "~@flaticon/flaticon-uicons/css/all/all";
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    background: #f5eeee;
+    width: 100vw;
+    overflow-x: hidden;
+}
+/*-----------------------------------------------*/
+
+
+/*-----------------------------------------------*/
+/*--------------PERFIL FORMATAÇÃO-------------*/
+main.perfil{
+    display: grid;
+    grid-template-rows: auto auto 1fr;
+}
+.perfil .hr{
+    border-bottom: 2px solid #b4b4b4;
+}
+/*--------------USUÁRIO PERFIL — INFOS-------------*/
+.aluno{
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    margin: 6rem 5rem 2rem;
+    height: fit-content;
+}
+.aluno-infos{
+    display: flex;
+    gap: 20px;
+    justify-content: space-around;
+    background-color: #ece6e6;
+    border-radius: 20px;
+}
+.aluno-infos .left{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+.left img{
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 50%;
+    box-shadow: 0 0 5px #0000007e;
+}
+.left button{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: #7c2e2e;
+    border: none; border-radius: 12px;
+    padding: 6px 12px;
+    color: #fff;
+    font-family: lexend;
+}
+.aluno-infos .right{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+    font-family: lexend;
+    font-size: 18px;
+}
+
+.aluno .divisor{
+    width: 1;
+    border-right: 2px solid #b4b4b4;
+    margin-left: 20px;
+}
+
+.aluno-estat{
+    display: flex;
+    justify-content: center;
+}
+.estatisticas{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+}
+.stats{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    font-family: lexend;
+    color: #fff;
+    background-color: #7c2e2e;
+    padding: 20px;
+    width: 200px;
+    border-radius: 20px;
+}
+.stats:nth-child(3) {
+    grid-column: 1 / -1;
+    justify-self: center;
+}
+.stats h3{
+    font-size: 16px;
+}
+.stats span{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+/*--------------USUÁRIO PERFIL — AVISOS-------------*/
+.aluno-det{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 2rem 5rem 1rem;
+    gap: 40px;
+}
+.lista-espera{
+    background-color: #7c2e2e;
+    border-radius: 20px;
+    padding: 20px;
+}
+.livro-espera{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    width: 200px;
+    height: 300px;
+    background-color: #fff;
+    border-radius: 20px;
+    padding: 15px;
+}
+.livro-espera .top{
+    display: flex;
+    gap: 5px;
+    font-family: lexend;
+    align-items: center;
+}
+.top .livro-img{
+    width: 200px;
+    height: 100px;
+}
+.livro-img img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+}
+.livro-espera .bottom{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    font-family: lato;
+}
+.bottom button{
+    background: #7c2e2e;
+    border: none; border-radius: 12px;
+    padding: 6px 12px;
+    color: #fff;
+    font-family: lexend;
+}
+
+.aluno-avisos{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #ece6e6;
+    border-radius: 20px;
+    padding: 20px;
+}
+.title{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    font-family: sora;
+    margin-bottom: 3rem;
+}
+.title img{
+    filter: brightness(0) saturate(100%) invert(19%) sepia(84%) saturate(985%) hue-rotate(329deg) brightness(90%) contrast(84%);
+}
+.title h2{
+    color: #7c2e2e;
+    font-size: 26px;
+}
+.avisos{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    font-family: lato;
+    font-size: 18px;
+}
+.avisos ul{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+/*-----------------------------------------------*/
+
+
+/*-----------------------------------------------*/
+/*--------------USUÁRIO PERFIL — MODAL MUDAR FOTO-------------*/
+.mudar-foto{
+    backdrop-filter: blur(5px);
+    background-color: #00000056;
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    height: 100%;
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+.formfoto{
+    background: #ece6e6;
+    padding: 50px;
+    border-radius: 20px;
+    font-family: lato;
+    display: flex;
+    flex-direction: column;
+    font-size: 22px;
+    gap: 20px;
+}
+.formfoto button:hover{
+    background: #a54646;
+}
+.formfoto input::file-selector-button{
+    margin-top: 10px;
+    background: #7c2e2e;
+    border: none; border-radius: 10px;
+    color: #fff;
+    padding: 6px 12px;
+    font-family: lexend;
+}
+.formfoto input::file-selector-button:hover{
+    background: #a54646;
+}
+.form-btn{
+    display: flex;
+    justify-content: space-around;
+}
+.form-btn button{
+    background: #7c2e2e;
+    border: none; border-radius: 10px;
+    color: #fff;
+    padding: 6px 12px;
+    font-family: lexend;
+}

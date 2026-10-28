@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro</title>
+    <link rel="stylesheet" href="../css/cadastro.css">
+    <link rel="stylesheet" href="../css/responsivos.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Lexend:wght@100..900&family=Sora:wght@100..800&display=swap');
+    </style>
+    <link rel="icon" href="../img/logo.png">
+    <script src="https://cdn.jsdelivr.net/npm/jsonwebtoken@9.0.3/index.min.js"></script>
+</head>
+<body style="background: #f4f2f1;">
+    <main id="logcad">
+        <div class="container">
+            <h1>Login Bibliosesi</h1>
+            <div class="cadastro">
+                <form action="" method="">
+                    <!--Email do aluno----------------------->
+                    <label for="email">E-mail Educacional:</label>
+                    <input type="email" id="email" placeholder="Digite seu email educacional">
+
+                    <!--Senha----------------------->
+                    <label for="senha">Senha:</label>
+                    <input id="senha" type="password" placeholder="Digite sua senha.">
+                </form>
+                <button class="login" onclick="login()">Login</button>
+                <p>Não é cadastrado? Faça o <a href="index.htm">cadastro</a></p>
+            </div>
+        </div>
+    </main>
+</body>
+<script src="../login.js"></script>
+</html>
