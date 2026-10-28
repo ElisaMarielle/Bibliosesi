@@ -1,9 +1,7 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
 
 import '../root/pallet.dart';
-import 'login.dart';
+import '../root/sessao.dart';
 
 class SplashPage extends StatefulWidget {
   const SplashPage({super.key});
@@ -16,58 +14,44 @@ class _SplashPageState extends State<SplashPage> {
   @override
   void initState() {
     super.initState();
+    _abrirAplicativo();
+  }
 
-    Timer(
-      const Duration(seconds: 2),
-      () {
-        if (!mounted) return;
+  Future<void> _abrirAplicativo() async {
+    await Future.delayed(const Duration(milliseconds: 700));
 
-        Navigator.pushReplacement(
-          context,
-          MaterialPageRoute(
-            builder: (context) => const LoginPage(),
-          ),
-        );
-      },
-    );
+    if (!mounted) return;
+
+    final destino = Sessao.autenticado ? '/home' : '/login';
+
+    Navigator.pushReplacementNamed(context, destino);
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppPalette.primary,
-
+      backgroundColor: AppPalette.background,
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: const [
+          children: [
             Icon(
               Icons.local_library,
-              color: Colors.white,
               size: 85,
+              color: AppPalette.primary,
             ),
-
-            SizedBox(height: 20),
-
+            const SizedBox(height: 18),
             Text(
               'BiblioSesi',
               style: TextStyle(
-                color: Colors.white,
                 fontSize: 32,
-                fontFamily: 'serif',
                 fontWeight: FontWeight.bold,
+                color: AppPalette.white,
               ),
             ),
-
-            SizedBox(height: 10),
-
-            Text(
-              'Biblioteca Virtual',
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 17,
-                fontFamily: 'serif',
-              ),
+            const SizedBox(height: 24),
+            CircularProgressIndicator(
+              color: AppPalette.primary,
             ),
           ],
         ),
