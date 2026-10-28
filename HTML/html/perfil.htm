@@ -92,7 +92,7 @@
                 <div class="livro-espera">
                     <div class="top">
                         <div class="livro-img">
-                            <img src="../img/jgvrz.jpg" alt="capa do livro">
+                            <img src="../img/warning.png" alt="capa do livro">
                         </div>
                         <h3>Sociedade do Cansaço</h3>
                     </div>
@@ -137,11 +137,15 @@
         const token = localStorage.getItem("token");
 
         if (!token) {
-            window.location.replace("/login");
+            window.location.replace("login.htm");
             return false;
         }
 
         return true;
+    }
+
+    if (!verificarLogin()) {
+        document.body.style.display = "none";
     }
 </script>
 </html>
