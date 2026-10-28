@@ -83,7 +83,13 @@ function estaEmprestado(livro) {
 }
 
 function carregarLivros() {
-    fetch(url + "listar")
+    const token = localStorage.getItem("token");
+    
+    fetch(url + "listar", {
+        headers: {
+            "Authorization": `Bearer ${token}`
+        }
+    })
         .then(response => {
             if (!response.ok) {
                 throw new Error("Erro ao buscar livros.");

@@ -40,7 +40,13 @@ async function carregarEmprestimo() {
 
     try {
         if (id) {
-            const resposta = await fetch(`${urlEmprestimos}buscar/${id}`);
+            const token = localStorage.getItem("token");
+
+            const resposta = await fetch(`${urlEmprestimos}buscar/${id}`, {
+                headers: {
+                    "Authorization": `Bearer ${token}`
+                }
+            });
             const texto = await resposta.text();
 
             let emprestimo;
@@ -76,8 +82,15 @@ async function carregarEmprestimo() {
             return;
         }
 
+        const token = localStorage.getItem("token");
+
         const resposta = await fetch(
-            `${urlEmprestimos}listar/usuario/${usuario.id}`
+            `${urlEmprestimos}listar/usuario/${usuario.id}`,
+            {
+                headers: {
+                    "Authorization": `Bearer ${token}`
+                }
+            }
         );
 
         const texto = await resposta.text();
@@ -396,7 +409,8 @@ async function marcarEntregue() {
             {
                 method: "PUT",
                 headers: {
-                    "Content-Type": "application/json"
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${localStorage.getItem("token")}`
                 },
                 body: JSON.stringify({
                     data_devolucao: new Date().toISOString()
