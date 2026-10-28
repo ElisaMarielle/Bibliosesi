@@ -25,12 +25,22 @@ body{
     font-family: var(--dm-sans);
     padding: 20px;
 }
-.catalogo-livros{
+.secao-catalogo{
+    background-color: #fff7f7;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 40px;
+}
+.fileira-livros{
+    display: flex;
+    overflow-x: auto;
+}
+/* .catalogo-livros{
     display: flex;
     flex-direction: column;
     gap: 20px;
     margin-top: 2rem;
-}
+} */
 #btCadastra {
     display: none;
     background-color: var(--primary);
@@ -123,8 +133,7 @@ select option:hover{
 /*============== LIVROS ==============*/
 .livro{
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    flex-direction: column;
     gap: 8px;
 }
 .livros-detalhes{
@@ -338,6 +347,9 @@ select option:hover{
     padding: 18px;
     overflow-y: auto;
     align-items: flex-start;
+}
+.livros-detalhes p{
+    display: none;
 }
 .modal-livros {
     margin-top: 100px;
