@@ -15,7 +15,7 @@
     <link rel="icon" href="../img/logo.png">
 </head>
 
-<body onload="autorizaCadastro">
+<body>
     <header>
         <div class="ordena">
             <img src="../img/logo.png" alt="bibliosesi logo">
@@ -67,22 +67,26 @@
                         </div>
                     </div>
                 </form>
+
                 <div class="genres-filter">
                     <i class="fa-solid fa-filter"></i>
+
                     <select id="filter" class="filter">
-                        <option value="op1" selected>Nenhum</option>
-                        <option value="op2">Ação</option>
-                        <option value="op3">Aventura</option>
-                        <option value="op4">Crônicas</option>
-                        <option value="op5">Fantasia</option>
-                        <option value="op6">Ficção</option>
-                        <option value="op7">Ficção científica</option>
-                        <option value="op8">Poesia</option>
-                        <option value="op9">Romance</option>
-                        <option value="op10">Suspense</option>
-                        <option value="op11">Terror</option>
+                        <option value="todos" selected>Nenhum</option>
+                        <option value="favoritados">Favoritados</option>
+                        <option value="Ação">Ação</option>
+                        <option value="Aventura">Aventura</option>
+                        <option value="Crônicas">Crônicas</option>
+                        <option value="Fantasia">Fantasia</option>
+                        <option value="Ficção">Ficção</option>
+                        <option value="Ficção científica">Ficção científica</option>
+                        <option value="Poesia">Poesia</option>
+                        <option value="Romance">Romance</option>
+                        <option value="Suspense">Suspense</option>
+                        <option value="Terror">Terror</option>
                     </select>
                 </div>
+
                 <button type="button" onclick="cadastrar()" id="btCadastra">
                     + Adicionar livro
                 </button>
@@ -104,7 +108,7 @@
                             <p id="data_lancamento" class="text"></p>
                         </div>
                     </div>
-                    
+
                     <div class="generos">
                         <p id="generoDetalhes"></p>
                     </div>
@@ -122,6 +126,16 @@
                             Excluir livro
                         </button>
                     </div>
+
+                    <section class="feedbacks-livro" aria-labelledby="titulo-feedbacks">
+                        <div class="feedbacks-cabecalho">
+                            <h3 id="titulo-feedbacks">Avaliações e comentários</h3>
+                            <span id="contagem-feedbacks">Carregando...</span>
+                        </div>
+                        <div id="lista-feedbacks" class="lista-feedbacks" aria-live="polite">
+                            <p class="feedbacks-vazio">Carregando comentários...</p>
+                        </div>
+                    </section>
                 </div>
             </div>
 
@@ -151,5 +165,20 @@
     <script src="../script.js"></script>
     <script src="../catalogo.js"></script>
 </body>
+<script>
+    function verificarLogin() {
+        const token = localStorage.getItem("token");
 
+        if (!token) {
+            window.location.replace("login.htm");
+            return false;
+        }
+
+        return true;
+    }
+
+    if (!verificarLogin()) {
+        document.body.style.display = "none";
+    }
+</script>
 </html>

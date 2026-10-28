@@ -26,7 +26,8 @@ class ApiService {
           'Authorization': 'Bearer $token',
       };
 
-  Uri _uri(String path) => Uri.parse('${ApiConfig.baseUrl}$path');
+  Uri _uri(String path) =>
+      Uri.parse('${ApiConfig.baseUrl}$path');
 
   dynamic _decode(http.Response response) {
     dynamic body;
@@ -41,7 +42,8 @@ class ApiService {
 
     if (response.statusCode < 200 ||
         response.statusCode >= 300) {
-      String message = 'Erro ${response.statusCode} na API.';
+      String message =
+          'Erro ${response.statusCode} na API.';
 
       if (body is Map) {
         message = (body['message'] ??
@@ -91,10 +93,13 @@ class ApiService {
     final body = _decode(response);
 
     if (body is! Map) {
-      throw ApiException('Não foi possível identificar o usuário.');
+      throw ApiException(
+        'Não foi possível identificar o usuário.',
+      );
     }
 
-    token = (body['token'] ?? body['accessToken'] ?? '').toString();
+    token = (body['token'] ?? body['accessToken'] ?? '')
+        .toString();
 
     final rawUser =
         body['usuario'] ?? body['user'] ?? body['data'] ?? body;
@@ -172,6 +177,8 @@ class ApiService {
         .toList();
   }
 
+  // Envia a solicitação de empréstimo ao backend.
+  // Confirme se a rota e os campos correspondem à API.
   Future<void> solicitarEmprestimo({
     required int usuarioId,
     required int livroId,
@@ -197,3 +204,4 @@ class ApiService {
     _decode(response);
   }
 }
+

@@ -14,11 +14,12 @@ menuBtn.addEventListener('click', () => {
     document.body.style.overflow = "";
   }
 });
-
+// teste
 
 
 function logoff(){
-  localStorage.removeItem('dados')
+  localStorage.removeItem('dados');
   localStorage.removeItem('token')
+  localStorage.removeItem('usuario')
   window.location.href = 'login.htm';
 }

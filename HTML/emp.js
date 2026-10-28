@@ -1,12 +1,13 @@
 const urlEmprestimos = "https://bibliosesi.vercel.app/emprestimos/";
+const urlFeedbacks = "https://bibliosesi.vercel.app/feedbacks/";
 
 function pegarUsuario() {
-    const dados = localStorage.getItem("dados");
+    const usuario = localStorage.getItem("usuario");
 
-    if (!dados) return null;
+    if (!usuario) return null;
 
     try {
-        return JSON.parse(dados);
+        return JSON.parse(usuario);
     } catch (erro) {
         console.error("Erro ao ler dados do usuário:", erro);
         return null;
@@ -31,6 +32,7 @@ function esconderElemento(elemento) {
 
 let emprestimosAtuais = [];
 let emprestimoSelecionado = null;
+let avaliacaoSelecionada = 0;
 
 async function carregarEmprestimo() {
     const parametros = new URLSearchParams(window.location.search);
@@ -38,7 +40,13 @@ async function carregarEmprestimo() {
 
     try {
         if (id) {
-            const resposta = await fetch(`${urlEmprestimos}buscar/${id}`);
+            const token = localStorage.getItem("token");
+
+            const resposta = await fetch(`${urlEmprestimos}buscar/${id}`, {
+                headers: {
+                    "Authorization": `Bearer ${token}`
+                }
+            });
             const texto = await resposta.text();
 
             let emprestimo;
@@ -74,8 +82,15 @@ async function carregarEmprestimo() {
             return;
         }
 
+        const token = localStorage.getItem("token");
+
         const resposta = await fetch(
-            `${urlEmprestimos}listar/usuario/${usuario.id}`
+            `${urlEmprestimos}listar/usuario/${usuario.id}`,
+            {
+                headers: {
+                    "Authorization": `Bearer ${token}`
+                }
+            }
         );
 
         const texto = await resposta.text();
@@ -129,8 +144,13 @@ function mostrarSemEmprestimo() {
 
     esconderElemento(detalhes);
 
-    if (texto1) mostrarElemento(texto1);
-    if (texto2) mostrarElemento(texto2);
+    if (texto1) {
+        mostrarElemento(texto1);
+    }
+
+    if (texto2) {
+        mostrarElemento(texto2);
+    }
 }
 
 function mostrarListaEmprestimos(emprestimos) {
@@ -143,15 +163,22 @@ function mostrarListaEmprestimos(emprestimos) {
     const texto1 = document.querySelector("#texto1");
     const texto2 = document.querySelector("#texto2");
 
-    if (texto1) esconderElemento(texto1);
-    if (texto2) mostrarElemento(texto2);
+    if (texto1) {
+        esconderElemento(texto1);
+    }
+
+    if (texto2) {
+        mostrarElemento(texto2);
+    }
 
     emprestimos.forEach((emprestimo) => {
+
         if (!emprestimo.livro) return;
 
         const livro = emprestimo.livro;
 
         const empLivro = document.createElement("div");
+
         empLivro.className = "emp-livro";
         empLivro.dataset.id = emprestimo.id;
 
@@ -187,7 +214,9 @@ function selecionarEmprestimo(emprestimo) {
 
     const texto2 = document.querySelector("#texto2");
 
-    if (texto2) esconderElemento(texto2);
+    if (texto2) {
+        esconderElemento(texto2);
+    }
 
     const detalhes = document.querySelector("#detalhes");
 
@@ -214,29 +243,149 @@ function selecionarEmprestimo(emprestimo) {
         descricao.textContent = livro.descricao;
     }
 
-    const tags = document.querySelector(".livro-tags");
+    criarGeneros(livro.genero);
 
-    if (tags) {
-        tags.innerHTML = `
-            <p>${livro.genero || ""}</p>
-            <p>${livro.publicacao || ""}</p>
-            <p>${livro.editora || ""}</p>
-        `;
+    const publicacao = document.querySelector(".livro-publicacao");
+    const editora = document.querySelector(".livro-editora");
+
+    if (publicacao) {
+        publicacao.textContent = livro.publicacao
+            ? livro.publicacao
+            : "";
     }
+
+    if (editora) {
+        editora.textContent = livro.editora
+            ? livro.editora
+            : "";
+    }
+
+    limparAvaliacao();
 
     const cards = document.querySelectorAll(".emp-livro");
 
     cards.forEach((card) => {
+
         card.classList.remove("selecionado");
 
         if (Number(card.dataset.id) === Number(emprestimo.id)) {
             card.classList.add("selecionado");
         }
+
     });
 
     detalhes.scrollIntoView({
         behavior: "smooth",
         block: "nearest"
+    });
+}
+
+function criarGeneros(generos) {
+    const tags = document.querySelector(".livro-tags");
+
+    if (!tags) return;
+
+    tags.innerHTML = "";
+
+    if (!generos) return;
+
+    const listaGeneros = generos
+        .split(",")
+        .map((genero) => genero.trim())
+        .filter((genero) => genero !== "");
+
+    listaGeneros.forEach((genero) => {
+
+        const tag = document.createElement("p");
+
+        tag.textContent = genero;
+
+        tags.appendChild(tag);
+
+    });
+}
+
+function configurarEstrelas() {
+    const estrelas = document.querySelectorAll(".stars i");
+
+    estrelas.forEach((estrela) => {
+
+        estrela.addEventListener("click", function () {
+
+            const valor = Number(this.dataset.star);
+
+            avaliacaoSelecionada = valor;
+
+            estrelas.forEach((item) => {
+
+                const numero = Number(item.dataset.star);
+
+                if (numero <= valor) {
+
+                    item.classList.remove("fa-regular");
+                    item.classList.add("fa-solid");
+
+                } else {
+
+                    item.classList.remove("fa-solid");
+                    item.classList.add("fa-regular");
+
+                }
+
+            });
+
+        });
+
+        estrela.addEventListener("mouseenter", function () {
+
+            const valor = Number(this.dataset.star);
+
+            estrelas.forEach((item) => {
+
+                const numero = Number(item.dataset.star);
+
+                if (numero <= valor) {
+
+                    item.classList.add("hover");
+
+                } else {
+
+                    item.classList.remove("hover");
+
+                }
+
+            });
+
+        });
+
+    });
+
+    const areaEstrelas = document.querySelector(".stars");
+
+    if (areaEstrelas) {
+
+        areaEstrelas.addEventListener("mouseleave", function () {
+
+            estrelas.forEach((item) => {
+                item.classList.remove("hover");
+            });
+
+        });
+
+    }
+}
+
+function limparAvaliacao() {
+    avaliacaoSelecionada = 0;
+
+    const estrelas = document.querySelectorAll(".stars i");
+
+    estrelas.forEach((estrela) => {
+
+        estrela.classList.remove("fa-solid");
+        estrela.classList.add("fa-regular");
+        estrela.classList.remove("hover");
+
     });
 }
 
@@ -254,12 +403,14 @@ async function marcarEntregue() {
     }
 
     try {
+
         const resposta = await fetch(
             `${urlEmprestimos}atualizar/${id}`,
             {
                 method: "PUT",
                 headers: {
-                    "Content-Type": "application/json"
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${localStorage.getItem("token")}`
                 },
                 body: JSON.stringify({
                     data_devolucao: new Date().toISOString()
@@ -281,6 +432,7 @@ async function marcarEntregue() {
         window.location.href = "emprestimos.htm";
 
     } catch (erro) {
+
         console.error("Erro ao marcar como entregue:", erro);
 
         alert(
@@ -290,21 +442,65 @@ async function marcarEntregue() {
     }
 }
 
-function comentario() {
+async function comentario() {
     const campo = document.querySelector("#comentario");
+    const usuario = pegarUsuario();
 
-    if (!campo) return;
-
-    const texto = campo.value.trim();
-
-    if (!texto) {
-        alert("Digite um comentário.");
+    if (!campo || !emprestimoSelecionado || !emprestimoSelecionado.livro) {
+        alert("Selecione um livro antes de enviar o feedback.");
         return;
     }
 
-    alert("Comentário enviado!");
+    const texto = campo.value.trim();
+    if (!texto) {
+        alert("Digite um comentário.");
+        campo.focus();
+        return;
+    }
 
-    campo.value = "";
+    if (!usuario || !usuario.id) {
+        alert("Não foi possível identificar sua conta. Faça login novamente.");
+        return;
+    }
+
+    const botao = document.querySelector(".area-coment button");
+    if (botao) {
+        botao.disabled = true;
+        botao.textContent = "Enviando...";
+    }
+
+    try {
+        const resposta = await fetch(`${urlFeedbacks}cadastrar`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${localStorage.getItem("token")}`
+            },
+            body: JSON.stringify({
+                usuarioId: Number(usuario.id),
+                livroId: Number(emprestimoSelecionado.livro.id),
+                comentario: texto,
+                nota: avaliacaoSelecionada || null
+            })
+        });
+
+        const resultado = await resposta.json().catch(() => ({}));
+        if (!resposta.ok) {
+            throw new Error(resultado.mensagem || "Não foi possível salvar seu comentário.");
+        }
+
+        campo.value = "";
+        limparAvaliacao();
+        alert("Feedback salvo! Ele já pode ser visto no catálogo por outros usuários.");
+    } catch (erro) {
+        console.error("Erro ao enviar feedback:", erro);
+        alert(erro.message || "Erro ao enviar o feedback. Tente novamente.");
+    } finally {
+        if (botao) {
+            botao.disabled = false;
+            botao.textContent = "Enviar";
+        }
+    }
 }
 
 function comentar() {
@@ -312,5 +508,8 @@ function comentar() {
 }
 
 document.addEventListener("DOMContentLoaded", function () {
+
+    configurarEstrelas();
     carregarEmprestimo();
+
 });

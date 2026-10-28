@@ -35,7 +35,7 @@ document.getElementById("bt-cadastrar").addEventListener("click", (event) => {
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify(novoUsuario)
+        body: JSON.stringify(nome, email)
     })
         .then(res => {
             if (!res.ok) {
@@ -81,11 +81,20 @@ function login() {
 
         return resp.json();
     })
-    .then(data => {
+    .then(async data => {
+        localStorage.setItem("token", data.token);
         const dados = decodeJWT(data.token);
 
-        localStorage.setItem("token", data.token);
-        localStorage.setItem("dados", JSON.stringify(dados));
+        const respostaUsuario = await fetch(
+            `https://bibliosesi.vercel.app/usuarios/buscar/${dados.id}`
+        );
+
+        if (!respostaUsuario.ok) {
+            throw new Error("Erro ao buscar os dados do usuário.");
+        }
+
+        const usuario = await respostaUsuario.json();
+        localStorage.setItem("usuario", JSON.stringify(usuario));
         window.location.href = "inicial.htm";
     })
     .catch(err => {
