@@ -1,3 +1,4 @@
+
 name: bibliosesi_mobile
 description: "Aplicativo mobile da Biblioteca Virtual BiblioSesi"
 publish_to: 'none'
@@ -12,11 +13,11 @@ dependencies:
     sdk: flutter
 
   cupertino_icons: ^1.0.8
+  http: ^1.6.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-
   flutter_lints: ^6.0.0
 
 flutter:
@@ -24,9 +25,3 @@ flutter:
 
   assets:
     - assets/img/
-    
-    dependencies:
-  flutter:
-    sdk: flutter
-  cupertino_icons: ^1.0.8
-  http: ^1.6.0
