@@ -1,8 +1,3 @@
-<<<<<<< HEAD
-# bibliosesi_mobile
-
-A new Flutter project.
-=======
 # Bibliosesi
 
 ## Descrição do projeto
