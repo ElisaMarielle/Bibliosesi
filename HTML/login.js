@@ -35,7 +35,7 @@ document.getElementById("bt-cadastrar").addEventListener("click", (event) => {
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify(nome, email)
+        body: JSON.stringify(novoUsuario)
     })
         .then(res => {
             if (!res.ok) {

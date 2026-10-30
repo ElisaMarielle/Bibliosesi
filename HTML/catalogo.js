@@ -16,7 +16,7 @@ const colecoes = [
     },
     {
         titulo: "Para baixinhos",
-        generos: ["literatura infantil"]
+        generos: ["literatura infantil", "literatura infantojuvenil"]
     },
     {
         titulo: "Para os dramáticos",
