@@ -25,37 +25,31 @@
     </header>
     <div class="overlay" id="overlay"></div>
     <div class="navegar">
-        <nav>
-            <ul>
-                <div class="nav-links">
-                    <i class="fa-solid fa-house"></i>
-                    <li><a href="inicial.htm">Início</a></li>
-                </div>
-                <div class="nav-links">
-                    <i class="fa-solid fa-circle-user"></i>
-                    <li><a href="perfil.htm">Perfil do Usuário</a></li>
-                </div>
-                <div class="nav-links">
-                    <i class="fa-solid fa-folder-open"></i>
-                    <li><a href="emprestimos.htm">Empréstimos</a></li>
-                </div>
-                <div class="nav-links">
-                    <i class="fa-solid fa-book"></i>
-                    <li><a href="catalogo.htm">Catálogo</a></li>
-                </div>
-                <div class="nav-links" id="link-administracao" style="display:none;">
-                    <i class="fa-solid fa-user-shield"></i>
-                    <li><a href="admin.htm">Administração</a></li>
-                </div>
-                <div class="bt-sair">
-                    <button onclick="logoff()">
-                        Sair
-                        <i class="fa-solid fa-right-to-bracket"></i>
-                    </button>
-                </div>
-            </ul>
-        </nav>
-    </div>
+    <nav style="height:100%; box-sizing:border-box; display:flex; flex-direction:column; overflow:hidden;">
+        <ul style="list-style:none; display:flex !important; flex-direction:column; justify-content:space-between; flex:1 1 auto; min-height:0; box-sizing:border-box; width:100%; margin:0; padding:0 16px 16px; overflow:hidden;">
+            <div class="nav-links" style="display:flex; align-items:center; gap:10px; padding:22px 10px; flex:0 0 auto; box-sizing:border-box;">
+                <i class="fa-solid fa-house"></i><li><a href="inicial.htm">Início</a></li>
+            </div>
+            <div class="nav-links" style="display:flex; align-items:center; gap:10px; padding:22px 10px; flex:0 0 auto; box-sizing:border-box;">
+                <i class="fa-solid fa-circle-user"></i><li><a href="perfil.htm">Perfil do Usuário</a></li>
+            </div>
+            <div class="nav-links" style="display:flex; align-items:center; gap:10px; padding:22px 10px; flex:0 0 auto; box-sizing:border-box;">
+                <i class="fa-solid fa-folder-open"></i><li><a href="emprestimos.htm">Empréstimos</a></li>
+            </div>
+            <div class="nav-links" style="display:flex; align-items:center; gap:10px; padding:22px 10px; flex:0 0 auto; box-sizing:border-box;">
+                <i class="fa-solid fa-book"></i><li><a href="catalogo.htm">Catálogo</a></li>
+            </div>
+            <div class="nav-links" id="link-administracao" style="display:flex !important; align-items:center; gap:10px; padding:22px 10px; flex:0 0 auto; box-sizing:border-box;">
+                <i class="fa-solid fa-user-shield"></i><li><a href="admin.htm">Administração</a></li>
+            </div>
+            <div class="bt-sair" style="display:flex; justify-content:flex-end; align-items:center; margin:0 !important; padding:16px 20px 8px; flex:0 0 auto; box-sizing:border-box;">
+                <button type="button" onclick="logoff()" style="margin:0 !important; margin-top:0 !important; padding:8px 0;">
+                    Sair <i class="fa-solid fa-right-to-bracket"></i>
+                </button>
+            </div>
+        </ul>
+    </nav>
+</div>
     <main>
         <div class="catalogo">
             <div class="container-wrapper">
