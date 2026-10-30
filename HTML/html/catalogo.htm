@@ -15,7 +15,7 @@
     <link rel="icon" href="../img/logo.png">
 </head>
 
-<body onload="autorizaCadastro">
+<body>
     <header>
         <div class="ordena">
             <img src="../img/logo.png" alt="bibliosesi logo">
@@ -169,5 +169,20 @@
     <script src="../script.js"></script>
     <script src="../catalogo.js"></script>
 </body>
+<script>
+    function verificarLogin() {
+        const token = localStorage.getItem("token");
 
+        if (!token) {
+            window.location.replace("login.htm");
+            return false;
+        }
+
+        return true;
+    }
+
+    if (!verificarLogin()) {
+        document.body.style.display = "none";
+    }
+</script>
 </html>

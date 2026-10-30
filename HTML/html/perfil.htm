@@ -91,6 +91,7 @@
             </div>
         </div>
         <span class="hr"></span>
+<<<<<<< HEAD
         <div class="aluno-det perfil-listas">
             <section class="lista-espera perfil-bloco">
                 <h2>Histórico de empréstimos</h2>
@@ -105,6 +106,25 @@
                 <div id="livros-favoritos" class="avisos"><p>Carregando...</p></div>
             </section>
             <section class="aluno-avisos perfil-bloco">
+=======
+        <div class="aluno-det">
+            <div class="lista-espera">
+                <div class="livro-espera">
+                    <div class="top">
+                        <div class="livro-img">
+                            <img src="../img/warning.png" alt="capa do livro">
+                        </div>
+                        <h3>Sociedade do Cansaço</h3>
+                    </div>
+                    <div class="bottom">
+                        <p>Sua posição: 2° lugar</p>
+                        <p>Previsão de entrega: <span>22/05/2026</span></p>
+                        <button onclick="retirarReserva()">Cancelar reserva</button>
+                    </div>
+                </div>
+            </div>
+            <div class="aluno-avisos">
+>>>>>>> 65745c25c877290578483d9e202f494cb93d0eea
                 <div class="title">
                     <img src="../img/warning.png" alt="Avisos" height="30" width="30">
                     <h2>Avisos</h2>
@@ -128,5 +148,20 @@
 </body>
 <script src="../perfil.js"></script>
 <script src="../script.js"></script>
+<script>
+    function verificarLogin() {
+        const token = localStorage.getItem("token");
 
+        if (!token) {
+            window.location.replace("login.htm");
+            return false;
+        }
+
+        return true;
+    }
+
+    if (!verificarLogin()) {
+        document.body.style.display = "none";
+    }
+</script>
 </html>

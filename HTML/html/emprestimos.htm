@@ -212,5 +212,20 @@
     <script src="../emp.js"></script>
 
 </body>
+<script>
+    function verificarLogin() {
+        const token = localStorage.getItem("token");
 
+        if (!token) {
+            window.location.replace("login.htm");
+            return false;
+        }
+
+        return true;
+    }
+
+    if (!verificarLogin()) {
+        document.body.style.display = "none";
+    }
+</script>
 </html>

@@ -36,9 +36,9 @@
     .catalogo form .div-search button{
         left: 75px;
     }
-    .catalogo-livros .livro{
+    /* .catalogo-livros .livro{
         justify-content: space-around;
-    }
+    } */
 }
 
 
@@ -75,19 +75,19 @@
     
 
     /* =======CATÁLOGO======= */
-    .catalogo-livros{
+    /* .catalogo-livros{
         display: grid !important;
         grid-template-columns: repeat(2, 1fr);
         grid-template-rows: auto;
         gap: 30px !important;
-    }
-    .catalogo-livros .livro{
+    } */
+    /* .catalogo-livros .livro{
         padding-bottom: 20px;
         border-bottom: 1px solid #7c7c7c;
     }
     .catalogo-livros hr{
         display: none;
-    }
+    } */
 }
     
 
@@ -120,13 +120,13 @@
     }
 
 
-    .catalogo-livros{
+    /* .catalogo-livros{
         display: grid !important;
         grid-template-columns: repeat(2, 1fr);
         grid-template-rows: auto;
         gap: 30px !important;
-    }
-    .catalogo-livros .livro{
+    } */
+    /* .catalogo-livros .livro{
         padding-bottom: 20px;
         border-bottom: 1px solid #7c7c7c;
     }
@@ -135,7 +135,7 @@
     }
     .catalogo-livros hr{
         display: none;
-    }
+    } */
 
 
     .emp-info{

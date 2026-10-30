@@ -1,9 +1,25 @@
-
 const usuario = JSON.parse(localStorage.getItem("usuario") || "null");
 
 const url = "https://bibliosesi.vercel.app/livros/";
 const urlEmprestimos = "https://bibliosesi.vercel.app/emprestimos/";
 const urlFeedbacks = "https://bibliosesi.vercel.app/feedbacks/";
+
+
+const colecoes = [
+    {
+        titulo: "Para se divertir depois de um longo dia",
+        livros: [10, 12, 17, 27, 29, 36, 48]
+    },
+    {
+        titulo: "Para baixinhos",
+        livros: [10, 15, 31, 43]
+    },
+    {
+        titulo: "O amor está no ar...",
+        livros: [11, 9, 14, 16, 23, 25, 26]
+    }
+];
+
 
 const btCadastrar = document.querySelector("#btCadastra");
 const btExcluir = document.querySelector("#bt-excluir");
@@ -80,81 +96,129 @@ function estaEmprestado(livro) {
     });
 }
 
-function carregarLivros() {
-    fetch(url + "listar")
-        .then(response => {
-            if (!response.ok) {
-                throw new Error("Erro ao buscar livros.");
-            }
 
-            return response.json();
-        })
-        .then(data => {
-            livrosCarregados = data;
-            lista.innerHTML = "";
 
-            data.forEach(item => {
-                const livro = document.createElement("div");
-                livro.className = "livro";
-                livro.dataset.id = item.id;
+function renderizarColecoes() {
+    lista.innerHTML = "";
 
-                const detalhes = document.createElement("div");
-                detalhes.className = "livros-detalhes";
+    colecoes.forEach(colecao => {
+        const secao = document.createElement("section");
+        secao.className = "secao-catalogo";
 
-                const titulo = document.createElement("h2");
-                titulo.textContent = item.titulo;
+        const titulo = document.createElement("h2");
+        titulo.className = "titulo-colecao";
+        titulo.textContent = colecao.titulo;
 
-                const sinopse = document.createElement("p");
-                sinopse.className = "sinopse";
-                sinopse.textContent = item.descricao;
+        const fileira = document.createElement("div");
+        fileira.className = "fileira-livros";
 
-                const status = document.createElement("p");
-                status.className = "status";
+        const livrosDaColecao = colecao.livros
+            .map(id => livrosCarregados.find(
+                livro => String(livro.id) === String(id)
+            ))
+            .filter(Boolean);
 
-                if (estaEmprestado(item)) {
-                    status.classList.add("emprestado");
-                    status.textContent = "Emprestado";
-                } else {
-                    status.classList.add("livre");
-                    status.textContent = "Livre";
-                }
-
-                const imagemDiv = document.createElement("div");
-                imagemDiv.className = "livros-imagem";
-
-                const imagem = document.createElement("img");
-                imagem.src = item.imagem;
-                imagem.alt = "Capa de " + item.titulo;
-
-                imagemDiv.appendChild(imagem);
-
-                const categoria = document.createElement("p");
-                categoria.className = "categoria";
-                categoria.hidden = true;
-                categoria.textContent = item.genero || "";
-
-                detalhes.appendChild(titulo);
-                detalhes.appendChild(sinopse);
-                detalhes.appendChild(status);
-
-                livro.appendChild(detalhes);
-                livro.appendChild(imagemDiv);
-                livro.appendChild(categoria);
-
-                lista.appendChild(livro);
-
-                livro.addEventListener("click", () => {
-                    abrirDetalhes(item);
-                });
-            });
-
-            aplicarFiltros();
-        })
-        .catch(error => {
-            console.error(error);
-            alert("Erro ao carregar os livros.");
+        livrosDaColecao.forEach(livro => {
+            fileira.appendChild(criarCardLivro(livro));
         });
+
+        if (livrosDaColecao.length > 0) {
+            secao.append(titulo, fileira);
+            lista.appendChild(secao);
+        } else {
+            console.warn(
+                `Nenhum livro encontrado para a coleção: ${colecao.titulo}`,
+                colecao.livros
+            );
+        }
+    });
 }
+
+
+function criarCardLivro(item) {
+    const livro = document.createElement("div");
+    livro.className = "livro";
+    livro.dataset.id = item.id;
+
+    const detalhes = document.createElement("div");
+    detalhes.className = "livros-detalhes";
+    
+    const sinopse = document.createElement("p");
+    sinopse.className = "sinopse";
+    sinopse.textContent = item.descricao || "";
+
+    const status = document.createElement("p");
+    status.className = "status";
+    
+    const titulo = document.createElement("h2");
+    titulo.textContent = item.titulo;
+
+    if (estaEmprestado(item)) {
+        status.classList.add("emprestado");
+        status.textContent = "Emprestado";
+    } else {
+        status.classList.add("livre");
+        status.textContent = "Livre";
+    }
+
+    const imagemDiv = document.createElement("div");
+    imagemDiv.className = "livros-imagem";
+
+    const imagem = document.createElement("img");
+    imagem.src = item.imagem;
+    imagem.alt = "Capa de " + item.titulo;
+
+    imagemDiv.appendChild(imagem);
+
+    // detalhes.append(titulo, sinopse, status);
+
+    livro.append(imagemDiv, titulo, status);
+
+    livro.addEventListener("click", () => {
+        abrirDetalhes(item);
+    });
+
+    return livro;
+}
+
+
+async function carregarLivros() {
+    const token = localStorage.getItem("token");
+
+    try {
+        const response = await fetch(url + "listar", {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        });
+
+        if (!response.ok) {
+            throw new Error(
+                `Erro HTTP ${response.status} ao buscar livros.`
+            );
+        }
+
+        const data = await response.json();
+
+        if (!Array.isArray(data)) {
+            console.error("Resposta recebida da API:", data);
+            throw new Error("A API não retornou uma lista de livros.");
+        }
+
+        livrosCarregados = data;
+
+        console.log("Livros carregados:", livrosCarregados);
+        console.log("Coleções configuradas:", colecoes);
+
+        renderizarColecoes();
+        aplicarFiltros();
+
+    } catch (error) {
+        console.error("Erro ao carregar os livros:", error);
+        alert("Erro ao carregar os livros. Confira o console (F12).");
+    }
+}
+
 
 function abrirDetalhes(livro) {
     livroSelecionado = livro;
@@ -222,7 +286,16 @@ async function carregarFeedbacks(livroId) {
     contagem.textContent = "";
 
     try {
-        const resposta = await fetch(`${urlFeedbacks}listar?livroId=${encodeURIComponent(livroId)}`);
+        const token = localStorage.getItem("token");
+
+        const resposta = await fetch(
+            `${urlFeedbacks}listar?livroId=${encodeURIComponent(livroId)}`,
+            {
+                headers: {
+                    "Authorization": `Bearer ${token}`
+                }
+            }
+        );
         const dados = await resposta.json();
         if (!resposta.ok) throw new Error(dados.mensagem || "Não foi possível carregar os feedbacks.");
         if (Number(livroSelecionado?.id) !== Number(livroId)) return;
@@ -478,50 +551,75 @@ btExcluir.addEventListener("click", function () {
         });
 });
 
+
 function aplicarFiltros() {
-    const termo = pesquisa.value.trim().toLocaleLowerCase("pt-BR");
-    const categoriaSelecionada = filtro.value;
+    const termo = pesquisa.value
+        .trim()
+        .toLocaleLowerCase("pt-BR");
+
+    const categoriaSelecionada = filtro.value
+        .toLocaleLowerCase("pt-BR");
+
     const favoritos = obterFavoritos();
 
-    document.querySelectorAll(".livro").forEach(elemento => {
-        const id = String(elemento.dataset.id);
-        const livro = livrosCarregados.find(
-            item => String(item.id) === id
-        );
+    document.querySelectorAll(".secao-catalogo").forEach(secao => {
+        const generoSecao = secao.dataset.genero;
 
-        if (!livro) {
-            elemento.style.display = "none";
-            return;
-        }
+        const livros = secao.querySelectorAll(".livro");
 
-        const textoLivro = [
-            livro.titulo,
-            livro.descricao,
-            livro.autor,
-            livro.publicacao,
-            livro.genero
-        ].join(" ").toLocaleLowerCase("pt-BR");
+        livros.forEach(elemento => {
+            const id = String(elemento.dataset.id);
 
-        const correspondePesquisa = textoLivro.includes(termo);
-
-        const generos = (livro.genero || "")
-            .split(",")
-            .map(g => g.trim().toLocaleLowerCase("pt-BR"));
-
-        const correspondeCategoria =
-            categoriaSelecionada === "todos" ||
-            (
-                categoriaSelecionada === "favoritados"
-                    ? favoritos.includes(id)
-                    : generos.includes(
-                        categoriaSelecionada.toLocaleLowerCase("pt-BR")
-                    )
+            const livro = livrosCarregados.find(
+                item => String(item.id) === id
             );
 
-        elemento.style.display =
-            correspondePesquisa && correspondeCategoria ? "flex" : "none";
+            if (!livro) {
+                elemento.style.display = "none";
+                return;
+            }
+
+            const textoLivro = [
+                livro.titulo,
+                livro.descricao,
+                livro.autor,
+                livro.publicacao,
+                livro.genero
+            ]
+                .join(" ")
+                .toLocaleLowerCase("pt-BR");
+
+            const correspondePesquisa =
+                textoLivro.includes(termo);
+
+            const generosLivro = (livro.genero || "")
+                .split(",")
+                .map(g => g.trim().toLocaleLowerCase("pt-BR"));
+
+            const correspondeCategoria =
+                categoriaSelecionada === "todos" ||
+                (
+                    categoriaSelecionada === "favoritados"
+                        ? favoritos.includes(id)
+                        : generoSecao === categoriaSelecionada &&
+                          generosLivro.includes(categoriaSelecionada)
+                );
+
+            elemento.style.display =
+                correspondePesquisa && correspondeCategoria
+                    ? "flex"
+                    : "none";
+        });
+
+        // Esconde as seções sem nenhum livro visível
+        const temLivrosVisiveis = [...livros].some(
+            livro => livro.style.display !== "none"
+        );
+
+        secao.style.display = temLivrosVisiveis ? "" : "none";
     });
 }
+
 
 pesquisa.addEventListener("input", aplicarFiltros);
 filtro.addEventListener("change", aplicarFiltros);

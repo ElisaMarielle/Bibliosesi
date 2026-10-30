@@ -40,7 +40,17 @@ async function carregarEmprestimo() {
 
     try {
         if (id) {
+<<<<<<< HEAD
             const resposta = await fetch(`${urlEmprestimos}buscar/${id}`, { headers: { "Authorization": "Bearer " + (localStorage.getItem("token") || "") } });
+=======
+            const token = localStorage.getItem("token");
+
+            const resposta = await fetch(`${urlEmprestimos}buscar/${id}`, {
+                headers: {
+                    "Authorization": `Bearer ${token}`
+                }
+            });
+>>>>>>> 65745c25c877290578483d9e202f494cb93d0eea
             const texto = await resposta.text();
 
             let emprestimo;
@@ -76,9 +86,19 @@ async function carregarEmprestimo() {
             return;
         }
 
+        const token = localStorage.getItem("token");
+
         const resposta = await fetch(
             `${urlEmprestimos}listar/usuario/${usuario.id}`,
+<<<<<<< HEAD
             { headers: { "Authorization": "Bearer " + (localStorage.getItem("token") || "") } }
+=======
+            {
+                headers: {
+                    "Authorization": `Bearer ${token}`
+                }
+            }
+>>>>>>> 65745c25c877290578483d9e202f494cb93d0eea
         );
 
         const texto = await resposta.text();
@@ -402,7 +422,11 @@ async function marcarEntregue() {
                 method: "PUT",
                 headers: {
                     "Content-Type": "application/json",
+<<<<<<< HEAD
                     "Authorization": "Bearer " + (localStorage.getItem("token") || "")
+=======
+                    "Authorization": `Bearer ${localStorage.getItem("token")}`
+>>>>>>> 65745c25c877290578483d9e202f494cb93d0eea
                 },
                 body: JSON.stringify({ devolvido: true })
             }
@@ -464,7 +488,7 @@ async function comentario() {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
-                "Authorization": "Bearer " + (localStorage.getItem("token") || "")
+                "Authorization": `Bearer ${localStorage.getItem("token")}`
             },
             body: JSON.stringify({
                 usuarioId: Number(usuario.id),
