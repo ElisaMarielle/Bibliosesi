@@ -250,3 +250,12 @@ main.perfil{
     padding: 6px 12px;
     font-family: lexend;
 }
+/* Listas reais do perfil */
+.perfil-listas{grid-template-columns:repeat(2,minmax(0,1fr));align-items:stretch}
+.perfil-bloco{min-width:0;max-height:440px;overflow:auto}
+.perfil-bloco h2{font:600 20px sora;color:#fff;margin-bottom:15px}
+.perfil-bloco .avisos{font-size:14px}
+.perfil-bloco .avisos p,.perfil-bloco .avisos li{background:#fff;color:#383333;border-radius:10px;padding:12px;margin:7px 0;list-style:none}
+.perfil-listas .aluno-avisos .title{margin-bottom:18px}
+.perfil-listas .aluno-avisos .title h2{color:#7c2e2e;margin:0}
+@media(max-width:900px){.perfil-listas{grid-template-columns:1fr}.aluno-det{padding:1.5rem}}

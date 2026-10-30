@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Administração | Bibliosesi</title>
+    <link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="../css/responsivos.css">
+    <link rel="stylesheet" href="../css/admin.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=Lexend:wght@400;500;600;700&family=Sora:wght@400;500;600;700&display=swap');
+    </style>
+    <link rel="icon" href="../img/logo.png">
+</head>
+
+<body>
+    <header>
+        <div class="ordena"><img src="../img/logo.png" alt="Bibliosesi">
+            <h1>Biblioteca Virtual</h1><i class="fa-solid fa-bars bt-menu"></i>
+        </div>
+    </header>
+    <div class="overlay" id="overlay"></div>
+    <div class="navegar">
+        <nav>
+            <ul>
+                <div class="nav-links"><i class="fa-solid fa-house"></i>
+                    <li><a href="inicial.htm">Início</a></li>
+                </div>
+                <div class="nav-links"><i class="fa-solid fa-circle-user"></i>
+                    <li><a href="perfil.htm">Perfil do Usuário</a></li>
+                </div>
+                <div class="nav-links"><i class="fa-solid fa-folder-open"></i>
+                    <li><a href="emprestimos.htm">Empréstimos</a></li>
+                </div>
+                <div class="nav-links"><i class="fa-solid fa-book"></i>
+                    <li><a href="catalogo.htm">Catálogo</a></li>
+                </div>
+                <div class="nav-links"><i class="fa-solid fa-user-shield"></i>
+                    <li><a href="admin.htm">Administração</a></li>
+                </div>
+                <div class="bt-sair"><button onclick="logoff()">Sair <i
+                            class="fa-solid fa-right-to-bracket"></i></button></div>
+            </ul>
+        </nav>
+    </div>
+    <main class="admin-main">
+        <div class="admin-heading">
+            <div>
+                <p>PAINEL RESTRITO</p>
+                <h2>Gerenciamento da biblioteca</h2><span>Controle de empréstimos, prazos e usuários.</span>
+            </div><button id="atualizar"><i class="fa-solid fa-rotate"></i> Atualizar</button>
+        </div>
+        <section class="admin-resumo">
+            <article><span>Empréstimos ativos</span><strong id="total-ativos">0</strong></article>
+            <article><span>Em atraso</span><strong id="total-atrasados">0</strong></article>
+            <article><span>Usuários cadastrados</span><strong id="total-usuarios">0</strong></article>
+        </section>
+        <section class="admin-section">
+            <div class="admin-section-title">
+                <h3><i class="fa-solid fa-book-open"></i> Empréstimos</h3><input id="busca-emprestimo"
+                    placeholder="Buscar por livro, aluno ou RM...">
+            </div>
+            <div class="admin-table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Livro</th>
+                            <th>Usuário</th>
+                            <th>Retirada</th>
+                            <th>Devolução prevista</th>
+                            <th>Situação</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tabela-emprestimos">
+                        <tr>
+                            <td colspan="6">Carregando...</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+        <section class="admin-section">
+            <div class="admin-section-title">
+                <h3><i class="fa-solid fa-users"></i> Usuários</h3><input id="busca-usuario"
+                    placeholder="Buscar por nome, e-mail ou RM...">
+            </div>
+            <div class="admin-table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Nome</th>
+                            <th>E-mail</th>
+                            <th>RM</th>
+                            <th>Perfil</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tabela-usuarios">
+                        <tr>
+                            <td colspan="5">Carregando...</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+    <script src="../script.js"></script>
+    <script src="../admin.js"></script>
+</body>
+
+</html>

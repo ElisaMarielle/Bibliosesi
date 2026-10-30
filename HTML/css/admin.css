@@ -1,0 +1,211 @@
+/* Configurações gerais */
+* {
+    box-sizing: border-box;
+}
+
+/* Layout principal */
+.admin-main {
+    max-width: 1500px;
+    margin: 5rem auto 3rem;
+    padding: 0 4rem;
+    font-family: Inter, sans-serif;
+    color: #292526;
+}
+
+/* Cabeçalho */
+.admin-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.admin-heading p {
+    font-size: 12px;
+    letter-spacing: 2px;
+    color: #7c2e2e;
+    font-weight: 700;
+}
+
+.admin-heading h2 {
+    font: 600 28px Sora;
+    margin: 8px 0;
+}
+
+.admin-heading span {
+    color: #777;
+}
+
+.admin-heading button,
+.admin-table button {
+    border: 0;
+    border-radius: 9px;
+    background: #7c2e2e;
+    color: #fff;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-family: Lexend;
+}
+
+/* Resumo administrativo */
+.admin-resumo {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+    margin-bottom: 25px;
+}
+
+.admin-resumo article {
+    background: #ece6e6;
+    border-radius: 15px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.admin-resumo span {
+    color: #6d6262;
+}
+
+.admin-resumo strong {
+    font: 600 30px Sora;
+    color: #7c2e2e;
+}
+
+/* Seções */
+.admin-section {
+    background: #fff;
+    border-radius: 16px;
+    padding: 22px;
+    margin: 20px 0;
+    box-shadow: 0 2px 12px #0000000a;
+}
+
+/* Títulos das seções */
+.admin-section-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 18px;
+}
+
+.admin-section-title h3 {
+    font: 600 19px Sora;
+    color: #7c2e2e;
+}
+
+.admin-section-title input {
+    width: min(360px, 100%);
+    padding: 10px 12px;
+    border: 1px solid #ddd;
+    border-radius: 9px;
+    font: 14px Inter;
+}
+
+/* Tabelas */
+.admin-table-wrap {
+    overflow-x: auto;
+}
+
+.admin-table table,
+table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 760px;
+}
+
+th,
+td {
+    text-align: left;
+    padding: 13px 12px;
+    border-bottom: 1px solid #eee;
+    font-size: 13px;
+}
+
+th {
+    color: #766b6b;
+    background: #faf8f8;
+    font-weight: 600;
+}
+
+td {
+    color: #383333;
+}
+
+/* Botões das tabelas */
+.admin-table button,
+.admin-section td button {
+    font-size: 12px;
+    padding: 7px 10px;
+    margin: 2px;
+}
+
+.admin-section td button.secundario {
+    background: #ece6e6;
+    color: #6b2929;
+}
+
+/* Indicadores de status */
+.status-pill {
+    display: inline-block;
+    padding: 5px 9px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 600;
+    background: #e8f2e8;
+    color: #28632c;
+}
+
+.status-pill.atrasado {
+    background: #fae7e7;
+    color: #9a2828;
+}
+
+.status-pill.devolvido {
+    background: #eee;
+    color: #666;
+}
+
+/* Outros elementos */
+.acoes {
+    white-space: nowrap;
+}
+
+.vazio {
+    text-align: center;
+    color: #888;
+    padding: 25px;
+}
+
+/* Responsividade */
+@media (max-width: 800px) {
+    .admin-main {
+        padding: 0 18px;
+        margin-top: 3rem;
+    }
+
+    .admin-heading {
+        align-items: flex-start;
+        gap: 15px;
+        flex-direction: column;
+    }
+
+    .admin-resumo {
+        grid-template-columns: 1fr;
+    }
+
+    .admin-section {
+        padding: 15px;
+    }
+
+    .admin-section-title {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .admin-section-title input {
+        width: 100%;
+    }
+}

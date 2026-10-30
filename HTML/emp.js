@@ -40,7 +40,7 @@ async function carregarEmprestimo() {
 
     try {
         if (id) {
-            const resposta = await fetch(`${urlEmprestimos}buscar/${id}`);
+            const resposta = await fetch(`${urlEmprestimos}buscar/${id}`, { headers: { "Authorization": "Bearer " + (localStorage.getItem("token") || "") } });
             const texto = await resposta.text();
 
             let emprestimo;
@@ -77,7 +77,8 @@ async function carregarEmprestimo() {
         }
 
         const resposta = await fetch(
-            `${urlEmprestimos}listar/usuario/${usuario.id}`
+            `${urlEmprestimos}listar/usuario/${usuario.id}`,
+            { headers: { "Authorization": "Bearer " + (localStorage.getItem("token") || "") } }
         );
 
         const texto = await resposta.text();
@@ -96,6 +97,7 @@ async function carregarEmprestimo() {
             );
         }
 
+        emprestimos = Array.isArray(emprestimos) ? emprestimos.filter(item => !item.devolvido) : [];
         if (!Array.isArray(emprestimos) || emprestimos.length === 0) {
             mostrarSemEmprestimo();
             return;
@@ -247,6 +249,9 @@ function selecionarEmprestimo(emprestimo) {
             : "";
     }
 
+    const prazoInfo = document.querySelector(".det-right .prazo-emprestimo");
+    if (prazoInfo) prazoInfo.textContent = `Devolver até: ${new Date(emprestimo.data_devolucao).toLocaleDateString("pt-BR")}`;
+
     limparAvaliacao();
 
     const cards = document.querySelectorAll(".emp-livro");
@@ -396,11 +401,10 @@ async function marcarEntregue() {
             {
                 method: "PUT",
                 headers: {
-                    "Content-Type": "application/json"
+                    "Content-Type": "application/json",
+                    "Authorization": "Bearer " + (localStorage.getItem("token") || "")
                 },
-                body: JSON.stringify({
-                    data_devolucao: new Date().toISOString()
-                })
+                body: JSON.stringify({ devolvido: true })
             }
         );
 

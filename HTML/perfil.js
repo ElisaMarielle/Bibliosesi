@@ -1,158 +1,141 @@
+const API = "https://bibliosesi.vercel.app";
+const usuario = JSON.parse(localStorage.getItem("usuario") || "null");
+const token = localStorage.getItem("token") || "";
+const headersAuth = { "Authorization": "Bearer " + token };
 
-/* ======================= FOTO DE PERFIL ======================= */
-
-const modalFoto = document.querySelector(".mudar-foto");
-
-function mudarFoto() {
-    modalFoto.style.display = "flex";
-}
-
-function cancelar() {
-    modalFoto.style.display = "none";
-}
+function mudarFoto() { document.querySelector(".mudar-foto").style.display = "flex"; }
+function cancelar() { document.querySelector(".mudar-foto").style.display = "none"; }
 
 async function salvarFoto() {
-    const input = document.querySelector("#foto");
-    const arquivo = input.files[0];
-
-    if (!arquivo) {
-        alert("Selecione uma imagem primeiro.");
-        return;
-    }
-
-    const tiposPermitidos = ["image/png", "image/jpeg", "image/webp"];
-    if (!tiposPermitidos.includes(arquivo.type)) {
-        alert("Selecione uma imagem PNG, JPG ou WEBP.");
-        return;
-    }
-
-    const usuarioAtual = JSON.parse(localStorage.getItem("usuario") || "null");
-    if (!usuarioAtual || !usuarioAtual.id) {
-        alert("Faça login novamente para salvar sua foto.");
-        return;
-    }
-
+    const arquivo = document.querySelector("#foto").files[0];
+    if (!arquivo) return alert("Selecione uma imagem primeiro.");
+    if (!["image/png", "image/jpeg", "image/webp"].includes(arquivo.type)) return alert("Selecione uma imagem PNG, JPG ou WEBP.");
+    if (!usuario?.id) return alert("Faça login novamente.");
     try {
-        // Redimensiona a foto para reduzir o tamanho armazenado no banco.
-        const fotoBase64 = await new Promise((resolve, reject) => {
+        const foto = await new Promise((resolve, reject) => {
             const reader = new FileReader();
             reader.onerror = () => reject(new Error("Não foi possível ler a imagem."));
             reader.onload = () => {
-                const imagem = new Image();
-                imagem.onerror = () => reject(new Error("Arquivo de imagem inválido."));
-                imagem.onload = () => {
-                    const maxLado = 500;
-                    const escala = Math.min(1, maxLado / Math.max(imagem.width, imagem.height));
+                const img = new Image();
+                img.onerror = () => reject(new Error("Imagem inválida."));
+                img.onload = () => {
+                    const escala = Math.min(1, 500 / Math.max(img.width, img.height));
                     const canvas = document.createElement("canvas");
-                    canvas.width = Math.max(1, Math.round(imagem.width * escala));
-                    canvas.height = Math.max(1, Math.round(imagem.height * escala));
-                    const contexto = canvas.getContext("2d");
-                    contexto.drawImage(imagem, 0, 0, canvas.width, canvas.height);
+                    canvas.width = Math.max(1, Math.round(img.width * escala));
+                    canvas.height = Math.max(1, Math.round(img.height * escala));
+                    canvas.getContext("2d").drawImage(img, 0, 0, canvas.width, canvas.height);
                     resolve(canvas.toDataURL("image/jpeg", 0.78));
                 };
-                imagem.src = reader.result;
+                img.src = reader.result;
             };
             reader.readAsDataURL(arquivo);
         });
-
-        const resposta = await fetch(`https://bibliosesi.vercel.app/usuarios/atualizar/${usuarioAtual.id}`, {
-            method: "PUT",
-            headers: {
-                "Content-Type": "application/json",
-                "Authorization": "Bearer " + (localStorage.getItem("token") || "")
-            },
-            body: JSON.stringify({ fotoPerfil: fotoBase64 })
+        const r = await fetch(`${API}/usuarios/atualizar/${usuario.id}`, {
+            method: "PUT", headers: { ...headersAuth, "Content-Type": "application/json" },
+            body: JSON.stringify({ fotoPerfil: foto })
         });
-        const resultado = await resposta.json().catch(() => ({}));
-        if (!resposta.ok) {
-            throw new Error(resultado.mensagem || "Não foi possível salvar a foto no servidor.");
-        }
-
-        const usuarioAtualizado = { ...usuarioAtual, ...resultado, fotoPerfil: fotoBase64 };
-        localStorage.setItem("usuario", JSON.stringify(usuarioAtualizado));
-        localStorage.setItem("fotoPerfil", fotoBase64);
-        document.querySelector("#foto-perfil").src = fotoBase64;
-        modalFoto.style.display = "none";
-        alert("Foto de perfil salva. Ela aparecerá nos seus feedbacks para todos os usuários.");
-    } catch (erro) {
-        console.error("Erro ao salvar foto:", erro);
-        alert(erro.message || "Não foi possível salvar a foto.");
-    }
+        const data = await r.json();
+        if (!r.ok) throw new Error(data.mensagem || "Não foi possível salvar a foto.");
+        const atualizado = { ...usuario, ...data };
+        localStorage.setItem("usuario", JSON.stringify(atualizado));
+        document.querySelector("#foto-perfil").src = foto;
+        document.querySelector(".mudar-foto").style.display = "none";
+        alert("Foto de perfil atualizada!");
+    } catch (e) { alert(e.message); }
 }
 
-/* ======================= INFORMAÇÕES DO USUÁRIO ======================= */
-
-const usuario = JSON.parse(
-    localStorage.getItem("usuario") || "null"
-);
-
-if (usuario) {
-    document.getElementById("nome").textContent = usuario.nome || "";
-    document.getElementById("rm").textContent = usuario.rm || "";
-    document.getElementById("email").textContent = usuario.email || "";
+function formatarData(valor) {
+    if (!valor) return "—";
+    return new Date(valor).toLocaleDateString("pt-BR");
+}
+function criarLinha(texto, classe = "") {
+    const li = document.createElement("li");
+    li.textContent = texto;
+    if (classe) li.className = classe;
+    return li;
 }
 
-/* ======================= FOTO SALVA ======================= */
-
-function carregarFoto() {
-    const fotoSalva = (usuario && usuario.fotoPerfil) || localStorage.getItem("fotoPerfil");
-
-    if (fotoSalva) {
-        document.querySelector("#foto-perfil").src = fotoSalva;
-    }
-}
-
-/* ======================= LIVROS FAVORITADOS ======================= */
-
-function atualizarQuantidadeFavoritos() {
-    const contador = document.getElementById("favoritos-count");
-
-    if (!contador) {
+async function carregarPerfil() {
+    if (!usuario?.id || !token) {
+        alert("Faça login novamente.");
+        location.href = "login.htm";
         return;
     }
-
-    if (!usuario || !usuario.id) {
-        contador.textContent = "0";
-        return;
-    }
-
-    const chaveFavoritos = `livrosFavoritados_${usuario.id}`;
+    document.querySelector("#nome").textContent = usuario.nome || "";
+    document.querySelector("#rm").textContent = usuario.rm ? `RM: ${usuario.rm}` : "";
+    document.querySelector("#email").textContent = usuario.email || "";
+    if (usuario.fotoPerfil) document.querySelector("#foto-perfil").src = usuario.fotoPerfil;
+    if (usuario.funcao === "ADM") document.querySelector("#link-administracao").style.display = "flex";
 
     let favoritos = [];
-
     try {
-        favoritos = JSON.parse(
-            localStorage.getItem(chaveFavoritos) || "[]"
-        );
+        const salvos = JSON.parse(localStorage.getItem(`livrosFavoritados_${usuario.id}`) || "[]");
+        favoritos = Array.isArray(salvos) ? salvos : [];
+    } catch (_) { favoritos = []; }
+    document.querySelector("#favoritos-count").textContent = new Set(favoritos.map(String)).size;
 
-        if (!Array.isArray(favoritos)) {
-            favoritos = [];
+    const historico = document.querySelector("#historico-emprestimos");
+    const posse = document.querySelector("#livros-em-posse");
+    const favoritosLista = document.querySelector("#livros-favoritos");
+    const avisos = document.querySelector("#lista-avisos");
+    try {
+        const r = await fetch(`${API}/emprestimos/listar/usuario/${usuario.id}`, { headers: headersAuth });
+        const dados = await r.json();
+        if (!r.ok) throw new Error(dados.mensagem || "Não foi possível carregar seus empréstimos.");
+        const emprestimos = Array.isArray(dados) ? dados : [];
+        const ativos = emprestimos.filter(e => !e.devolvido);
+        document.querySelector("#emprestados-count").textContent = emprestimos.length;
+        document.querySelector("#posse-count").textContent = ativos.length;
+
+        historico.innerHTML = "";
+        if (!emprestimos.length) historico.appendChild(criarLinha("Você ainda não realizou empréstimos."));
+        posse.innerHTML = "";
+        if (!ativos.length) posse.appendChild(criarLinha("Você não tem livros em posse no momento."));
+        ativos.forEach(e => {
+            const p = document.createElement("p");
+            p.textContent = `${e.livro?.titulo || "Livro"} — Devolver até ${formatarData(e.data_devolucao)}`;
+            posse.appendChild(p);
+        });
+
+        emprestimos.forEach(e => {
+            const livro = e.livro?.titulo || "Livro";
+            const status = e.devolvido ? "Devolvido" : (new Date(e.data_devolucao) < new Date() ? "Atrasado" : "Em posse");
+            const p = document.createElement("p");
+            p.textContent = `${livro} — Retirada: ${formatarData(e.data_emprestimo)} — Prazo: ${formatarData(e.data_devolucao)} — ${status}`;
+            historico.appendChild(p);
+        });
+
+        favoritosLista.innerHTML = "";
+        const idsFavoritos = [...new Set(favoritos.map(String))];
+        if (!idsFavoritos.length) favoritosLista.appendChild(criarLinha("Você ainda não favoritou livros."));
+        else {
+            const livrosResposta = await fetch(`${API}/livros/listar`);
+            const livros = await livrosResposta.json();
+            if (!livrosResposta.ok) throw new Error("Não foi possível carregar seus favoritos.");
+            idsFavoritos.forEach(id => {
+                const livro = livros.find(l => String(l.id) === id);
+                if (livro) favoritosLista.appendChild(criarLinha(livro.titulo));
+            });
         }
-    } catch (error) {
-        favoritos = [];
-    }
 
-    contador.textContent = new Set(
-        favoritos.map(String)
-    ).size;
+        avisos.innerHTML = "";
+        const hoje = new Date(); hoje.setHours(0,0,0,0);
+        const pendentes = ativos.map(e => {
+            const prazo = new Date(e.data_devolucao); prazo.setHours(0,0,0,0);
+            return { e, dias: Math.ceil((prazo - hoje) / 86400000) };
+        }).filter(x => x.dias <= 3);
+        if (!pendentes.length) avisos.appendChild(criarLinha("Você não tem empréstimos próximos do vencimento."));
+        pendentes.forEach(({e,dias}) => {
+            const titulo = e.livro?.titulo || "Livro";
+            avisos.appendChild(criarLinha(dias < 0
+                ? `⚠ "${titulo}" está atrasado há ${Math.abs(dias)} dia(s).`
+                : dias === 0 ? `⚠ "${titulo}" vence hoje.`
+                : ` "${titulo}" vence em ${dias} dia(s).`));
+        });
+    } catch (e) {
+        historico.textContent = e.message;
+        avisos.textContent = "Não foi possível carregar os avisos.";
+    }
 }
 
-/* ======================= INICIALIZAÇÃO ======================= */
-
-document.addEventListener("DOMContentLoaded", function () {
-    carregarFoto();
-    atualizarQuantidadeFavoritos();
-});
-
-window.addEventListener("storage", function (evento) {
-    if (
-        usuario &&
-        evento.key === `livrosFavoritados_${usuario.id}`
-    ) {
-        atualizarQuantidadeFavoritos();
-    }
-});
-
-window.addEventListener("favoritosAtualizados", function () {
-    atualizarQuantidadeFavoritos();
-});
+document.addEventListener("DOMContentLoaded", carregarPerfil);

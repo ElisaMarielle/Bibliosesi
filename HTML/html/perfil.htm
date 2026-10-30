@@ -43,6 +43,10 @@
                     <i class="fa-solid fa-book"></i>
                     <li><a href="catalogo.htm">Catálogo</li></a>
                 </div>
+                <div class="nav-links" id="link-administracao" style="display:none;">
+                    <i class="fa-solid fa-user-shield"></i>
+                    <li><a href="admin.htm">Administração</a></li>
+                </div>
                 <div class="bt-sair">
                     <button onclick="logoff()">Sair <i class="fa-solid fa-right-to-bracket"></i></button>
                 </div>
@@ -77,44 +81,36 @@
 
                     <div class="stats">
                         <h3>Livros emprestados</h3>
-                        <span><i class="fa-solid fa-book"></i>0</span>
+                        <span><i class="fa-solid fa-book"></i><span id="emprestados-count">0</span></span>
                     </div>
                     <div class="stats">
                         <h3>Livros em posse</h3>
-                        <span><i class="fa-solid fa-hand"></i>0</span>
+                        <span><i class="fa-solid fa-hand"></i><span id="posse-count">0</span></span>
                     </div>
                 </div>
             </div>
         </div>
         <span class="hr"></span>
-        <div class="aluno-det">
-            <div class="lista-espera">
-                <div class="livro-espera">
-                    <div class="top">
-                        <div class="livro-img">
-                            <img src="../img/jgvrz.jpg" alt="capa do livro">
-                        </div>
-                        <h3>Sociedade do Cansaço</h3>
-                    </div>
-                    <div class="bottom">
-                        <p>Sua posição: 2° lugar</p>
-                        <p>Previsão de entrega: <span>22/05/2026</span></p>
-                        <button onclick="retirarReserva()">Cancelar reserva</button>
-                    </div>
-                </div>
-            </div>
-            <div class="aluno-avisos">
+        <div class="aluno-det perfil-listas">
+            <section class="lista-espera perfil-bloco">
+                <h2>Histórico de empréstimos</h2>
+                <div id="historico-emprestimos" class="avisos"><p>Carregando...</p></div>
+            </section>
+            <section class="lista-espera perfil-bloco">
+                <h2>Livros em posse</h2>
+                <div id="livros-em-posse" class="avisos"><p>Carregando...</p></div>
+            </section>
+            <section class="lista-espera perfil-bloco">
+                <h2>Livros favoritados</h2>
+                <div id="livros-favoritos" class="avisos"><p>Carregando...</p></div>
+            </section>
+            <section class="aluno-avisos perfil-bloco">
                 <div class="title">
-                    <img src="../img/warning.png" alt="warn" height="30px" width="30px">
+                    <img src="../img/warning.png" alt="Avisos" height="30" width="30">
                     <h2>Avisos</h2>
                 </div>
-                <div class="avisos">
-                    <ul>
-                        <li>O livro "crepúsculo" está perto do vencimento (1 dia...)</li>
-                        <li>O livro "Naruto vol.2" está perto do vencimento (5 dias...)</li>
-                    </ul>
-                </div>
-            </div>
+                <div class="avisos"><ul id="lista-avisos"><li>Carregando...</li></ul></div>
+            </section>
         </div>
     </main>
 

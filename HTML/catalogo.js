@@ -75,10 +75,8 @@ function estaEmprestado(livro) {
         return false;
     }
 
-    const agora = new Date();
-
     return livro.emprestimos.some(emprestimo => {
-        return new Date(emprestimo.data_devolucao) > agora;
+        return emprestimo.devolvido !== true;
     });
 }
 
@@ -400,16 +398,9 @@ document.querySelector("#bt-emp").addEventListener("click", async function () {
     this.textContent = "Emprestando...";
 
     try {
-        const dataEmprestimo = new Date();
-        const dataDevolucao = new Date(dataEmprestimo);
-
-        dataDevolucao.setDate(dataDevolucao.getDate() + 7);
-
         const novoEmprestimo = {
             usuarioId: idUsuario,
-            livroId: idLivro,
-            data_emprestimo: dataEmprestimo.toISOString(),
-            data_devolucao: dataDevolucao.toISOString()
+            livroId: idLivro
         };
 
         const response = await fetch(urlEmprestimos + "cadastrar", {
