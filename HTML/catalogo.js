@@ -11,13 +11,29 @@ const colecoes = [
         generos: ["comédia", "aventura"]
     },
     {
+        titulo: "Do Brasil aos brasileiros",
+        generos: ["literatura brasileira"]
+    },
+    {
         titulo: "Para baixinhos",
         generos: ["literatura infantil"]
     },
     {
-        titulo: "O amor está no ar...",
-        generos: ["romance"]
-    }
+        titulo: "Para os dramáticos",
+        generos: ["drama"]
+    },
+    {
+        titulo: "Para se arrepiar",
+        generos: ["terror", "horror", "suspense", "thriller psicológico"]
+    },
+    {
+        titulo: "Histórias curtas",
+        generos: ["contos", "conto"]
+    },
+    {
+        titulo: "Do dia a dia para a história",
+        generos: ["crônica"]
+    },
 ];
 
 function normalizarTexto(texto) {
@@ -110,7 +126,6 @@ function estaEmprestado(livro) {
 }
 
 
-
 function renderizarColecoes() {
     lista.innerHTML = "";
 
@@ -121,6 +136,10 @@ function renderizarColecoes() {
         const titulo = document.createElement("h2");
         titulo.className = "titulo-colecao";
         titulo.textContent = colecao.titulo;
+
+        // Área que envolve a fileira e os botões
+        const wrapper = document.createElement("div");
+        wrapper.className = "wrapper-fileira";
 
         const fileira = document.createElement("div");
         fileira.className = "fileira-livros";
@@ -138,10 +157,76 @@ function renderizarColecoes() {
         });
 
         if (livrosDaColecao.length > 0) {
-            secao.append(titulo, fileira);
+            // Botão para voltar
+            const voltar = document.createElement("button");
+            voltar.className = "controle-fileira voltar";
+            voltar.innerHTML = `<img class="seta seta-esquerda" src="../img/angulo-esquerdo.png" alt="seta esquerda">`;
+            voltar.setAttribute("aria-label", "Rolar para a esquerda");
+
+            // Botão para avançar
+            const avancar = document.createElement("button");
+            avancar.className = "controle-fileira avancar";
+            avancar.innerHTML = `<img class="seta seta-direita" src="../img/angulo-direito.png" alt="seta direita">`;
+            avancar.setAttribute("aria-label", "Rolar para a direita");
+
+            wrapper.append(fileira, voltar, avancar);
+            secao.append(titulo, wrapper);
             lista.appendChild(secao);
+
+            configurarRolagem(fileira, voltar, avancar);
         }
     });
+}
+
+
+function configurarRolagem(fileira, voltar, avancar) {
+
+    function atualizarBotoes() {
+        const temRolagem =
+            fileira.scrollWidth > fileira.clientWidth + 1;
+
+        if (!temRolagem) {
+            voltar.style.display = "none";
+            avancar.style.display = "none";
+            return;
+        }
+
+        voltar.style.display =
+            fileira.scrollLeft > 1 ? "flex" : "none";
+
+        const chegouAoFinal =
+            fileira.scrollLeft + fileira.clientWidth >=
+            fileira.scrollWidth - 1;
+
+        avancar.style.display =
+            chegouAoFinal ? "none" : "flex";
+    }
+
+    voltar.addEventListener("click", () => {
+        fileira.scrollBy({
+            left: -fileira.clientWidth * 0.8,
+            behavior: "smooth"
+        });
+    });
+
+    avancar.addEventListener("click", () => {
+        fileira.scrollBy({
+            left: fileira.clientWidth * 0.8,
+            behavior: "smooth"
+        });
+    });
+
+    fileira.addEventListener("scroll", atualizarBotoes);
+
+    // Verifica novamente quando a tela muda de tamanho
+    if ("ResizeObserver" in window) {
+        const observador = new ResizeObserver(atualizarBotoes);
+        observador.observe(fileira);
+    } else {
+        window.addEventListener("resize", atualizarBotoes);
+    }
+
+    atualizarBotoes();
 }
 
 
@@ -488,6 +573,7 @@ form.addEventListener("submit", function (e) {
 });
 
 
+
 document.querySelector("#bt-emp").addEventListener("click", async function () {
     const botao = this;
     const idLivro = Number(botao.dataset.idLivro);
@@ -513,19 +599,6 @@ document.querySelector("#bt-emp").addEventListener("click", async function () {
     botao.textContent = "Emprestando...";
 
     try {
-        const dataEmprestimo = new Date();
-        const dataDevolucao = new Date(dataEmprestimo);
-
-        // Prazo de 14 dias
-        dataDevolucao.setDate(dataDevolucao.getDate() + 14);
-
-        const novoEmprestimo = {
-            usuarioId: idUsuario,
-            livroId: idLivro,
-            data_emprestimo: dataEmprestimo.toISOString(),
-            data_devolucao: dataDevolucao.toISOString()
-        };
-
         const token = localStorage.getItem("token");
 
         const response = await fetch(urlEmprestimos + "cadastrar", {
@@ -534,38 +607,40 @@ document.querySelector("#bt-emp").addEventListener("click", async function () {
                 "Content-Type": "application/json",
                 "Authorization": `Bearer ${token}`
             },
-            body: JSON.stringify(novoEmprestimo)
+            body: JSON.stringify({
+                usuarioId: idUsuario,
+                livroId: idLivro
+            })
         });
 
         const texto = await response.text();
-        console.log("Resposta do servidor:", texto);
-
         let resultado;
 
         try {
             resultado = JSON.parse(texto);
         } catch {
-            throw new Error("O servidor retornou uma resposta que não é JSON.");
+            throw new Error("O servidor retornou uma resposta inválida.");
         }
 
         if (!response.ok) {
             throw new Error(
-                resultado.mensagem || "Erro ao realizar empréstimo."
+                resultado.erro ||
+                resultado.mensagem ||
+                "Erro ao realizar empréstimo."
             );
         }
 
-        alert("Empréstimo realizado com sucesso!");
-
+        // Fecha os detalhes do livro
         document.querySelector(".livroDetalhes").style.display = "none";
+        livroSelecionado = null;
 
-        // Atualiza o catálogo antes de sair
+        // Atualiza o catálogo sem sair da página
         await carregarLivros();
 
-        window.location.href = "emprestimos.htm?id=" + resultado.id;
+        alert("Empréstimo realizado com sucesso!");
 
     } catch (error) {
         console.error("Erro no empréstimo:", error);
-
         alert(error.message || "Erro ao realizar empréstimo.");
 
         botao.disabled = false;

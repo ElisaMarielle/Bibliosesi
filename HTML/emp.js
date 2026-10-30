@@ -37,6 +37,7 @@ let avaliacaoSelecionada = 0;
 async function carregarEmprestimo() {
     const parametros = new URLSearchParams(window.location.search);
     const id = parametros.get("id");
+    const token = localStorage.getItem("token");
 
     try {
         if (id) {
@@ -79,8 +80,6 @@ async function carregarEmprestimo() {
             mostrarSemEmprestimo();
             return;
         }
-
-        const token = localStorage.getItem("token");
 
         const resposta = await fetch(
             `${urlEmprestimos}listar/usuario/${usuario.id}`,
