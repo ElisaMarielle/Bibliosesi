@@ -427,6 +427,38 @@ select option:hover{
 .feedback-estrelas { color: #e0b500; font-size: .9rem; margin-bottom: 5px; }
 .feedback-texto { color: #393333; line-height: 1.5; overflow-wrap: anywhere; white-space: pre-wrap; }
 .feedbacks-vazio { color: #777; padding: 12px 2px; }
+
+/* =============== ROLAGEM DOS LIVROS =============== */
+
+.fileira-livros {
+    scrollbar-width: thin;
+    scrollbar-color: #902222 #f0dddd;
+    scroll-behavior: smooth;
+    padding-bottom: 15px;
+}
+
+.fileira-livros::-webkit-scrollbar {
+    height: 8px;
+}
+
+.fileira-livros::-webkit-scrollbar-track {
+    background: #f0dddd;
+    border-radius: 20px;
+    margin: 0 5px;
+}
+
+.fileira-livros::-webkit-scrollbar-thumb {
+    background: #902222;
+    border-radius: 20px;
+    border: 2px solid #f0dddd;
+}
+
+.fileira-livros::-webkit-scrollbar-thumb:hover {
+    background: #682424;
+}
+
+/* ================================================= */
+
 @media (max-width: 650px) {
     .livroDetalhes { padding: 10px; }
     .modal-livros { width: 100%; padding: 18px; }
