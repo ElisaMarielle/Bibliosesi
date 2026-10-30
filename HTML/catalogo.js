@@ -8,18 +8,31 @@ const urlFeedbacks = "https://bibliosesi.vercel.app/feedbacks/";
 const colecoes = [
     {
         titulo: "Para se divertir depois de um longo dia",
-        livros: [10, 12, 17, 27, 29, 36, 48]
+        generos: ["comédia", "aventura"]
     },
     {
         titulo: "Para baixinhos",
-        livros: [10, 15, 31, 43]
+        generos: ["literatura infantil"]
     },
     {
         titulo: "O amor está no ar...",
-        livros: [11, 9, 14, 16, 23, 25, 26]
+        generos: ["romance"]
     }
 ];
 
+function normalizarTexto(texto) {
+    return (texto || "")
+        .toLocaleLowerCase("pt-BR")
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "")
+        .trim();
+}
+
+function obterGeneros(livro) {
+    return (livro.genero || "")
+        .split(",")
+        .map(g => normalizarTexto(g));
+}
 
 const btCadastrar = document.querySelector("#btCadastra");
 const btExcluir = document.querySelector("#bt-excluir");
@@ -112,11 +125,13 @@ function renderizarColecoes() {
         const fileira = document.createElement("div");
         fileira.className = "fileira-livros";
 
-        const livrosDaColecao = colecao.livros
-            .map(id => livrosCarregados.find(
-                livro => String(livro.id) === String(id)
-            ))
-            .filter(Boolean);
+        const livrosDaColecao = livrosCarregados.filter(livro => {
+            const generosLivro = obterGeneros(livro);
+
+            return colecao.generos.some(genero =>
+                generosLivro.includes(normalizarTexto(genero))
+            );
+        });
 
         livrosDaColecao.forEach(livro => {
             fileira.appendChild(criarCardLivro(livro));
@@ -125,14 +140,39 @@ function renderizarColecoes() {
         if (livrosDaColecao.length > 0) {
             secao.append(titulo, fileira);
             lista.appendChild(secao);
-        } else {
-            console.warn(
-                `Nenhum livro encontrado para a coleção: ${colecao.titulo}`,
-                colecao.livros
-            );
         }
     });
 }
+
+
+function renderizarResultadosPesquisa(livros, tituloSecao = "Resultados") {
+    lista.innerHTML = "";
+
+    const secao = document.createElement("section");
+    secao.className = "secao-catalogo";
+
+    const titulo = document.createElement("h2");
+    titulo.className = "titulo-colecao";
+    titulo.textContent = tituloSecao;
+
+    const grade = document.createElement("div");
+    grade.className = "grade-resultados";
+
+    livros.forEach(livro => {
+        grade.appendChild(criarCardLivro(livro));
+    });
+
+    if (livros.length > 0) {
+        secao.append(titulo, grade);
+        lista.appendChild(secao);
+    } else {
+        const mensagem = document.createElement("p");
+        mensagem.className = "resultado-pesquisa";
+        mensagem.textContent = "Nenhum livro encontrado.";
+        lista.appendChild(mensagem);
+    }
+}
+
 
 
 function criarCardLivro(item) {
@@ -447,8 +487,10 @@ form.addEventListener("submit", function (e) {
         });
 });
 
+
 document.querySelector("#bt-emp").addEventListener("click", async function () {
-    const idLivro = Number(this.dataset.idLivro);
+    const botao = this;
+    const idLivro = Number(botao.dataset.idLivro);
 
     if (!idLivro) {
         alert("Livro não selecionado.");
@@ -456,7 +498,7 @@ document.querySelector("#bt-emp").addEventListener("click", async function () {
     }
 
     if (!usuario || !usuario.id) {
-        alert("Usuário não identificado. Faça login novamente.");
+        alert("Faça login para realizar um empréstimo.");
         return;
     }
 
@@ -467,25 +509,44 @@ document.querySelector("#bt-emp").addEventListener("click", async function () {
         return;
     }
 
-    this.disabled = true;
-    this.textContent = "Emprestando...";
+    botao.disabled = true;
+    botao.textContent = "Emprestando...";
 
     try {
+        const dataEmprestimo = new Date();
+        const dataDevolucao = new Date(dataEmprestimo);
+
+        // Prazo de 14 dias
+        dataDevolucao.setDate(dataDevolucao.getDate() + 14);
+
         const novoEmprestimo = {
             usuarioId: idUsuario,
-            livroId: idLivro
+            livroId: idLivro,
+            data_emprestimo: dataEmprestimo.toISOString(),
+            data_devolucao: dataDevolucao.toISOString()
         };
+
+        const token = localStorage.getItem("token");
 
         const response = await fetch(urlEmprestimos + "cadastrar", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
-                "Authorization": "Bearer " + localStorage.getItem("token")
+                "Authorization": `Bearer ${token}`
             },
             body: JSON.stringify(novoEmprestimo)
         });
 
-        const resultado = await response.json();
+        const texto = await response.text();
+        console.log("Resposta do servidor:", texto);
+
+        let resultado;
+
+        try {
+            resultado = JSON.parse(texto);
+        } catch {
+            throw new Error("O servidor retornou uma resposta que não é JSON.");
+        }
 
         if (!response.ok) {
             throw new Error(
@@ -493,18 +554,25 @@ document.querySelector("#bt-emp").addEventListener("click", async function () {
             );
         }
 
+        alert("Empréstimo realizado com sucesso!");
+
         document.querySelector(".livroDetalhes").style.display = "none";
 
+        // Atualiza o catálogo antes de sair
+        await carregarLivros();
+
         window.location.href = "emprestimos.htm?id=" + resultado.id;
+
     } catch (error) {
-        console.error(error);
+        console.error("Erro no empréstimo:", error);
 
         alert(error.message || "Erro ao realizar empréstimo.");
 
-        this.disabled = false;
-        this.textContent = "Emprestar";
+        botao.disabled = false;
+        botao.textContent = "Emprestar";
     }
 });
+
 
 btExcluir.addEventListener("click", function () {
     const idLivro = this.dataset.idLivro;
@@ -553,71 +621,53 @@ btExcluir.addEventListener("click", function () {
 
 
 function aplicarFiltros() {
-    const termo = pesquisa.value
-        .trim()
-        .toLocaleLowerCase("pt-BR");
-
-    const categoriaSelecionada = filtro.value
-        .toLocaleLowerCase("pt-BR");
-
+    const termo = normalizarTexto(pesquisa.value);
+    const categoriaSelecionada = normalizarTexto(filtro.value);
     const favoritos = obterFavoritos();
 
-    document.querySelectorAll(".secao-catalogo").forEach(secao => {
-        const generoSecao = secao.dataset.genero;
+    // Se não houver pesquisa nem filtro, mostra as coleções
+    if (termo === "" && categoriaSelecionada === "todos") {
+        renderizarColecoes();
+        return;
+    }
 
-        const livros = secao.querySelectorAll(".livro");
+    // Pesquisa em TODOS os livros, não apenas nos que estão nas coleções
+    const resultados = livrosCarregados.filter(livro => {
+        const textoLivro = [
+            livro.titulo,
+            livro.descricao,
+            livro.autor,
+            livro.publicacao,
+            livro.genero
+        ].join(" ");
 
-        livros.forEach(elemento => {
-            const id = String(elemento.dataset.id);
+        const correspondePesquisa =
+            normalizarTexto(textoLivro).includes(termo);
 
-            const livro = livrosCarregados.find(
-                item => String(item.id) === id
+        const generosLivro = obterGeneros(livro);
+
+        const correspondeCategoria =
+            categoriaSelecionada === "todos" ||
+            (
+                categoriaSelecionada === "favoritados"
+                    ? favoritos.includes(String(livro.id))
+                    : generosLivro.includes(categoriaSelecionada)
             );
 
-            if (!livro) {
-                elemento.style.display = "none";
-                return;
-            }
-
-            const textoLivro = [
-                livro.titulo,
-                livro.descricao,
-                livro.autor,
-                livro.publicacao,
-                livro.genero
-            ]
-                .join(" ")
-                .toLocaleLowerCase("pt-BR");
-
-            const correspondePesquisa =
-                textoLivro.includes(termo);
-
-            const generosLivro = (livro.genero || "")
-                .split(",")
-                .map(g => g.trim().toLocaleLowerCase("pt-BR"));
-
-            const correspondeCategoria =
-                categoriaSelecionada === "todos" ||
-                (
-                    categoriaSelecionada === "favoritados"
-                        ? favoritos.includes(id)
-                        : generoSecao === categoriaSelecionada &&
-                          generosLivro.includes(categoriaSelecionada)
-                );
-
-            elemento.style.display =
-                correspondePesquisa && correspondeCategoria
-                    ? "flex"
-                    : "none";
-        });
-
-        // Esconde as seções sem nenhum livro visível
-        const temLivrosVisiveis = [...livros].some(
-            livro => livro.style.display !== "none"
-        );
-
-        secao.style.display = temLivrosVisiveis ? "" : "none";
+        return correspondePesquisa && correspondeCategoria;
     });
+
+    let titulo = "Resultados";
+
+    if (categoriaSelecionada === "favoritados") {
+        titulo = "Meus favoritos";
+    } else if (categoriaSelecionada !== "todos") {
+        titulo = filtro.options[filtro.selectedIndex].textContent;
+    } else if (termo !== "") {
+        titulo = "Resultados da pesquisa";
+    }
+
+    renderizarResultadosPesquisa(resultados, titulo);
 }
 
 
