@@ -6,42 +6,35 @@ const headersAuth = { "Authorization": "Bearer " + token };
 function mudarFoto() { document.querySelector(".mudar-foto").style.display = "flex"; }
 function cancelar() { document.querySelector(".mudar-foto").style.display = "none"; }
 
-async function salvarFoto() {
+function salvarFoto() {
     const arquivo = document.querySelector("#foto").files[0];
+
     if (!arquivo) return alert("Selecione uma imagem primeiro.");
-    if (!["image/png", "image/jpeg", "image/webp"].includes(arquivo.type)) return alert("Selecione uma imagem PNG, JPG ou WEBP.");
+
+    if (!arquivo.type.startsWith("image/")) {
+        return alert("Selecione uma imagem válida.");
+    }
+
     if (!usuario?.id) return alert("Faça login novamente.");
-    try {
-        const foto = await new Promise((resolve, reject) => {
-            const reader = new FileReader();
-            reader.onerror = () => reject(new Error("Não foi possível ler a imagem."));
-            reader.onload = () => {
-                const img = new Image();
-                img.onerror = () => reject(new Error("Imagem inválida."));
-                img.onload = () => {
-                    const escala = Math.min(1, 500 / Math.max(img.width, img.height));
-                    const canvas = document.createElement("canvas");
-                    canvas.width = Math.max(1, Math.round(img.width * escala));
-                    canvas.height = Math.max(1, Math.round(img.height * escala));
-                    canvas.getContext("2d").drawImage(img, 0, 0, canvas.width, canvas.height);
-                    resolve(canvas.toDataURL("image/jpeg", 0.78));
-                };
-                img.src = reader.result;
-            };
-            reader.readAsDataURL(arquivo);
-        });
-        const r = await fetch(`${API}/usuarios/atualizar/${usuario.id}`, {
-            method: "PUT", headers: { ...headersAuth, "Content-Type": "application/json" },
-            body: JSON.stringify({ fotoPerfil: foto })
-        });
-        const data = await r.json();
-        if (!r.ok) throw new Error(data.mensagem || "Não foi possível salvar a foto.");
-        const atualizado = { ...usuario, ...data };
-        localStorage.setItem("usuario", JSON.stringify(atualizado));
-        document.querySelector("#foto-perfil").src = foto;
+
+    const reader = new FileReader();
+
+    reader.onload = function () {
+        localStorage.setItem(`fotoPerfil_${usuario.id}`, reader.result);
+
+        document.querySelector("#foto-perfil").src = reader.result;
         document.querySelector(".mudar-foto").style.display = "none";
+
         alert("Foto de perfil atualizada!");
-    } catch (e) { alert(e.message); }
+    };
+
+    reader.readAsDataURL(arquivo);
+}
+
+const fotoSalva = localStorage.getItem(`fotoPerfil_${usuario.id}`);
+
+if (fotoSalva) {
+    document.querySelector("#foto-perfil").src = fotoSalva;
 }
 
 function formatarData(valor) {

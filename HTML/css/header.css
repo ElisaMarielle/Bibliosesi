@@ -13,6 +13,8 @@ header{
     padding: 5px;
     position: fixed;
     top: 0;
+    right: 0;
+    left: 0;
     z-index: 99;
     width: 100%;
     border-bottom: 1px solid var(--accent);
@@ -46,7 +48,8 @@ header .ordena{
     list-style: none;
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: 1fr 1fr 1fr 1fr 3fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
+    padding: 0;
 }
 .navegar nav ul i{
     font-size: 20px;
@@ -113,7 +116,6 @@ nav ul li a:hover::after {
   color: var(--white);
   transform: translateX(100%);
   transition: transform 0.3s ease-in-out;
-  z-index: 3;
   padding-top: 3.8rem;
   border-left: 1px solid var(--accent);
   z-index: 98;
