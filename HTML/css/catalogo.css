@@ -23,28 +23,21 @@ body{
 .catalogo{
     margin-top: 4.2rem;
     font-family: var(--dm-sans);
-    padding: 20px;
+    padding: 20px 0;
 }
 .secao-catalogo{
     background-color: #fff7f7;
     display: flex;
     flex-direction: column;
-    margin-bottom: 40px;
-    padding: 20px 20px 0;
+    margin-top: 20px;
+    margin-bottom: 60px;
+    padding: 20px 20px;
     gap: 20px;
 }
 .titulo-colecao{
     font-family: sora;
     color: var(--primary);
     font-size: 30px;
-}
-.fileira-livros {
-    display: flex;
-    flex-wrap: nowrap;
-    overflow-x: auto;
-    gap: 30px;
-    width: 100%;
-    padding-bottom: 12px;
 }
 #btCadastra {
     display: none;
@@ -132,10 +125,36 @@ select option{
 select option:hover{
     background-color: var(--primary);
 }
+.grade-resultados {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    padding: 12px 40px;
+}
+.resultado-pesquisa{
+    text-align: center;
+    font-family: var(--inter);
+    font-size: 20px;
+    font-weight: 600;
+    background-color: var(--white);
+    padding: 20px;
+    margin-top: 30px;
+}
 /*=========================================================*/
 
 
 /*============== LIVROS ==============*/
+.fileira-livros {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    gap: 30px;
+    width: 100%;
+    padding: 12px 40px;
+}
+.fileira-livros::-webkit-scrollbar{
+    display: none;
+}
 .livro{
     display: flex;
     flex-direction: column;
@@ -170,6 +189,12 @@ select option:hover{
 /*----------------------*/
 .livros-imagem{
     width: 100%;
+    border-radius: 8px;
+    transition: box-shadow 300ms, transform 300ms;
+}
+.livros-imagem:hover{
+    box-shadow: 0 0 8px #00000060;
+    transform: scale(1.015);
 }
 .livros-imagem img {
   display: block;
