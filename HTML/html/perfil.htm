@@ -1,167 +1,222 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Perfil</title>
-    <link rel="stylesheet" href="../css/perfil.css">
+    <title>Perfil | Biblioteca Virtual</title>
+
     <link rel="stylesheet" href="../css/responsivos.css">
     <link rel="stylesheet" href="../css/header.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css">
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Lexend:wght@100..900&family=Sora:wght@100..800&display=swap');
-    </style>
+    <link rel="stylesheet" href="../css/perfil.css">
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css">
+
     <link rel="icon" href="../img/logo.png">
 </head>
 
 <body>
+
     <header>
         <div class="ordena">
-            <img src="../img/logo.png" alt="bibliosesi logo">
+            <img src="../img/logo.png" alt="Biblioteca SESI">
             <h1>Biblioteca Virtual</h1>
             <i class="fa-solid fa-bars bt-menu"></i>
         </div>
     </header>
+
     <div class="overlay" id="overlay"></div>
+
     <div class="navegar">
         <nav>
             <ul>
                 <div class="nav-links">
                     <i class="fa-solid fa-house"></i>
-                    <li><a href="inicial.htm">Início</li></a>
+                    <li><a href="inicial.htm">Início</a></li>
                 </div>
+
                 <div class="nav-links">
                     <i class="fa-solid fa-circle-user"></i>
-                    <li><a href="perfil.htm">Perfil do Usuáro</li></a>
+                    <li><a href="perfil.htm">Perfil do Usuário</a></li>
                 </div>
+
                 <div class="nav-links">
                     <i class="fa-solid fa-folder-open"></i>
-                    <li><a href="emprestimos.htm">Empréstimos</li></a>
+                    <li><a href="emprestimos.htm">Empréstimos</a></li>
                 </div>
+
                 <div class="nav-links">
                     <i class="fa-solid fa-book"></i>
-                    <li><a href="catalogo.htm">Catálogo</li></a>
+                    <li><a href="catalogo.htm">Catálogo</a></li>
                 </div>
+
                 <div class="nav-links" id="link-administracao" style="display:none;">
                     <i class="fa-solid fa-user-shield"></i>
                     <li><a href="admin.htm">Administração</a></li>
                 </div>
+
                 <div class="bt-sair">
-                    <button onclick="logoff()">Sair <i class="fa-solid fa-right-to-bracket"></i></button>
+                    <button type="button" onclick="logoff()">
+                        Sair <i class="fa-solid fa-right-to-bracket"></i>
+                    </button>
                 </div>
             </ul>
         </nav>
     </div>
 
     <main class="perfil">
-        <div class="aluno">
-            <div class="aluno-infos">
-                <div class="left">
-                    <img src="../img/profile_placeholder.png" alt="foto de perfil" id="foto-perfil">
-                    <button onclick="mudarFoto()"><i class="fa-solid fa-pen"></i>Editar foto</button>
-                </div>
-                <div class="right">
-                    <h3 id="nome"></h3>
-                    <p id="rm"></p>
-                    <p id="email"></p>
+
+        <!-- ÁREA SUPERIOR -->
+        <section class="perfil-superior">
+
+            <!-- DADOS DO USUÁRIO -->
+            <div class="aluno">
+                <div class="aluno-infos">
+
+                    <div class="left">
+                        <img
+                            src="../img/profile_placeholder.png"
+                            alt="Foto de perfil"
+                            id="foto-perfil"
+                        >
+
+                        <button type="button" onclick="mudarFoto()">
+                            <i class="fa-solid fa-pen"></i>
+                            Editar foto
+                        </button>
+                    </div>
+
+                    <div class="right">
+                        <span class="perfil-legenda">MEU PERFIL</span>
+                        <h2 id="nome">Carregando...</h2>
+                        <p id="rm"></p>
+                        <p id="email"></p>
+                    </div>
+
                 </div>
             </div>
-            <span class="divisor"></span>
-            <div class="aluno-estat">
-                <div class="estatisticas">
 
-                    <div class="stats">
+            <!-- ESTATÍSTICAS -->
+            <section class="estatisticas">
+
+                <div class="stats">
+                    <div class="stats-icone">
+                        <i class="fa-solid fa-heart"></i>
+                    </div>
+
+                    <div class="stats-info">
                         <h3>Livros favoritados</h3>
-                        <span>
-                            <i class="fa-solid fa-heart"></i>
-                            <span id="favoritos-count">0</span>
-                        </span>
+                        <span id="favoritos-count">0</span>
+                    </div>
+                </div>
+
+                <div class="stats">
+                    <div class="stats-icone">
+                        <i class="fa-solid fa-book-open"></i>
                     </div>
 
-                    <div class="stats">
+                    <div class="stats-info">
                         <h3>Livros emprestados</h3>
-                        <span><i class="fa-solid fa-book"></i><span id="emprestados-count">0</span></span>
+                        <span id="emprestados-count">0</span>
                     </div>
-                    <div class="stats">
+                </div>
+
+                <div class="stats">
+                    <div class="stats-icone">
+                        <i class="fa-solid fa-book-bookmark"></i>
+                    </div>
+
+                    <div class="stats-info">
                         <h3>Livros em posse</h3>
-                        <span><i class="fa-solid fa-hand"></i><span id="posse-count">0</span></span>
+                        <span id="posse-count">0</span>
                     </div>
+                </div>
+
+            </section>
+
+        </section>
+
+        <!-- ÚNICA LISTAGEM DA PÁGINA -->
+        <section class="historico-container">
+
+            <div class="historico-cabecalho">
+                <div class="historico-icone">
+                    <i class="fa-solid fa-clock-rotate-left"></i>
+                </div>
+
+                <div>
+                    <h2>Histórico de empréstimos</h2>
+                    <p>Acompanhe os seus empréstimos na biblioteca.</p>
                 </div>
             </div>
-        </div>
-        <span class="hr"></span>
-<<<<<<< HEAD
-        <div class="aluno-det perfil-listas">
-            <section class="lista-espera perfil-bloco">
-                <h2>Histórico de empréstimos</h2>
-                <div id="historico-emprestimos" class="avisos"><p>Carregando...</p></div>
-            </section>
-            <section class="lista-espera perfil-bloco">
-                <h2>Livros em posse</h2>
-                <div id="livros-em-posse" class="avisos"><p>Carregando...</p></div>
-            </section>
-            <section class="lista-espera perfil-bloco">
-                <h2>Livros favoritados</h2>
-                <div id="livros-favoritos" class="avisos"><p>Carregando...</p></div>
-            </section>
-            <section class="aluno-avisos perfil-bloco">
-=======
-        <div class="aluno-det">
-            <div class="lista-espera">
-                <div class="livro-espera">
-                    <div class="top">
-                        <div class="livro-img">
-                            <img src="../img/warning.png" alt="capa do livro">
-                        </div>
-                        <h3>Sociedade do Cansaço</h3>
-                    </div>
-                    <div class="bottom">
-                        <p>Sua posição: 2° lugar</p>
-                        <p>Previsão de entrega: <span>22/05/2026</span></p>
-                        <button onclick="retirarReserva()">Cancelar reserva</button>
-                    </div>
-                </div>
+
+            <div id="historico-emprestimos" class="historico-conteudo avisos">
+                <p>Carregando histórico...</p>
             </div>
-            <div class="aluno-avisos">
->>>>>>> 65745c25c877290578483d9e202f494cb93d0eea
-                <div class="title">
-                    <img src="../img/warning.png" alt="Avisos" height="30" width="30">
-                    <h2>Avisos</h2>
-                </div>
-                <div class="avisos"><ul id="lista-avisos"><li>Carregando...</li></ul></div>
-            </section>
-        </div>
+
+        </section>
+
     </main>
 
+    <!-- MODAL PARA ALTERAR A FOTO -->
     <div class="mudar-foto">
-        <form action="" class="formfoto" onsubmit="salvarFoto(); return false;">
-            <label for="foto">Selecione um arquivo png, jpg ou webp...</label>
-            <input type="file" id="foto">
-            <div class="form-btn">
-                <button type="button" onclick="salvarFoto()">Salvar</button>
-                <button onclick="cancelar()">Cancelar</button>
+
+        <form
+            action=""
+            class="formfoto"
+            onsubmit="salvarFoto(); return false;"
+        >
+
+            <div class="modal-titulo">
+                <i class="fa-solid fa-camera"></i>
+                <h2>Alterar foto de perfil</h2>
             </div>
+
+            <label for="foto">
+                Selecione uma imagem PNG, JPG ou WEBP.
+            </label>
+
+            <input
+                type="file"
+                id="foto"
+                accept="image/png,image/jpeg,image/webp"
+            >
+
+            <div class="form-btn">
+                <button type="submit">
+                    <i class="fa-solid fa-check"></i>
+                    Salvar
+                </button>
+
+                <button type="button" onclick="cancelar()">
+                    Cancelar
+                </button>
+            </div>
+
         </form>
+
     </div>
 
-</body>
-<script src="../perfil.js"></script>
-<script src="../script.js"></script>
-<script>
-    function verificarLogin() {
-        const token = localStorage.getItem("token");
+    <script src="../perfil.js"></script>
+    <script src="../script.js"></script>
 
-        if (!token) {
-            window.location.replace("login.htm");
-            return false;
+    <script>
+        function verificarLogin() {
+            const token = localStorage.getItem("token");
+
+            if (!token) {
+                window.location.replace("login.htm");
+                return false;
+            }
+
+            return true;
         }
 
-        return true;
-    }
+        if (!verificarLogin()) {
+            document.body.style.display = "none";
+        }
+    </script>
 
-    if (!verificarLogin()) {
-        document.body.style.display = "none";
-    }
-</script>
+</body>
 </html>

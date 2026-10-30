@@ -1,261 +1,763 @@
-@import "~@flaticon/flaticon-uicons/css/all/all";
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Lexend:wght@400;500;600;700&family=Sora:wght@400;500;600;700&display=swap');
 
-*{
+/* ========================================
+   CONFIGURAÇÕES GERAIS
+======================================== */
+
+:root {
+    --bg: #f5f0ec;
+    --white: #ffffff;
+    --wine: #7c2e2e;
+    --wine-dark: #642222;
+    --wine-soft: #f5eaea;
+    --text: #302929;
+    --muted: #827777;
+    --border: #e8dfda;
+}
+
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
-body{
-    background: #f5eeee;
-    width: 100vw;
+
+html {
+    width: 100%;
+    min-height: 100%;
+}
+
+body {
+    width: 100%;
+    min-height: 100vh;
+    min-height: 100dvh;
     overflow-x: hidden;
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
 }
-/*-----------------------------------------------*/
 
+/* ========================================
+   CONTEÚDO PRINCIPAL
+======================================== */
 
-/*-----------------------------------------------*/
-/*--------------PERFIL FORMATAÇÃO-------------*/
-main.perfil{
+main.perfil {
+    width: 100%;
+    max-width: 1610px;
+
+    /* Espaço reservado para o cabeçalho */
+    margin: 80px auto 0;
+
+    min-height: calc(100vh - 215px);
+    min-height: calc(100dvh - 215px);
+
+    padding: 28px 30px 24px;
+
     display: grid;
-    grid-template-rows: auto auto 1fr;
-}
-.perfil .hr{
-    border-bottom: 2px solid #b4b4b4;
-}
-/*--------------USUÁRIO PERFIL — INFOS-------------*/
-.aluno{
-    display: grid;
-    grid-template-columns: 1fr auto 1fr;
-    margin: 6rem 5rem 2rem;
-    height: fit-content;
-}
-.aluno-infos{
-    display: flex;
-    gap: 20px;
-    justify-content: space-around;
-    background-color: #ece6e6;
-    border-radius: 20px;
-}
-.aluno-infos .left{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-}
-.left img{
-    width: 120px;
-    height: 120px;
-    object-fit: cover;
-    border-radius: 50%;
-    box-shadow: 0 0 5px #0000007e;
-}
-.left button{
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    background: #7c2e2e;
-    border: none; border-radius: 12px;
-    padding: 6px 12px;
-    color: #fff;
-    font-family: lexend;
-}
-.aluno-infos .right{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 10px;
-    font-family: lexend;
-    font-size: 18px;
+    grid-template-rows: 155px minmax(320px, 1fr);
+    gap: 15px;
+
+    overflow: visible;
 }
 
-.aluno .divisor{
-    width: 1;
-    border-right: 2px solid #b4b4b4;
-    margin-left: 20px;
+/* ========================================
+   ÁREA SUPERIOR
+======================================== */
+
+.perfil-superior {
+    width: 100%;
+    min-width: 0;
+    min-height: 0;
+
+    display: grid;
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+    gap: 18px;
 }
 
-.aluno-estat{
-    display: flex;
-    justify-content: center;
-}
-.estatisticas{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
-    justify-content: center;
-    align-items: center;
-}
-.stats{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
-    font-family: lexend;
-    color: #fff;
-    background-color: #7c2e2e;
-    padding: 20px;
-    width: 200px;
-    border-radius: 20px;
-}
-.stats:nth-child(3) {
-    grid-column: 1 / -1;
-    justify-self: center;
-}
-.stats h3{
-    font-size: 16px;
-}
-.stats span{
-    display: flex;
-    gap: 10px;
-    align-items: center;
+/* ========================================
+   CARTÃO DO USUÁRIO
+======================================== */
+
+.aluno {
+    min-width: 0;
+    min-height: 0;
 }
 
-/*--------------USUÁRIO PERFIL — AVISOS-------------*/
-.aluno-det{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    padding: 2rem 5rem 1rem;
-    gap: 40px;
-}
-.lista-espera{
-    background-color: #7c2e2e;
-    border-radius: 20px;
-    padding: 20px;
-}
-.livro-espera{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    width: 200px;
-    height: 300px;
-    background-color: #fff;
-    border-radius: 20px;
-    padding: 15px;
-}
-.livro-espera .top{
-    display: flex;
-    gap: 5px;
-    font-family: lexend;
-    align-items: center;
-}
-.top .livro-img{
-    width: 200px;
-    height: 100px;
-}
-.livro-img img{
+.aluno-infos {
     width: 100%;
     height: 100%;
-    object-fit: cover;
-    border-radius: 10px;
-}
-.livro-espera .bottom{
+
     display: flex;
-    flex-direction: column;
-    gap: 10px;
-    font-family: lato;
-}
-.bottom button{
-    background: #7c2e2e;
-    border: none; border-radius: 12px;
-    padding: 6px 12px;
-    color: #fff;
-    font-family: lexend;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 22px;
+
+    padding: 18px 24px;
+
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 15px;
+
+    box-shadow: 0 4px 16px rgba(70, 35, 35, 0.035);
 }
 
-.aluno-avisos{
+.aluno-infos .left {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+
+    flex-shrink: 0;
+}
+
+.left img {
+    display: block;
+
+    width: 82px;
+    height: 82px;
+
+    object-fit: cover;
+    border-radius: 50%;
+    border: 4px solid var(--wine-soft);
+
+    background: var(--bg);
+}
+
+.left button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+
+    padding: 8px 11px;
+
+    background: var(--wine-soft);
+    color: var(--wine);
+
+    border: none;
+    border-radius: 8px;
+
+    font-family: 'Lexend', sans-serif;
+    font-size: 11px;
+
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+}
+
+.left button:hover {
+    background: var(--wine);
+    color: var(--white);
+}
+
+.aluno-infos .right {
+    flex: 1;
+    min-width: 0;
+
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
-    background-color: #ece6e6;
-    border-radius: 20px;
-    padding: 20px;
+    gap: 7px;
 }
-.title{
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    font-family: sora;
-    margin-bottom: 3rem;
+
+.perfil-legenda {
+    color: var(--wine);
+
+    font-family: 'Lexend', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.8px;
 }
-.title img{
-    filter: brightness(0) saturate(100%) invert(19%) sepia(84%) saturate(985%) hue-rotate(329deg) brightness(90%) contrast(84%);
+
+.aluno-infos .right h2 {
+    color: var(--text);
+
+    font-family: 'Sora', sans-serif;
+    font-size: 19px;
+    font-weight: 700;
+    line-height: 1.35;
+
+    overflow-wrap: anywhere;
 }
-.title h2{
-    color: #7c2e2e;
-    font-size: 26px;
+
+.aluno-infos .right p {
+    color: var(--muted);
+    font-size: 12px;
+    line-height: 1.4;
+
+    overflow-wrap: anywhere;
 }
-.avisos{
+
+/* ========================================
+   ESTATÍSTICAS
+======================================== */
+
+.estatisticas {
+    width: 100%;
+    height: 100%;
+    min-width: 0;
+    min-height: 0;
+
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+}
+
+.stats {
+    min-width: 0;
+    min-height: 0;
+
     display: flex;
     flex-direction: column;
-    gap: 10px;
-    font-family: lato;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+
+    padding: 12px 8px;
+
+    background: var(--wine);
+    color: var(--white);
+
+    border-radius: 14px;
+    text-align: center;
+
+    transition: background 0.2s, transform 0.2s;
+}
+
+.stats:hover {
+    background: var(--wine-dark);
+    transform: translateY(-2px);
+}
+
+.stats-icone {
+    width: 42px;
+    height: 42px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: rgba(255, 255, 255, 0.13);
+    border-radius: 12px;
+
+    font-size: 19px;
+}
+
+.stats-info {
+    min-width: 0;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+}
+
+.stats h3 {
+    font-family: 'Lexend', sans-serif;
+    font-size: 10px;
+    font-weight: 500;
+    line-height: 1.4;
+
+    overflow-wrap: anywhere;
+}
+
+.stats-info > span {
+    font-family: 'Sora', sans-serif;
+    font-size: 25px;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+/* ========================================
+   HISTÓRICO DE EMPRÉSTIMOS
+======================================== */
+
+.historico-container {
+    width: 100%;
+    min-width: 0;
+    min-height: 320px;
+
+    display: flex;
+    flex-direction: column;
+
+    overflow: hidden;
+
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 15px;
+
+    box-shadow: 0 4px 16px rgba(70, 35, 35, 0.035);
+}
+
+.historico-cabecalho {
+    min-height: 82px;
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    gap: 14px;
+
+    padding: 17px 24px;
+
+    border-bottom: 1px solid var(--border);
+}
+
+.historico-icone {
+    width: 44px;
+    height: 44px;
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: var(--wine);
+    background: var(--wine-soft);
+
+    border-radius: 12px;
     font-size: 18px;
 }
-.avisos ul{
+
+.historico-cabecalho h2 {
+    color: var(--wine);
+
+    font-family: 'Sora', sans-serif;
+    font-size: 17px;
+    font-weight: 700;
+}
+
+.historico-cabecalho p {
+    margin-top: 5px;
+
+    color: var(--muted);
+    font-size: 12px;
+    line-height: 1.4;
+}
+
+/* Área interna da listagem */
+
+.historico-conteudo {
+    flex: 1;
+    min-width: 0;
+    min-height: 0;
+
+    padding: 22px 24px;
+
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    scrollbar-width: thin;
+    scrollbar-color: #c8aaa5 transparent;
+}
+
+.historico-conteudo::-webkit-scrollbar {
+    width: 6px;
+}
+
+.historico-conteudo::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.historico-conteudo::-webkit-scrollbar-thumb {
+    background: #c8aaa5;
+    border-radius: 10px;
+}
+
+.historico-conteudo.avisos {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 12px;
+
+    color: var(--text);
+    font-size: 13px;
+    line-height: 1.6;
 }
-/*-----------------------------------------------*/
 
+.historico-conteudo p {
+    color: var(--muted);
+}
 
-/*-----------------------------------------------*/
-/*--------------USUÁRIO PERFIL — MODAL MUDAR FOTO-------------*/
-.mudar-foto{
-    backdrop-filter: blur(5px);
-    background-color: #00000056;
+.historico-conteudo ul {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+
+    padding-left: 20px;
+}
+
+.historico-conteudo li {
+    padding-left: 3px;
+}
+
+/* ========================================
+   MODAL DE ALTERAÇÃO DA FOTO
+======================================== */
+
+.mudar-foto {
     position: fixed;
-    top: 0;
-    right: 0;
-    left: 0;
-    height: 100%;
+    z-index: 9999;
+    inset: 0;
+
     display: none;
     justify-content: center;
     align-items: center;
+
+    padding: 18px;
+
+    background: rgba(30, 20, 20, 0.55);
+    backdrop-filter: blur(5px);
 }
-.formfoto{
-    background: #ece6e6;
-    padding: 50px;
-    border-radius: 20px;
-    font-family: lato;
+
+.formfoto {
+    width: min(430px, 100%);
+
     display: flex;
     flex-direction: column;
-    font-size: 22px;
-    gap: 20px;
+    gap: 17px;
+
+    padding: 26px;
+
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 15px;
+
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+
+    box-shadow: 0 15px 45px rgba(0, 0, 0, 0.15);
 }
-.formfoto button:hover{
-    background: #a54646;
-}
-.formfoto input::file-selector-button{
-    margin-top: 10px;
-    background: #7c2e2e;
-    border: none; border-radius: 10px;
-    color: #fff;
-    padding: 6px 12px;
-    font-family: lexend;
-}
-.formfoto input::file-selector-button:hover{
-    background: #a54646;
-}
-.form-btn{
+
+.modal-titulo {
     display: flex;
-    justify-content: space-around;
+    align-items: center;
+    gap: 11px;
+
+    color: var(--wine);
 }
-.form-btn button{
-    background: #7c2e2e;
-    border: none; border-radius: 10px;
-    color: #fff;
-    padding: 6px 12px;
-    font-family: lexend;
+
+.modal-titulo > i {
+    font-size: 21px;
 }
-/* Listas reais do perfil */
-.perfil-listas{grid-template-columns:repeat(2,minmax(0,1fr));align-items:stretch}
-.perfil-bloco{min-width:0;max-height:440px;overflow:auto}
-.perfil-bloco h2{font:600 20px sora;color:#fff;margin-bottom:15px}
-.perfil-bloco .avisos{font-size:14px}
-.perfil-bloco .avisos p,.perfil-bloco .avisos li{background:#fff;color:#383333;border-radius:10px;padding:12px;margin:7px 0;list-style:none}
-.perfil-listas .aluno-avisos .title{margin-bottom:18px}
-.perfil-listas .aluno-avisos .title h2{color:#7c2e2e;margin:0}
-@media(max-width:900px){.perfil-listas{grid-template-columns:1fr}.aluno-det{padding:1.5rem}}
+
+.modal-titulo h2 {
+    font-family: 'Sora', sans-serif;
+    font-size: 17px;
+}
+
+.formfoto label {
+    color: var(--text);
+    font-weight: 600;
+    line-height: 1.5;
+}
+
+.formfoto input {
+    width: 100%;
+    min-width: 0;
+    font-size: 12px;
+}
+
+.formfoto input::file-selector-button {
+    margin-right: 8px;
+    padding: 9px 12px;
+
+    background: var(--wine-soft);
+    color: var(--wine);
+
+    border: none;
+    border-radius: 7px;
+
+    font-family: 'Lexend', sans-serif;
+    cursor: pointer;
+}
+
+.formfoto input::file-selector-button:hover {
+    background: var(--wine);
+    color: var(--white);
+}
+
+.form-btn {
+    display: flex;
+    justify-content: flex-end;
+    gap: 9px;
+}
+
+.form-btn button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+
+    padding: 10px 15px;
+
+    background: var(--wine);
+    color: var(--white);
+
+    border: none;
+    border-radius: 8px;
+
+    font-family: 'Lexend', sans-serif;
+    font-size: 12px;
+
+    cursor: pointer;
+}
+
+.form-btn button:hover {
+    background: var(--wine-dark);
+}
+
+.form-btn button:last-child {
+    background: #eee8e4;
+    color: var(--text);
+}
+
+.form-btn button:last-child:hover {
+    background: #e3d8d2;
+}
+
+/* ========================================
+   TELAS DESKTOP COM POUCA ALTURA
+======================================== */
+
+@media (min-width: 701px) and (max-height: 750px) {
+    main.perfil {
+        margin-top: 80px;
+
+        min-height: calc(100vh - 195px);
+        min-height: calc(100dvh - 195px);
+
+        padding: 20px 24px 18px;
+
+        grid-template-rows: 150px minmax(300px, 1fr);
+        gap: 12px;
+    }
+
+    .perfil-superior {
+        gap: 12px;
+    }
+
+    .aluno-infos {
+        padding: 12px 17px;
+        gap: 15px;
+    }
+
+    .left img {
+        width: 66px;
+        height: 66px;
+    }
+
+    .aluno-infos .right h2 {
+        font-size: 16px;
+    }
+
+    .aluno-infos .right p {
+        font-size: 11px;
+    }
+
+    .stats {
+        gap: 9px;
+        padding: 8px 5px;
+    }
+
+    .stats-icone {
+        width: 34px;
+        height: 34px;
+        font-size: 16px;
+    }
+
+    .stats h3 {
+        font-size: 9px;
+    }
+
+    .stats-info > span {
+        font-size: 21px;
+    }
+
+    .historico-cabecalho {
+        min-height: 68px;
+        padding: 12px 20px;
+    }
+
+    .historico-conteudo {
+        padding: 16px 20px;
+    }
+}
+
+/* ========================================
+   TABLETS E CELULARES
+======================================== */
+
+@media (max-width: 700px) {
+    body {
+        min-height: 100vh;
+        min-height: 100dvh;
+
+        overflow-x: hidden;
+        overflow-y: auto;
+    }
+
+    main.perfil {
+        width: 100%;
+        min-height: 0;
+        height: auto;
+
+        margin: 80px auto 0;
+        padding: 20px 15px 24px;
+
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+
+        overflow: visible;
+    }
+
+    .perfil-superior {
+        display: flex;
+        flex-direction: column;
+        gap: 13px;
+    }
+
+    .aluno-infos {
+        min-height: 150px;
+        height: auto;
+
+        padding: 18px;
+        gap: 16px;
+    }
+
+    .left img {
+        width: 73px;
+        height: 73px;
+    }
+
+    .aluno-infos .right h2 {
+        font-size: 16px;
+    }
+
+    .aluno-infos .right p {
+        font-size: 11px;
+    }
+
+    .estatisticas {
+        height: auto;
+        min-height: 112px;
+        gap: 8px;
+    }
+
+    .stats {
+        min-height: 112px;
+
+        padding: 10px 5px;
+        gap: 9px;
+
+        border-radius: 11px;
+    }
+
+    .stats-icone {
+        width: 32px;
+        height: 32px;
+
+        font-size: 15px;
+        border-radius: 9px;
+    }
+
+    .stats h3 {
+        font-size: 9px;
+    }
+
+    .stats-info > span {
+        font-size: 21px;
+    }
+
+    .historico-container {
+        min-height: 320px;
+        overflow: hidden;
+    }
+
+    .historico-cabecalho {
+        min-height: 75px;
+
+        padding: 15px;
+        gap: 10px;
+    }
+
+    .historico-icone {
+        width: 38px;
+        height: 38px;
+
+        font-size: 16px;
+    }
+
+    .historico-cabecalho h2 {
+        font-size: 14px;
+    }
+
+    .historico-cabecalho p {
+        font-size: 11px;
+    }
+
+    .historico-conteudo {
+        min-height: 220px;
+
+        padding: 16px;
+        overflow: visible;
+    }
+
+    .formfoto {
+        padding: 22px;
+    }
+}
+
+/* ========================================
+   CELULARES PEQUENOS
+======================================== */
+
+@media (max-width: 390px) {
+    main.perfil {
+        padding-right: 11px;
+        padding-left: 11px;
+    }
+
+    .aluno-infos {
+        flex-direction: column;
+        align-items: center;
+
+        text-align: center;
+        padding: 20px 14px;
+    }
+
+    .aluno-infos .right {
+        width: 100%;
+        align-items: center;
+    }
+
+    .aluno-infos .right h2 {
+        font-size: 15px;
+    }
+
+    .estatisticas {
+        gap: 6px;
+    }
+
+    .stats {
+        padding: 8px 3px;
+    }
+
+    .stats h3 {
+        font-size: 8px;
+    }
+
+    .stats-info > span {
+        font-size: 19px;
+    }
+
+    .historico-cabecalho {
+        align-items: flex-start;
+    }
+
+    .historico-cabecalho h2 {
+        font-size: 13px;
+    }
+
+    .form-btn button {
+        padding: 9px 12px;
+    }
+}
